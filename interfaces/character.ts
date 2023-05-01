@@ -1,3 +1,4 @@
 interface Character {
+    nom: string;
     
 }
