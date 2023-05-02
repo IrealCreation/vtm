@@ -1,4 +1,4 @@
-import '@/styles/globals.css'
+import '@/styles/globals.scss'
 import '@/styles/charactersheet.scss'
 import 'react-tooltip/dist/react-tooltip.css'
 import type { AppProps } from 'next/app'

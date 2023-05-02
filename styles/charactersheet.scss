@@ -1,7 +1,8 @@
 .character-sheet {
     text-align: center;
     font-weight: bold;
-    margin: 2vh 2vw;
+    margin-top: 2vh;
+    margin-bottom: 4vh;
 
     h1 {
         text-transform: uppercase;
@@ -11,25 +12,27 @@
     }
     h2 {
         font-variant: small-caps;
-        border: 3px solid white;
+        border: 3px solid var(--main-color);
         border-left: none;
         border-right: none;
         margin: 3rem auto 1rem;
-        width: 80%;
         letter-spacing: 2px;
         font-size: 2rem;
+    }
+    h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1.5rem;
     }
 
     .title-bloc {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 80%;
         margin: 0 auto;
         .title-line {
             height: 3px;
             width: 100%;
-            background-color: white;
+            background-color: var(--main-color);
         }
     }
     
@@ -77,8 +80,26 @@
     }
     input:focus, textarea:focus {
       outline: none !important;
-      border-color: red;
+      border-color: var(--highlight-color);
       transition: border-color 0.4s linear;
     }
+
+    .attributs {
+        font-size: 1.15em;
+    }
+
+    .radio-group {
+        margin-bottom: 0.4rem;
+        .radio-label {
+            display: inline-block;
+            margin-right: 1rem;
+        }
+        .radio-field {
+            display: inline-block;
+            padding-top: 0.1rem;
+            font-size: 1.1em;
+        }
+    }
+    
     
 }
