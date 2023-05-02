@@ -3,6 +3,7 @@ import NumberField from "./numberfield"
 import TextAreaField from "./textareafield"
 import RadioField from "./radiofield"
 import { Tooltip } from 'react-tooltip'
+import { ObjectType } from "typescript"
 
 export default function CharacterSheet() {
     const tooltips = {
@@ -98,8 +99,52 @@ export default function CharacterSheet() {
                     "Votre esprit est une forteresse mentale impénétrable",
                 ]
             },
+        },
+        competences: {
+            athletisme: {
+                label: "Test",
+                radios: [
+                    "On vous appelle miss/mister catastrophe à force de faire tomber des trucs",
+                    "A part des maladresses occasionnelles, vous êtes en contrôle de vos gestes",
+                    "Vous savez exécuter des mouvements fins et précis",
+                    "Vous avez de quoi devenir acrobate ou danseur·euse classique de talent",
+                    "Vous vous mouvez avec une grâce hypnotique"
+                ]
+            },
+            melee: {
+                label: "Test",
+                radios: [
+                    "On vous appelle miss/mister catastrophe à force de faire tomber des trucs",
+                    "A part des maladresses occasionnelles, vous êtes en contrôle de vos gestes",
+                    "Vous savez exécuter des mouvements fins et précis",
+                    "Vous avez de quoi devenir acrobate ou danseur·euse classique de talent",
+                    "Vous vous mouvez avec une grâce hypnotique"
+                ]
+            },
         }
     };
+
+    const competences = {
+        physique: [
+            { id: "athletisme", titre: "Athlétisme" },
+            { id: "melee", titre: "Mêlée" },
+        ]
+    }
+
+    const jsxCompPhysique: Array<JSX.Element> = [];
+
+    for (let index = 0; index < competences.physique.length; index++) {
+        const titre = competences.physique[index].titre;
+        const id: string = competences.physique[index].id;
+        
+        let jsx = 
+            <div className="radio-group">
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.competences[id].label}>{titre}</span>
+                <RadioField max={5} tooltip={tooltips.attributs.force.radios} />
+            </div>;
+
+        jsxCompPhysique.push(jsx);
+    }
 
     return (
         <section className="character-sheet main-container">
@@ -153,6 +198,41 @@ export default function CharacterSheet() {
                 </div>
                 <div>
                     <h3>Mental</h3>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.intelligence.label}>Intelligence</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.intelligence.radios} />
+                    </div>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.acuite.label}>Acuité</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.acuite.radios} />
+                    </div>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.concentration.label}>Concentration</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.concentration.radios} />
+                    </div>
+                </div>
+            </div>
+            
+            <h2>Compétences</h2>
+            <div className="columns competences">
+                <div>
+                    {jsxCompPhysique}                    
+                </div>
+                <div>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.charisme.label}>Charisme</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.charisme.radios} />
+                    </div>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.psychologie.label}>Psychologie</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.psychologie.radios} />
+                    </div>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.sangfroid.label}>Sang-froid</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.sangfroid.radios} />
+                    </div>
+                </div>
+                <div>
                     <div className="radio-group">
                         <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.intelligence.label}>Intelligence</span>
                         <RadioField max={5} tooltip={tooltips.attributs.intelligence.radios} />

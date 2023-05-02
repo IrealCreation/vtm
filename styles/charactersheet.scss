@@ -2,7 +2,7 @@
     text-align: center;
     font-weight: bold;
     margin-top: 2vh;
-    margin-bottom: 4vh;
+    margin-bottom: 10vh;
 
     h1 {
         text-transform: uppercase;
@@ -92,12 +92,16 @@
         margin-bottom: 0.4rem;
         .radio-label {
             display: inline-block;
+            text-align: right;
+            width: 45%;
             margin-right: 1rem;
+            padding-top: 0.05rem;
         }
         .radio-field {
+            cursor: pointer;
             display: inline-block;
-            padding-top: 0.1rem;
-            font-size: 1.1em;
+            width: 45%;
+            font-size: 1.3em;
         }
     }
     
