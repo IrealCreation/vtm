@@ -11,7 +11,7 @@ export default function CharacterSheet() {
             force: {
                 label: "Puissance musculaire brute",
                 radios: [
-                    "Vous détestez le moindre effort physique",
+                    "Vous avez du mal à soulever un sac de courses",
                     "Vous vous exercez de temps en temps",
                     "Vous êtes sportif et pouvez porter de lourdes charges",
                     "Vos muscles font envie aux catcheurs professionnels",
@@ -31,7 +31,7 @@ export default function CharacterSheet() {
             vigueur: {
                 label: "Puissance musculaire brute",
                 radios: [
-                    "Vous attrapez un rhume au moindre courant d'air",
+                    "Le moindre effort physique vous laisse essouflé·e",
                     "Votre santé est correcte et vous pouvez encaisser quelques coups",
                     "Votre forme est complimentée par les médecins",
                     "Vous avez un corps robuste et une endurance de marathonien",
@@ -54,7 +54,7 @@ export default function CharacterSheet() {
                     "On vous dit souvent grossier en société",
                     "Il vous arrive de commettre des faux-pas, mais ils restent assez rares",
                     "Vous êtes un fin observateur des dynamiques de groupe",
-                    "Vous obtenez toujours ce que vous voulez de vos interlocuteurs",
+                    "Vous obtenez presque toujours ce que vous voulez de vos interlocuteurs",
                     "Vous convaincriez votre pire ennemi de vous offrir sa montre"
                 ]
             },
@@ -67,7 +67,37 @@ export default function CharacterSheet() {
                     "Votre poker face est absolument redoutable",
                     "Vous faites preuve d'un détachement digne du Dalaï Lama",
                 ]
-            }
+            },
+            intelligence: {
+                label: "Savoir et capacité de raisonnement",
+                radios: [
+                    "Vous n'avez pas eu - et n'auriez toujours pas - votre bac",
+                    "Vous êtes assez intelligent pour savoir que vous ne savez pas tout",
+                    "Vous n'hésitez pas à lire des articles spécialisés sur des sujets complexes",
+                    "Vous n'auriez pas de mal à tenir une conversation avec Kant ou Socrate",
+                    "Si une personne mérite le titre de génie, c'est bien vous",
+                ]
+            },
+            acuite: {
+                label: "Perception, temps de réaction et astuce",
+                radios: [
+                    "Quand il se passe quelque chose, vous êtes le dernier à réagir",
+                    "Vous avez des réflexes convenables dans la vie de tous les jours",
+                    "Face à une situation de danger, vous savez rapidement vous adapter",
+                    "Vous êtes conscients de votre environnement même les yeux fermés",
+                    "Votre sixième sens s'approche du surnaturel",
+                ]
+            },
+            concentration: {
+                label: "Persévérance et détermination",
+                radios: [
+                    "Vous êtes aisément distrait et vous découragez à la moindre embuche",
+                    "Vous tenez pendant une journée de travail - mais les vendredi soir sont compliqués",
+                    "Quand vous vous absorbez dans une tâche, il est difficile de vous en détourner",
+                    "Même dans la douleur et la détresse, vous restez concentré sur votre objectif",
+                    "Votre esprit est une forteresse mentale impénétrable",
+                ]
+            },
         }
     };
 
@@ -123,6 +153,18 @@ export default function CharacterSheet() {
                 </div>
                 <div>
                     <h3>Mental</h3>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.intelligence.label}>Intelligence</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.intelligence.radios} />
+                    </div>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.acuite.label}>Acuité</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.acuite.radios} />
+                    </div>
+                    <div className="radio-group">
+                        <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={tooltips.attributs.concentration.label}>Concentration</span>
+                        <RadioField max={5} tooltip={tooltips.attributs.concentration.radios} />
+                    </div>
                 </div>
             </div>
             
