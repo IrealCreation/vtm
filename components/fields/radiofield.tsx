@@ -1,10 +1,15 @@
 import { useEffect, useState } from "react";
 import { BsRecord as RadioEmpty, BsRecord2 as RadioFill } from "react-icons/bs";
 
-export default function RadioField(props: {max: number, tooltip?: Array<string>}) {
+export default function RadioField(props: {min?: number, max: number, tooltip?: Array<string>}) {
 
-    const [value, setValue] = useState<number>(1);
+    const min = (props.min != null ? props.min : 1);
+    const [value, setValue] = useState<number>(min);
     let radios: Array<JSX.Element> = [];
+
+    if(min == 0) {
+        radios.push(<span className="reset" onClick={() => radioPress(0)} data-tooltip-id="tooltip" data-tooltip-content="Remise à zéro">x</span>);
+    }
 
     for (let index = 0; index < props.max; index++) {
 
