@@ -269,39 +269,209 @@ export const disciplines: DisciplineListe = {
             }
         ]
     },
-    "": {
-        nom: "",
-        description: "",
+    "Puissance": {
+        nom: "Puissance",
+        description: "Puissance est une discipline principalement offensive et instantanée : son utilisation permet d’accroître temporairement la Force physique du lanceur.",
         niveaux: [
             {
-                nom: "",
-                description: "",
-                duree: "",
+                nom: "Coup puissant",
+                description: "Au moment d’accomplir une action impliquant la Force, le lanceur peut activer cette discipline afin d’y ajouter son score de Puissance.",
                 cout: 1
             },
             {
-                nom: "",
-                description: "",
-                duree: "",
+                nom: "Gorgée brutale",
+                description: "En l’espace d’une seule gorgée, le lanceur boit une importante quantité de sang de la victime (ce qui lui prendrait normalement plusieurs minutes).",
+                cout: 1
+            },
+            {
+                nom: "Poing de Caïn",
+                description: "Lance l’équivalent d’une attaque physique de contact à une distance pouvant aller jusqu’à 20 mètres si aucun obstacle sérieux ne le sépare de la cible.",
                 cout: 2
             },
             {
-                nom: "",
-                description: "",
-                duree: "",
+                nom: "Colère irradiante",
+                description: "Le contact du lanceur devient intensément douloureux pour toute personne le touchant, ce qui accroît notamment ses dégâts à mains nues.",
+                duree: "15 minutes",
                 cout: 2
             },
             {
-                nom: "",
-                description: "",
-                duree: "",
+                nom: "Onde de choc",
+                description: "Par la puissance de son corps ou de sa voix, le lanceur provoque une onde de choc repoussant les ennemis dans un rayon de 10 mètres et leur infligeant l’équivalent d’une attaque physique pouvant les étourdir.",
+                cout: 3
+            }
+        ]
+    },
+    "Métamorphose": {
+        nom: "Métamorphose",
+        description: "Métamorphose offre à celui qui la maîtrise de modifier son propre propre corps pour mimer l’essence et la forme des autres créatures vivantes. C’est la discipline signature des Gangrel",
+        niveaux: [
+            {
+                nom: "Griffes de la bête",
+                description: "Les mains du lanceur se transforment en griffes : il inflige 1 dégât supplémentaire à mains nues, mais ne peut plus accomplir d’actions impliquant ses doigts.",
+                duree: "15 minutes",
+                cout: 1
+            },
+            {
+                nom: "Membres de la bête",
+                description: "Le lanceur peut transformer ses membres afin de modifier son déplacement : il peut courir plus vite avec des pattes de guépard, nager avec des pieds palmés, ou planer légèrement avec des bras ailés.",
+                duree: "15 minutes",
+                cout: 2
+            },
+            {
+                nom: "Clignement bestial",
+                description: "Le lanceur se transforme très brièvement en une créature animale le temps d'une action.",
+                cout: 2
+            },
+            {
+                nom: "Forme bestiale",
+                description: "Le lanceur se transforme en une créature animale.",
+                duree: "1 heure",
                 cout: 3
             },
             {
-                nom: "",
-                description: "",
-                duree: "",
+                nom: "Identité bestiale",
+                description: "Le lanceur se transforme en une créature animale et peut conserver cette forme aussi longtemps qu'il souhaite.",
+                duree: "Infinie",
+                cout: 4
+            }
+        ]
+    },
+    "Thaumaturgie": {
+        nom: "Thaumaturgie",
+        description: "La Thaumaturgie est une discipline jalousement gardée par les Tremere, qui consiste en l’application de la force de l’esprit sur le monde physique, ce que les humains appellent le plus communément « magie ». Dans la branche qui nous intéresse, elle s’applique plus particulièrement à la magie liée au sang. Elle fait appel à l’Intelligence de son lanceur et nécessite un contact visuel voire physique.",
+        niveaux: [
+            {
+                nom: "Siphon",
+                description: "Aspire le sang de l’ennemi sur une distance allant jusqu’à 10 mètres.",
+                cout: 1
+            },
+            {
+                nom: "Goût du sang",
+                description: "En goûtant du sang, le lanceur peut identifier son propriétaire et en apprendre plus sur lui.",
+                cout: 1
+            },
+            {
+                nom: "Exhémie",
+                description: "Affaiblit le sang d’une victime au travers d’un contact physique, lui infligeant - 1 à tous ses attributs.",
+                duree: "1 heure",
+                cout: 2
+            },
+            {
+                nom: "Sang impur",
+                description: "Utilisée sur un vampire, empêche celui-ci de lancer toute discipline (s’il ne le remarque pas, sa prochaine discipline sera un échec critique). Utilisée sur un humain, lui inflige une maladie de sang qui se transmettra aux vampires le mordant, ayant alors les effets sus-cités.",
+                duree: "3 heures (vampire) / 7 jours (humain)",
                 cout: 3
+            },
+            {
+                nom: "Torrent de sang",
+                description: "Applique un Siphon à toutes les personnes visées dans un rayon de 10 mètres.",
+                cout: 3
+            }
+        ]
+    },
+    "Nécromancie": {
+        nom: "Nécromancie",
+        description: "La Nécromancie, discipline dont les secrets sont gardés par les Giovanni, permet le contact avec le monde des morts, ainsi que le contrôle des corps défunts qui peuvent être soumis à la volonté du lanceur. Cela nécessite un contact physique avec l’objet de la discipline.",
+        niveaux: [
+            {
+                nom: "Désécration",
+                description: "Le lanceur absorbe les relents d’énergie vitale d’un humain décédé il y a moins de 24 heures et soigne une blessure.",
+                cout: 1
+            },
+            {
+                nom: "Mort marchant",
+                description: "Le lanceur fait se lever un cadavre et lui ordonne par la pensée d’exécuter des tâches simples.",
+                duree: "1 heure",
+                cout: 2
+            },
+            {
+                nom: "Serviteur morbide",
+                description: "Le lanceur fait se lever un cadavre et lui ordonne par la pensée d’exécuter des tâches physiquement exigeantes, comme déplacer des poids ou attaquer quelqu’un.",
+                duree: "3 heures",
+                cout: 3
+            },
+            {
+                nom: "Vol de corps",
+                description: "Le lanceur injecte sa volonté dans un corps inanimé qu’il peut alors pleinement contrôler. Le lanceur conserve ses attributs mentaux mais récupère ceux physiques de la cible. Il ne peut utiliser ses disciplines.",
+                duree: "1 nuit",
+                cout: 3
+            },
+            {
+                nom: "Levée des morts",
+                description: "Permet d’utiliser Mort marchant et Serviteur morbide sur plusieurs cadavres dans un rayon de 10 mètres.",
+                cout: "Jusqu’à 3 cadavres : +1 PS au coût de la discipline. Jusqu’à 10 cadavres : +2 PS au coût de la discipline."
+            }
+        ]
+    },
+    "Obténébration": {
+        nom: "Obténébration",
+        description: "Discipline signature des Lasombras, Obténébration offre à son disciple la maîtrise des ombres et même le pouvoir de les utiliser comme arme et comme protection. La Concentration du lanceur jauge son efficacité, et il doit avoir sa cible d’action dans son champ visuel.",
+        niveaux: [
+            {
+                nom: "Jeu d’ombres",
+                description: "Permet au lanceur de déplacer et modifier la forme d’une ombre non loin.",
+                duree: "15 minutes",
+                cout: 1
+            },
+            {
+                nom: "Drap de ténèbres",
+                description: "Crée une sphère d'environ 10 mètres de diamètre de ténèbres absolues où tous sont privés de la vue et où les sons sont distordus, sauf le lanceur.",
+                duree: "15 minutes",
+                cout: 2
+            },
+            {
+                nom: "Bras de l’abysse",
+                description: "Fait apparaître un tentacule d’ombre dont le lanceur peut se servir afin de saisir, se protéger ou combattre.",
+                duree: "15 minutes",
+                cout: 2
+            },
+            {
+                nom: "Invocation ténébreuse",
+                description: "Transforme l’ombre du lanceur en un familier de ténèbres qui lui obéit, est capable d’accomplir des actions simples et de combattre.",
+                duree: "1 heure",
+                cout: 3
+            },
+            {
+                nom: "Forme démoniaque",
+                description: "Transforme le lanceur en une massive créature de ténèbres ayant une résistance accrue aux blessures physiques.",
+                duree: "1 heure",
+                cout: 3
+            }
+        ]
+    },
+    "Vicissitude": {
+        nom: "Vicissitude",
+        description: "Discipline maîtrisée par les Tzimisces, Vicissitude permet à celui qui s’adonne à cet art de modeler et modifier son propre corps comme celui des personnes qu’il touche, lui permettant de créer le beau comme l’immonde et le monstrueux. Elle nécessite de l’Intelligence et de la Vigueur.",
+        niveaux: [
+            {
+                nom: "Traits malléable",
+                description: "le lanceur peut modeler un de ses propres aspects physiques mineurs.",
+                duree: "15 minutes",
+                cout: 1
+            },
+            {
+                nom: "Modelage de la chair",
+                description: "Le lanceur peut modeler, sur lui-même ou sur une cible, le muscle, la graisse et le cartilage.",
+                duree: "1 heure",
+                cout: 2
+            },
+            {
+                nom: "Modelage de l’os",
+                description: "Les talents de modelage du lanceur se perfectionnent et s’étendent aux os.",
+                duree: "1 heure",
+                cout: 2
+            },
+            {
+                nom: "Modelage rallongé",
+                description: "Les modifications corporelles apportées par le lanceur peuvent durer jusqu’à 24 heures.",
+                duree: "24 heures",
+                cout: "+1 PS au coût."
+            },
+            {
+                nom: "Modelage définitif",
+                description: "Les modifications corporelles apportées par le lanceur peuvent devenir permanentes sur les humains, et les vampires consentants.",
+                duree: "Infini",
+                cout: "+2 PS au coût."
             }
         ]
     }
