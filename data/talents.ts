@@ -134,13 +134,6 @@ export const talents = {
     ],
     mental: [
         {
-            titre: "Enquête",
-            tooltip: {
-                label: "Tirer des informations à partir d'une scène",
-                niveaux: []
-            }
-        },
-        {
             titre: "Culture",
             tooltip: {
                 label: "Sciences humaines et sociale (histoire, philosophie...)",
@@ -151,6 +144,13 @@ export const talents = {
                     "Vous avez de quoi être un conférencier reconnu",
                     "Vos écrits seront enseignés aux étudiants des générations futures"
                 ]
+            }
+        },
+        {
+            titre: "Enquête",
+            tooltip: {
+                label: "Tirer des informations à partir d'une scène",
+                niveaux: []
             }
         },
         {
@@ -170,7 +170,13 @@ export const talents = {
             titre: "Mécanique",
             tooltip: {
                 label: "Comprendre ou assembler des objets et mécanismes",
-                niveaux: []
+                niveaux: [
+                    "Vous sauriez fabriquer un mécanisme simple comme une poulie",
+                    "Vous pouvez gagner votre vie en tant que garagiste",
+                    "Vous avez une précision d'horloger",
+                    "Vous êtes un ingénieur des ponts et chaussées expérimenté",
+                    "Votre esprit peut imaginer des mécanismes incompréhensibles du commun des mortels"
+                ]
             }
         },
         {
@@ -216,7 +222,13 @@ export const talents = {
             titre: "Société",
             tooltip: {
                 label: "Connaître les institutions et individus importants de la société humaine",
-                niveaux: []
+                niveaux: [
+                    "Vous suivez la presse quotidienne",
+                    "Vous êtes en général le mieux informé de votre cercle d'amis sur les actualités",
+                    "Vous avez été actif dans le milieu de la politique",
+                    "",
+                    ""
+                ]
             }
         },
         {
