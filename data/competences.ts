@@ -141,7 +141,7 @@ const competences = {
             }
         },
         {
-            titre: "Humanités",
+            titre: "Culture",
             tooltip: {
                 label: "Sciences humaines et sociale (histoire, philosophie...)",
                 niveaux: [
