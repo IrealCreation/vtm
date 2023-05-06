@@ -5,7 +5,7 @@ import RadioField from "./fields/radiofield"
 import { Tooltip } from 'react-tooltip'
 
 import attributs from "@/data/attributs"
-import competences from "@/data/competences"
+import { talents } from "@/data/talents"
 
 export default function CharacterSheet() {
     const tooltips = {
@@ -44,31 +44,31 @@ export default function CharacterSheet() {
         );
     }
 
-    /* Preparing the JSX for Compétences */
-    const jsxCompPhysique: Array<JSX.Element> = [];
-    const jsxCompSocial: Array<JSX.Element> = [];
-    const jsxCompMental: Array<JSX.Element> = [];
+    /* Preparing the JSX for Talents */
+    const jsxTalentPhysique: Array<JSX.Element> = [];
+    const jsxTalentSocial: Array<JSX.Element> = [];
+    const jsxTalentMental: Array<JSX.Element> = [];
 
-    for (let index = 0; index < competences.physique.length; index++) {
-        let physique = competences.physique[index];
-        let social = competences.social[index];
-        let mental = competences.mental[index];
+    for (let index = 0; index < talents.physique.length; index++) {
+        let physique = talents.physique[index];
+        let social = talents.social[index];
+        let mental = talents.mental[index];
 
-        jsxCompPhysique.push(
+        jsxTalentPhysique.push(
             <div className="radio-group">
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={physique.tooltip.label}>{physique.titre}</span>
                 <RadioField min={0} max={5} tooltip={physique.tooltip.niveaux} />
             </div>
         );
 
-        jsxCompSocial.push(
+        jsxTalentSocial.push(
             <div className="radio-group">
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={social.tooltip.label}>{social.titre}</span>
                 <RadioField min={0} max={5} tooltip={social.tooltip.niveaux} />
             </div>
         );
 
-        jsxCompMental.push(
+        jsxTalentMental.push(
             <div className="radio-group">
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={mental.tooltip.label}>{mental.titre}</span>
                 <RadioField min={0} max={5} tooltip={mental.tooltip.niveaux} />
@@ -109,16 +109,16 @@ export default function CharacterSheet() {
                 </div>
             </div>
             
-            <h2>Compétences</h2>
-            <div className="columns competences">
+            <h2>Talents</h2>
+            <div className="columns talents">
                 <div>
-                    {jsxCompPhysique}
+                    {jsxTalentPhysique}
                 </div>
                 <div>
-                    {jsxCompSocial}
+                    {jsxTalentSocial}
                 </div>
                 <div>
-                    {jsxCompMental}
+                    {jsxTalentMental}
                 </div>
             </div>
 

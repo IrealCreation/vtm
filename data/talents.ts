@@ -1,4 +1,4 @@
-const competences = {
+export const talents = {
     physique: [
         { titre: "Acrobatie", 
             tooltip: {
@@ -228,5 +228,3 @@ const competences = {
         },
     ]
 };
-
-export default competences;
