@@ -4,7 +4,7 @@ import TextAreaField from "./fields/textareafield"
 import RadioField from "./fields/radiofield"
 import { Tooltip } from 'react-tooltip'
 
-import attributs from "@/data/attributs"
+import { attributs } from "@/data/attributs"
 import { talents } from "@/data/talents"
 
 export default function CharacterSheet() {
@@ -24,22 +24,22 @@ export default function CharacterSheet() {
 
         jsxAttrPhysique.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={physique.tooltip.label}>{physique.titre}</span>
-                <RadioField max={5} tooltip={physique.tooltip.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={physique.description}>{physique.nom}</span>
+                <RadioField max={5} tooltip={physique.niveaux} />
             </div>
         );
 
         jsxAttrSocial.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={social.tooltip.label}>{social.titre}</span>
-                <RadioField max={5} tooltip={social.tooltip.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={social.description}>{social.nom}</span>
+                <RadioField max={5} tooltip={social.niveaux} />
             </div>
         );
 
         jsxAttrMental.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={mental.tooltip.label}>{mental.titre}</span>
-                <RadioField max={5} tooltip={mental.tooltip.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={mental.description}>{mental.nom}</span>
+                <RadioField max={5} tooltip={mental.niveaux} />
             </div>
         );
     }
@@ -56,22 +56,22 @@ export default function CharacterSheet() {
 
         jsxTalentPhysique.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={physique.tooltip.label}>{physique.titre}</span>
-                <RadioField min={0} max={5} tooltip={physique.tooltip.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={physique.description}>{physique.nom}</span>
+                <RadioField min={0} max={5} tooltip={physique.niveaux} />
             </div>
         );
 
         jsxTalentSocial.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={social.tooltip.label}>{social.titre}</span>
-                <RadioField min={0} max={5} tooltip={social.tooltip.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={social.description}>{social.nom}</span>
+                <RadioField min={0} max={5} tooltip={social.niveaux} />
             </div>
         );
 
         jsxTalentMental.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={mental.tooltip.label}>{mental.titre}</span>
-                <RadioField min={0} max={5} tooltip={mental.tooltip.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={mental.description}>{mental.nom}</span>
+                <RadioField min={0} max={5} tooltip={mental.niveaux} />
             </div>
         );
     }
