@@ -29,7 +29,7 @@ export const disciplines: DisciplineListe = {
             {
                 nom: "Hystérie de masse",
                 description: "Permet d'étendre l'effet d'une discipline d'Aliénation à toutes les personnes au choix du lanceur dans un rayon de 10 mètres autour de lui.",
-                cout: "+1 PS au coût de la discipline"
+                cout: "+1 PS"
             }
         ]
     },
@@ -63,7 +63,7 @@ export const disciplines: DisciplineListe = {
             {
                 nom: "Diriger la meute",
                 description: "Permet d’utiliser une discipline d’Animalisme sur tous les animaux à portée de voix dans un rayon de 10 mètres autour de lui.",
-                cout: "+1 PS au coût de la discipline"
+                cout: "+1 PS"
             }
         ]
     },
@@ -79,8 +79,8 @@ export const disciplines: DisciplineListe = {
             },
             {
                 nom: "Perception des auras",
-                description: " le lanceur peut percevoir l’aura des personnes dans son champ de vision, permettant d’obtenir des informations à son sujet (santé, volonté, état d’esprit…). Les auras peuvent aider à révéler une personne camouflée ou occultée, et à détecter l’usage de Disciplines",
-                duree: "",
+                description: "Le lanceur peut percevoir l’aura des personnes dans son champ de vision, permettant d’obtenir des informations à son sujet (santé, volonté, état d’esprit…). Les auras peuvent aider à révéler une personne camouflée ou occultée, et à détecter l’usage de Disciplines",
+                duree: "1 heure",
                 cout: 2
             },
             {
@@ -161,8 +161,8 @@ export const disciplines: DisciplineListe = {
             },
             {
                 nom: "Contrôle des foules",
-                description: "permet d’utiliser une discipline de Domination sur toutes les personnes à portée de vue et de voix à une dizaine de mètres à la ronde.",
-                cout: "+1 PS au coût de la discipline"
+                description: "Permet d’utiliser une discipline de Domination sur toutes les personnes à portée de vue et de voix à une dizaine de mètres à la ronde.",
+                cout: "+1 PS"
             }
         ]
     },
@@ -181,14 +181,14 @@ export const disciplines: DisciplineListe = {
                 cout: 2
             },
             {
+                nom: "Fortifier autrui",
+                description: "Permet de lancer une discipline de Fortitude sur une goule appartenant au lanceur ou sur un autre caïnite avec lequel il a un contact physique.",
+                cout: "+1 PS"
+            },
+            {
                 nom: "Ignorer la douleur",
                 description: "Le lanceur peut ignorer la moitié (arrondie au supérieur) des dégâts d’une action le prenant pour cible. Ne peut être lancé à nouveau avant son prochain tour.",
                 cout: 2
-            },
-            {
-                nom: "Fortifier autrui",
-                description: "Permet de lancer une discipline de Fortitude sur une goule appartenant au lanceur ou sur un autre caïnite avec lequel il a un contact physique.",
-                cout: "+1 PS au coût de la discipline"
             },
             {
                 nom: "Invulnérabilité",
@@ -229,7 +229,7 @@ export const disciplines: DisciplineListe = {
             {
                 nom: "Occultation de groupe",
                 description: "Le lanceur peut étendre chacun de ses effets d’occultation à un groupe allant jusqu’à 5 personnes tant que celles-là restent dans un rayon de 5 mètres.",
-                cout: "+1 PS au coût de la discipline"
+                cout: "+1 PS"
             }
         ]
     },
@@ -399,7 +399,7 @@ export const disciplines: DisciplineListe = {
             {
                 nom: "Levée des morts",
                 description: "Permet d’utiliser Mort marchant et Serviteur morbide sur plusieurs cadavres dans un rayon de 10 mètres.",
-                cout: "Jusqu’à 3 cadavres : +1 PS au coût de la discipline. Jusqu’à 10 cadavres : +2 PS au coût de la discipline."
+                cout: "Jusqu’à 3 cadavres : +1 PS. Jusqu’à 10 cadavres : +2 PS."
             }
         ]
     },
@@ -465,13 +465,13 @@ export const disciplines: DisciplineListe = {
                 nom: "Modelage rallongé",
                 description: "Les modifications corporelles apportées par le lanceur peuvent durer jusqu’à 24 heures.",
                 duree: "24 heures",
-                cout: "+1 PS au coût."
+                cout: "+1 PS"
             },
             {
                 nom: "Modelage définitif",
                 description: "Les modifications corporelles apportées par le lanceur peuvent devenir permanentes sur les humains, et les vampires consentants.",
                 duree: "Infini",
-                cout: "+2 PS au coût."
+                cout: "+2 PS"
             }
         ]
     }
