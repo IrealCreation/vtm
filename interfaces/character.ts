@@ -3,14 +3,14 @@ import { Discipline, disciplines } from "@/data/disciplines";
 import { Attribut, attributs } from "@/data/attributs";
 import { Talent } from "@/data/talents";
 
-interface Character {
+export interface Character {
     nom: string;
     niveau: number;
     experience: number;
-    lignee: Lignee;
-    attributs: Array<CharacterAttribut>;
-    talents: Array<CharacterTalents>;
-    disciplines: Array<CharacterDiscipline>;
+    lignee?: Lignee;
+    attributs?: Array<CharacterAttribut>;
+    talents?: Array<CharacterTalents>;
+    disciplines?: Array<CharacterDiscipline>;
 }
 
 interface CharacterDiscipline {
