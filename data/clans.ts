@@ -4,7 +4,7 @@ export const lignees: LigneeListe = {
     "Brujah": {
         nom: "Brujah",
         surnom: "les Agitateurs",
-        description: "Fiers et indomptables, les Brujah ont +2 à tous leurs jets de résistance aux influences mentales. En contrepartie, ils sont plus enclins à la colère et ont -2 aux jets de résistance à la Frénésie.",
+        description: "Fiers et indomptables, les Brujah ont un bonus à tous leurs jets de résistance aux influences mentales. En contrepartie, ils sont plus enclins à la colère et ont un malus aux jets de résistance à la Frénésie.",
         faction: "Anarchs",
         disciplines: [
             disciplines["Célérité"],
@@ -37,7 +37,7 @@ export const lignees: LigneeListe = {
     "Lasombra": {
         nom: "Lasombra",
         surnom: "les Ombres",
-        description: "Manipulateurs dont la discrètion égale l'influence, Le corps des Lasombra ne se reflète pas sur aucune surface et échappe aux différents procédés humains de capture de l'image. Il est également plus vulnérable au feu et à la lumière du jour.",
+        description: "Manipulateurs dont la discrètion égale l'influence, le corps des Lasombra ne se reflète sur aucune surface et échappe à la plupart des procédés humains de capture de l'image. Il est également plus vulnérable au feu et à la lumière du jour.",
         faction: "Sabbat",
         disciplines: [
             disciplines["Domination"],
@@ -59,7 +59,7 @@ export const lignees: LigneeListe = {
     "Nosferatu": {
         nom: "Nosferatu",
         surnom: "les Déformés",
-        description: "L'apparence des Nosferatus est horriblement déformée lors de leur étreinte : cela les force à se cacher des humains. Adeptes de la dissimulation, ils ont un talent bonus au choix parmi : Furtivité, Larcin, Technologie.",
+        description: "L'apparence des Nosferatus est horriblement déformée lors de leur étreinte : cela les force à se cacher des humains. Par conséquent adeptes de la dissimulation, ils ont un talent bonus au choix parmi : Furtivité, Larcin, Technologie.",
         faction: "Camarilla",
         disciplines: [
             disciplines["Animalisme"],
@@ -92,7 +92,7 @@ export const lignees: LigneeListe = {
     "Tzimisce": {
         nom: "Tzimisce",
         surnom: "les Déformateurs",
-        description: "A force de dénaturer froidement la nature humaine, les Tzimisces commencent avec moins d'Humanité et éprouvent plus de difficulté à l'augmenter. La moitié de leur attribut Concentration s'ajoute néanmoins à leur Humanité pour résister à la Frénésie.",
+        description: "A force de dénaturer froidement la nature humaine, les Tzimisces commencent avec moins d'Humanité et éprouvent plus de difficulté à l'augmenter. Leur attribut Concentration s'ajoute néanmoins à leur Humanité pour résister à la Frénésie.",
         faction: "Sabbat",
         disciplines: [
             disciplines["Animalisme"],
