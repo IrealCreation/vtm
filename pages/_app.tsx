@@ -3,24 +3,21 @@ import '@/styles/charactersheet.scss'
 import 'react-tooltip/dist/react-tooltip.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
-import { useState, createContext } from 'react';
-import { Character } from '@/interfaces/character'
-import { generateCharacter } from '@/managers/characterManager'
+import { Provider } from 'react-redux'
 
-const CharacterContext = createContext(generateCharacter());
+import { Character } from '@/interfaces/character'
+import { store } from '@/redux/store'
 
 export default function App({ Component, pageProps }: AppProps) {
-
-  const [character, setCharacter] = useState<Character>(generateCharacter());
 
   return(
     <>
       <Head>
         <title key="title">VTM</title>
       </Head>
-      <CharacterContext.Provider value={character}>
+      <Provider store={store}>
         <Component {...pageProps} />
-      </CharacterContext.Provider>
+      </Provider>
     </>
   ) 
 }

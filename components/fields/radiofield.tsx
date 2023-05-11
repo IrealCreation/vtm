@@ -8,7 +8,7 @@ export default function RadioField(props: {min?: number, max: number, tooltip?: 
     let radios: Array<JSX.Element> = [];
 
     if(min == 0) {
-        radios.push(<span className="reset" onClick={() => radioPress(0)} data-tooltip-id="tooltip" data-tooltip-content="Remise à zéro">x</span>);
+        radios.push(<span key="0" className="reset" onClick={() => radioPress(0)} data-tooltip-id="tooltip" data-tooltip-content="Remise à zéro">x</span>);
     }
 
     for (let index = 0; index < props.max; index++) {

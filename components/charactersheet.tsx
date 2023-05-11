@@ -3,11 +3,20 @@ import NumberField from "./fields/numberfield"
 import TextAreaField from "./fields/textareafield"
 import RadioField from "./fields/radiofield"
 import { Tooltip } from 'react-tooltip'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { attributs, attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
 import { talents, talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
+import { Character } from "@/interfaces/character"
+import { StoreRootState, StoreAppDispatch } from "@/redux/store"
+import { setLignee } from "@/redux/store"
 
 export default function CharacterSheet() {
+    const character = useSelector((state: StoreRootState) => state.characterSlice.character)
+    const dispatch = useDispatch()
+
+    console.log(character);
+
     const tooltips = {
         experience: "Gain de niveau tous les 10 points d'expérience"
     };
@@ -19,7 +28,7 @@ export default function CharacterSheet() {
 
     for (const [name, attribut] of Object.entries(attributsPhysique)) {
         jsxAttrPhysique.push(
-            <div className="radio-group">
+            <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
                 <RadioField max={5} tooltip={attribut.niveaux} />
             </div>
@@ -27,7 +36,7 @@ export default function CharacterSheet() {
     }
     for (const [name, attribut] of Object.entries(attributsSocial)) {
         jsxAttrSocial.push(
-            <div className="radio-group">
+            <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
                 <RadioField max={5} tooltip={attribut.niveaux} />
             </div>
@@ -35,7 +44,7 @@ export default function CharacterSheet() {
     }
     for (const [name, attribut] of Object.entries(attributsMental)) {
         jsxAttrMental.push(
-            <div className="radio-group">
+            <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
                 <RadioField max={5} tooltip={attribut.niveaux} />
             </div>
@@ -48,9 +57,8 @@ export default function CharacterSheet() {
     const jsxTalentMental: Array<JSX.Element> = [];
 
     for (const [name, talent] of Object.entries(talentsPhysique)) {
-        console.log(talent);
         jsxTalentPhysique.push(
-            <div className="radio-group">
+            <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={talent.description}>{talent.nom}</span>
                 <RadioField min={0} max={5} tooltip={talent.niveaux} />
             </div>
@@ -58,7 +66,7 @@ export default function CharacterSheet() {
     }
     for (const [name, talent] of Object.entries(talentsSocial)) {
         jsxTalentSocial.push(
-            <div className="radio-group">
+            <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={talent.description}>{talent.nom}</span>
                 <RadioField min={0} max={5} tooltip={talent.niveaux} />
             </div>
@@ -66,7 +74,7 @@ export default function CharacterSheet() {
     }
     for (const [name, talent] of Object.entries(talentsMental)) {
         jsxTalentMental.push(
-            <div className="radio-group">
+            <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={talent.description}>{talent.nom}</span>
                 <RadioField min={0} max={5} tooltip={talent.niveaux} />
             </div>
@@ -80,6 +88,8 @@ export default function CharacterSheet() {
                 <h1>Fiche de personnage</h1>
                 <div className="title-line"></div>
             </div>
+
+            <button onClick={() => dispatch(setLignee("Ventrue"))}>Test lignée</button>
             
             <TextField label="Nom" />
             <TextField label="Lignée" />
