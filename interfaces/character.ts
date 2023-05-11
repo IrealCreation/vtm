@@ -8,9 +8,13 @@ export interface Character {
     niveau: number;
     experience: number;
     lignee?: Lignee;
-    attributs?: Array<CharacterAttribut>;
-    talents?: Array<CharacterTalents>;
-    disciplines?: Array<CharacterDiscipline>;
+    attributs: CharacterAttributListe;
+    talents: CharacterTalentsListe;
+    disciplines: CharacterDisciplineListe;
+}
+
+export interface CharacterDisciplineListe {
+    [index:string]: CharacterDiscipline
 }
 
 interface CharacterDiscipline {
@@ -18,9 +22,17 @@ interface CharacterDiscipline {
     niveau: number;
 }
 
+export interface CharacterAttributListe {
+    [index:string]: CharacterAttribut
+}
+
 interface CharacterAttribut {
     attribut: Attribut;
     niveau: number;
+}
+
+export interface CharacterTalentsListe {
+    [index:string]: CharacterTalents
 }
 
 interface CharacterTalents {

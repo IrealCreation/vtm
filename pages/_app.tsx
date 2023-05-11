@@ -5,13 +5,13 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { useState, createContext } from 'react';
 import { Character } from '@/interfaces/character'
-import { defaultCharacter } from '@/managers/characterManager'
+import { generateCharacter } from '@/managers/characterManager'
 
-const CharacterContext = createContext(defaultCharacter());
+const CharacterContext = createContext(generateCharacter());
 
 export default function App({ Component, pageProps }: AppProps) {
 
-  const [character, setCharacter] = useState<Character>(defaultCharacter());
+  const [character, setCharacter] = useState<Character>(generateCharacter());
 
   return(
     <>

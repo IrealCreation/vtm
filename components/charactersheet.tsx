@@ -4,8 +4,8 @@ import TextAreaField from "./fields/textareafield"
 import RadioField from "./fields/radiofield"
 import { Tooltip } from 'react-tooltip'
 
-import { attributs } from "@/data/attributs"
-import { talents } from "@/data/talents"
+import { attributs, attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
+import { talents, talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 
 export default function CharacterSheet() {
     const tooltips = {
@@ -17,29 +17,27 @@ export default function CharacterSheet() {
     const jsxAttrSocial: Array<JSX.Element> = [];
     const jsxAttrMental: Array<JSX.Element> = [];
 
-    for (let index = 0; index < 3; index++) {
-        let physique = attributs.physique[index];
-        let social = attributs.social[index];
-        let mental = attributs.mental[index];
-
+    for (const [name, attribut] of Object.entries(attributsPhysique)) {
         jsxAttrPhysique.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={physique.description}>{physique.nom}</span>
-                <RadioField max={5} tooltip={physique.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
+                <RadioField max={5} tooltip={attribut.niveaux} />
             </div>
         );
-
+    }
+    for (const [name, attribut] of Object.entries(attributsSocial)) {
         jsxAttrSocial.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={social.description}>{social.nom}</span>
-                <RadioField max={5} tooltip={social.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
+                <RadioField max={5} tooltip={attribut.niveaux} />
             </div>
         );
-
+    }
+    for (const [name, attribut] of Object.entries(attributsMental)) {
         jsxAttrMental.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={mental.description}>{mental.nom}</span>
-                <RadioField max={5} tooltip={mental.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
+                <RadioField max={5} tooltip={attribut.niveaux} />
             </div>
         );
     }
@@ -49,29 +47,28 @@ export default function CharacterSheet() {
     const jsxTalentSocial: Array<JSX.Element> = [];
     const jsxTalentMental: Array<JSX.Element> = [];
 
-    for (let index = 0; index < talents.physique.length; index++) {
-        let physique = talents.physique[index];
-        let social = talents.social[index];
-        let mental = talents.mental[index];
-
+    for (const [name, talent] of Object.entries(talentsPhysique)) {
+        console.log(talent);
         jsxTalentPhysique.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={physique.description}>{physique.nom}</span>
-                <RadioField min={0} max={5} tooltip={physique.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={talent.description}>{talent.nom}</span>
+                <RadioField min={0} max={5} tooltip={talent.niveaux} />
             </div>
         );
-
+    }
+    for (const [name, talent] of Object.entries(talentsSocial)) {
         jsxTalentSocial.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={social.description}>{social.nom}</span>
-                <RadioField min={0} max={5} tooltip={social.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={talent.description}>{talent.nom}</span>
+                <RadioField min={0} max={5} tooltip={talent.niveaux} />
             </div>
         );
-
+    }
+    for (const [name, talent] of Object.entries(talentsMental)) {
         jsxTalentMental.push(
             <div className="radio-group">
-                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={mental.description}>{mental.nom}</span>
-                <RadioField min={0} max={5} tooltip={mental.niveaux} />
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={talent.description}>{talent.nom}</span>
+                <RadioField min={0} max={5} tooltip={talent.niveaux} />
             </div>
         );
     }
