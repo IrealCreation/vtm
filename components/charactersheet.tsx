@@ -2,12 +2,12 @@ import TextField from "./fields/textfield"
 import NumberField from "./fields/numberfield"
 import TextAreaField from "./fields/textareafield"
 import RadioField from "./fields/radiofield"
+import DisciplineField from "./fields/disciplinefield"
 import { Tooltip } from 'react-tooltip'
 import { useSelector, useDispatch } from 'react-redux'
 
-import { attributs, attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
-import { talents, talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
-import { Character } from "@/interfaces/character"
+import { attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
+import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
 import { setLignee, setNom, setExperience, setApparence, setPersonnalite, setTalent, setAttribut } from "@/redux/store"
 
@@ -42,6 +42,9 @@ export default function CharacterSheet() {
     const updateAttribut = (name: string, value: number) => {
         dispatch(setAttribut({name: name, value: value}));
     }
+    const updateDiscipline = (name: string, value: number) => {
+        //dispatch(setAttribut({name: name, value: value}));
+    }
 
     /* Preparing the JSX for Attributs */
     const jsxAttrPhysique: Array<JSX.Element> = [];
@@ -52,7 +55,7 @@ export default function CharacterSheet() {
         jsxAttrPhysique.push(
             <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
-                <RadioField max={5} tooltip={attribut.niveaux} value={character.attributs[attribut.nom].niveau} onUpdate={updateTalent} updateParameter={attribut.nom} />
+                <RadioField max={5} tooltip={attribut.niveaux} value={character.attributs[attribut.nom].niveau} onUpdate={updateAttribut} updateParameter={attribut.nom} />
             </div>
         );
     }
@@ -60,7 +63,7 @@ export default function CharacterSheet() {
         jsxAttrSocial.push(
             <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
-                <RadioField max={5} tooltip={attribut.niveaux} value={character.attributs[attribut.nom].niveau} onUpdate={updateTalent} updateParameter={attribut.nom} />
+                <RadioField max={5} tooltip={attribut.niveaux} value={character.attributs[attribut.nom].niveau} onUpdate={updateAttribut} updateParameter={attribut.nom} />
             </div>
         );
     }
@@ -68,7 +71,7 @@ export default function CharacterSheet() {
         jsxAttrMental.push(
             <div className="radio-group" key={name}>
                 <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={attribut.description}>{attribut.nom}</span>
-                <RadioField max={5} tooltip={attribut.niveaux} value={character.attributs[attribut.nom].niveau} onUpdate={updateTalent} updateParameter={attribut.nom} />
+                <RadioField max={5} tooltip={attribut.niveaux} value={character.attributs[attribut.nom].niveau} onUpdate={updateAttribut} updateParameter={attribut.nom} />
             </div>
         );
     }
@@ -101,6 +104,28 @@ export default function CharacterSheet() {
                 <RadioField min={0} max={5} tooltip={talent.niveaux} value={character.talents[talent.nom].niveau} onUpdate={updateTalent} updateParameter={talent.nom} />
             </div>
         );
+    }
+
+    /* Preparing the JSX for Disciplines */
+    const jsxDisciplines: Array<JSX.Element> = [];
+    if(character.disciplines != null) {
+        for (const [name, characterDiscipline] of Object.entries(character.disciplines)) {
+            jsxDisciplines.push(
+                <DisciplineField 
+                    key={name} 
+                    name={characterDiscipline.discipline.nom}
+                    description={characterDiscipline.discipline.description}
+                    levels={characterDiscipline.discipline.niveaux}
+                    value={characterDiscipline.niveau}
+                    onUpdate={updateDiscipline}
+                    updateParameter={name}
+                ></DisciplineField>
+                // <div className="radio-group" key={name}>
+                //     <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={characterDiscipline.discipline.description}>{characterDiscipline.discipline.nom}</span>
+                //     <RadioField min={0} max={5} value={characterDiscipline.niveau} onUpdate={updateTalent} updateParameter={characterDiscipline.discipline.nom} />
+                // </div>
+            );
+        }
     }
 
     return (
@@ -153,6 +178,9 @@ export default function CharacterSheet() {
             </div>
 
             <h2>Disciplines</h2>
+            <div className="columns disciplines">
+                {jsxDisciplines}
+            </div>
             
             <Tooltip id="tooltip" place="top" />
         </section>

@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { BsRecord as RadioEmpty, BsRecord2 as RadioFill } from "react-icons/bs";
 
 export default function RadioField(props: { 

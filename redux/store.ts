@@ -78,10 +78,14 @@ export const characterSlice = createSlice({
       state.character = {...state.character, personnalite: action.payload};
     },
     setTalent: (state, action: {payload: {name: string, value: number}}) => {
-      //state.character = {...state.character, personnalite: action.payload};
+      let newTalents = {...state.character.talents};
+      newTalents[action.payload.name].niveau = action.payload.value;
+      state.character = {...state.character, talents: newTalents};
     },
     setAttribut: (state, action: {payload: {name: string, value: number}}) => {
-      //state.character = {...state.character, personnalite: action.payload};
+      let newAttributs = {...state.character.attributs};
+      newAttributs[action.payload.name].niveau = action.payload.value;
+      state.character = {...state.character, attributs: newAttributs};
     },
 
   },

@@ -112,6 +112,21 @@
             }
         }
     }
+
+    .discipline {
+        p {
+            font-weight: normal;
+        }
+
+        .discipline-niveau {
+            margin-bottom: 0.8rem;
+        }
+
+        header {
+            cursor: pointer;
+        }
+        
+    }
     
     
 }
