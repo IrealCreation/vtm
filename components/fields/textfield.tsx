@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
 
 export default function TextField(props: {label: string, value: string, onUpdate: (value: string) => void}) {
 

@@ -3,11 +3,13 @@ import NumberField from "./fields/numberfield"
 import TextAreaField from "./fields/textareafield"
 import RadioField from "./fields/radiofield"
 import DisciplineField from "./fields/disciplinefield"
+import SelectField from "./fields/selectfield"
 import { Tooltip } from 'react-tooltip'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
 import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
+import { lignees } from "@/data/lignees"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
 import { setLignee, setNom, setExperience, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline } from "@/redux/store"
 
@@ -23,6 +25,9 @@ export default function CharacterSheet() {
 
     const updateNom = (value: string) => {
         dispatch(setNom(value));
+    }
+    const updateLignee = (value: string) => {
+        console.log(value);
     }
     const updateNiveau = (value: number) => {
         dispatch(setNiveau(value));
@@ -136,9 +141,10 @@ export default function CharacterSheet() {
                 <div className="title-line"></div>
             </div>
 
-            <button onClick={() => dispatch(setLignee("Ventrue"))}>Test lignée</button>
+            {/* <button onClick={() => dispatch(setLignee("Ventrue"))}>Test lignée</button> */}
             
             <TextField label="Nom" value={character.nom} onUpdate={updateNom} />
+            <SelectField label="Lignée" value={character.lignee?.nom} onUpdate={updateLignee} options={Object.keys(lignees)} />
             {/* <TextField label="Lignée" /> */}
             <NumberField label="Niveau" min={0} max={999} value={character.niveau} onUpdate={updateNiveau} />
             <NumberField label="Expérience" min={0} max={10} value={character.experience} tooltip={tooltips.experience} onUpdate={updateExperience} />
