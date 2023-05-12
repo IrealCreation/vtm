@@ -8,7 +8,9 @@ export default function DisciplineField(props: {
     let jsx: Array<JSX.Element> = [];
 
     jsx.push(
-        <div key="0" className="reset" onClick={() => radioPress(0)} data-tooltip-id="tooltip" data-tooltip-content="Remise à zéro">x</div>
+        <div className="discipline-niveau" key="0">
+            <header className="reset" onClick={() => handleChange(0)} data-tooltip-id="tooltip" data-tooltip-content="Remise à zéro">x</header>
+        </div>
     );
 
     for (let index = 0; index < props.levels.length; index++) {
@@ -19,10 +21,10 @@ export default function DisciplineField(props: {
         let niveau = props.levels[index];
 
         if(index < props.value) {
-            radio = <RadioFill />
+            radio = <RadioFill className="radio" />
         }
         else {
-            radio = <RadioEmpty />;
+            radio = <RadioEmpty className="radio" />;
         }
 
         if(niveau.cout != null) {
@@ -40,8 +42,8 @@ export default function DisciplineField(props: {
 
         jsx.push(
         <div className="discipline-niveau" key={index + 1}>
-            <header onClick={() => radioPress(index + 1)}>
-                {radio} 
+            <header onClick={() => handleChange(index + 1)}>
+                {radio} &nbsp;
                 <span className="discipline-niveau-nom">{niveau.nom}</span>
             </header>
             <p>{niveau.description}</p>
@@ -49,14 +51,15 @@ export default function DisciplineField(props: {
         </div>);
     }
 
-    function radioPress(newValue:number) {
-        // console.log(newValue);
+    function handleChange(newValue:number) {
+        console.log(newValue);
         props.onUpdate(props.updateParameter, newValue);
     }
 
     return(
         <div className="discipline">
             <h3>{props.name}</h3>
+            <p>{props.description}</p>
             {jsx}
         </div>
     )

@@ -235,7 +235,7 @@ export const disciplines: DisciplineListe = {
     },
     "Présence": {
         nom: "Présence",
-        description: "Présence est la discipline de l’apparence et de l’ostentation. Elle offre à celui qui la maîtrise la possibilité d’attirer et de séduire son entourage. Elle s’associe naturellement au Charisme.",
+        description: "Présence est la discipline de l’apparence et de l’ostentation. Elle offre à celui qui la maîtrise la possibilité d’attirer et de charmer son entourage. Elle s’associe naturellement au Charisme.",
         niveaux: [
             {
                 nom: "Superbe",

@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
 import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
-import { setLignee, setNom, setExperience, setApparence, setPersonnalite, setTalent, setAttribut } from "@/redux/store"
+import { setLignee, setNom, setExperience, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline } from "@/redux/store"
 
 export default function CharacterSheet() {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character)
@@ -43,7 +43,7 @@ export default function CharacterSheet() {
         dispatch(setAttribut({name: name, value: value}));
     }
     const updateDiscipline = (name: string, value: number) => {
-        //dispatch(setAttribut({name: name, value: value}));
+        dispatch(setDiscipline({name: name, value: value}));
     }
 
     /* Preparing the JSX for Attributs */

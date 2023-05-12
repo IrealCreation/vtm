@@ -114,12 +114,21 @@
     }
 
     .discipline {
+        padding: 0 1em;
         p {
             font-weight: normal;
         }
 
-        .discipline-niveau {
+        > p, .discipline-niveau {
             margin-bottom: 0.8rem;
+        }
+
+        .radio {
+            font-size: 1.3em;
+        }
+        .discipline-niveau-nom {
+            display: inline-block;
+            padding-top: 0.05rem;
         }
 
         header {

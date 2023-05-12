@@ -87,11 +87,17 @@ export const characterSlice = createSlice({
       newAttributs[action.payload.name].niveau = action.payload.value;
       state.character = {...state.character, attributs: newAttributs};
     },
+    setDiscipline: (state, action: {payload: {name: string, value: number}}) => {
+      let newDisciplines = {...state.character.disciplines};
+      newDisciplines[action.payload.name].niveau = action.payload.value;
+      state.character = {...state.character, disciplines: newDisciplines};
+      console.log(state.character);
+    },
 
   },
 })
 
-export const { setLignee, setNom, setNiveau, setExperience, setApparence, setPersonnalite, setTalent, setAttribut } = characterSlice.actions;
+export const { setLignee, setNom, setNiveau, setExperience, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline } = characterSlice.actions;
 
 interface CharacterSliceState {
   character: Character
