@@ -7,6 +7,8 @@ export interface Character {
     nom: string;
     niveau: number;
     experience: number;
+    apparence?: string;
+    personnalite?: string;
     lignee?: Lignee;
     attributs: CharacterAttributListe;
     talents: CharacterTalentsListe;

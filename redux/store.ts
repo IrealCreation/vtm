@@ -15,6 +15,8 @@ function generateCharacter(): Character {
       nom: "",
       niveau: 1,
       experience: 0,
+      apparence: "",
+      personnalite: "",
       disciplines: {},
       attributs: {},
       talents: {}
@@ -60,10 +62,32 @@ export const characterSlice = createSlice({
       state.character = {...state.character, disciplines: disciplineListe};
     },
 
+    setNom: (state, action: {payload: string}) => {
+      state.character = {...state.character, nom: action.payload};
+    },
+    setNiveau: (state, action: {payload: number}) => {
+      state.character = {...state.character, niveau: action.payload};
+    },
+    setExperience: (state, action: {payload: number}) => {
+      state.character = {...state.character, experience: action.payload};
+    },
+    setApparence: (state, action: {payload: string}) => {
+      state.character = {...state.character, apparence: action.payload};
+    },
+    setPersonnalite: (state, action: {payload: string}) => {
+      state.character = {...state.character, personnalite: action.payload};
+    },
+    setTalent: (state, action: {payload: {name: string, value: number}}) => {
+      //state.character = {...state.character, personnalite: action.payload};
+    },
+    setAttribut: (state, action: {payload: {name: string, value: number}}) => {
+      //state.character = {...state.character, personnalite: action.payload};
+    },
+
   },
 })
 
-export const { setLignee } = characterSlice.actions;
+export const { setLignee, setNom, setNiveau, setExperience, setApparence, setPersonnalite, setTalent, setAttribut } = characterSlice.actions;
 
 interface CharacterSliceState {
   character: Character

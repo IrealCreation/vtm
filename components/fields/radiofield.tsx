@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { BsRecord as RadioEmpty, BsRecord2 as RadioFill } from "react-icons/bs";
 
-export default function RadioField(props: {min?: number, max: number, tooltip?: Array<string>}) {
+export default function RadioField(props: { 
+    min?: number, max: number, tooltip?: Array<string>, value:number, onUpdate: (name: string, value: number) => void, updateParameter: string
+}) {
 
     const min = (props.min != null ? props.min : 1);
-    const [value, setValue] = useState<number>(min);
     let radios: Array<JSX.Element> = [];
 
     if(min == 0) {
@@ -15,16 +16,16 @@ export default function RadioField(props: {min?: number, max: number, tooltip?: 
 
         let add: JSX.Element;
 
-        if(index < value) {
-            add = <RadioFill key={index} onClick={() => radioPress(index + 1)} />;
+        if(index < props.value) {
+            add = <RadioFill key={index + 1} onClick={() => radioPress(index + 1)} />;
             if(props.tooltip != null && props.tooltip[index] != null) {
-                add = <RadioFill key={index} onClick={() => radioPress(index + 1)} data-tooltip-id="tooltip" data-tooltip-content={props.tooltip[index]}/>
+                add = <RadioFill key={index + 1} onClick={() => radioPress(index + 1)} data-tooltip-id="tooltip" data-tooltip-content={props.tooltip[index]}/>
             }
         }
         else {
-            add = <RadioEmpty key={index} onClick={() => radioPress(index + 1)} />;
+            add = <RadioEmpty key={index + 1} onClick={() => radioPress(index + 1)} />;
             if(props.tooltip != null && props.tooltip[index] != null) {
-                add = <RadioEmpty key={index} onClick={() => radioPress(index + 1)} data-tooltip-id="tooltip" data-tooltip-content={props.tooltip[index]}/>
+                add = <RadioEmpty key={index + 1} onClick={() => radioPress(index + 1)} data-tooltip-id="tooltip" data-tooltip-content={props.tooltip[index]}/>
             }
         }
 
@@ -33,7 +34,7 @@ export default function RadioField(props: {min?: number, max: number, tooltip?: 
 
     function radioPress(newValue:number) {
         // console.log(newValue);
-        setValue(newValue);
+        props.onUpdate(props.updateParameter, newValue);
     }
 
     return(
