@@ -11,12 +11,12 @@ export default function SelectField(props: {label: string, options: Array<string
     }
 
     return (
-        <span className='text-field field'>
+        <span className='select-field field' key={props.label}>
             <label htmlFor={uuid}> {props.label} </label>
-            <select id={uuid} defaultValue={props.value} onChange={handleChange} >
-                <option value="" disabled hidden selected>Choisir...</option>
+            <select id={uuid} defaultValue={(props.value != null ? props.value : "")} onChange={handleChange} >
+                <option value="" disabled hidden>Choisir...</option>
                 {props.options.map((value:string, index:number) => {
-                    return(<option value={value}>{value}</option>);
+                    return(<option key={value} value={value}>{value}</option>);
                 })}
             </select>
         </span>

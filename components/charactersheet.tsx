@@ -10,8 +10,9 @@ import { useSelector, useDispatch } from 'react-redux'
 import { attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
 import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import { lignees } from "@/data/lignees"
+import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
-import { setLignee, setNom, setExperience, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline } from "@/redux/store"
+import { setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail } from "@/redux/store"
 
 export default function CharacterSheet() {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character)
@@ -26,8 +27,11 @@ export default function CharacterSheet() {
     const updateNom = (value: string) => {
         dispatch(setNom(value));
     }
+    const updateActivite = (value: string) => {
+        dispatch(setActivite(value));
+    }
     const updateLignee = (value: string) => {
-        console.log(value);
+        dispatch(setLignee(value));
     }
     const updateNiveau = (value: number) => {
         dispatch(setNiveau(value));
@@ -49,6 +53,12 @@ export default function CharacterSheet() {
     }
     const updateDiscipline = (name: string, value: number) => {
         dispatch(setDiscipline({name: name, value: value}));
+    }
+    const updateRessourceNiveau = (name: string, value: number) => {
+        dispatch(setRessourceNiveau({name: name, value: value}));
+    }
+    const updateRessourceDetail = (name: string, value: string) => {
+        dispatch(setRessourceDetail({name: name, value: value}));
     }
 
     /* Preparing the JSX for Attributs */
@@ -125,12 +135,20 @@ export default function CharacterSheet() {
                     onUpdate={updateDiscipline}
                     updateParameter={name}
                 ></DisciplineField>
-                // <div className="radio-group" key={name}>
-                //     <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={characterDiscipline.discipline.description}>{characterDiscipline.discipline.nom}</span>
-                //     <RadioField min={0} max={5} value={characterDiscipline.niveau} onUpdate={updateTalent} updateParameter={characterDiscipline.discipline.nom} />
-                // </div>
             );
         }
+    }
+
+    /* Preparing the JSX for Ressources */
+    const jsxRessources: Array<JSX.Element> = [];
+    for (const [name, ressource] of Object.entries(ressources)) {
+        jsxRessources.push(
+            <div className="radio-group" key={name}>
+                <span className="radio-label" data-tooltip-id="tooltip" data-tooltip-content={ressource.description}>{ressource.nom}</span>
+                <RadioField min={0} max={3} tooltip={ressource.niveaux} value={character.ressources[ressource.nom].niveau} onUpdate={updateRessourceNiveau} updateParameter={ressource.nom} />
+                <TextField label="Détail" value={character.ressources[ressource.nom].detail} onUpdate={updateRessourceDetail} updateParameter={ressource.nom}/>
+            </div>
+        )
     }
 
     return (
@@ -140,12 +158,11 @@ export default function CharacterSheet() {
                 <h1>Fiche de personnage</h1>
                 <div className="title-line"></div>
             </div>
-
-            {/* <button onClick={() => dispatch(setLignee("Ventrue"))}>Test lignée</button> */}
             
             <TextField label="Nom" value={character.nom} onUpdate={updateNom} />
             <SelectField label="Lignée" value={character.lignee?.nom} onUpdate={updateLignee} options={Object.keys(lignees)} />
-            {/* <TextField label="Lignée" /> */}
+            <TextField label="Activité" value={character.activite} onUpdate={updateActivite} />
+            <br/>
             <NumberField label="Niveau" min={0} max={999} value={character.niveau} onUpdate={updateNiveau} />
             <NumberField label="Expérience" min={0} max={10} value={character.experience} tooltip={tooltips.experience} onUpdate={updateExperience} />
 
@@ -186,6 +203,11 @@ export default function CharacterSheet() {
             <h2>Disciplines</h2>
             <div className="columns disciplines">
                 {jsxDisciplines}
+            </div>
+
+            <h2>Ressources</h2>
+            <div className="ressources">
+                {jsxRessources}
             </div>
             
             <Tooltip id="tooltip" place="top" />

@@ -4,8 +4,8 @@ export const ressources: RessourceListe = {
         description: "Moyens financiers et revenus",
         niveaux: [
             "Revenu régulier d’environ 1.700€ mensuel (salaire médian en France)",
-            "Environ 5.000€ mensuel (10% les plus riches)",
-            "Environ 15.000€ mensuel (0,5% les plus riches)"
+            "Environ 5.000€ mensuel (10% les plus riches en France)",
+            "Environ 15.000€ mensuel (0,5% les plus riches en France)"
         ]
     },
     "Informations": {
@@ -41,7 +41,7 @@ export const ressources: RessourceListe = {
         niveaux: [
             "Vous avez une réputation au sein d’une niche particulière (un sport, un style musical...)",
             "Vous commencez discrètement à percer au niveau national et avez déjà fait de la télé",
-            "On vous reconnaît très fréquemment dans la rue et on se presse à vos dédicaces"
+            "On vous reconnaît très fréquemment dans la rue et on se presse à vos événements"
         ]
     }
 }
