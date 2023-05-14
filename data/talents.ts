@@ -4,7 +4,7 @@ export const talents:TalentListe = {
     //Physique
     "Acrobatie": { 
         nom: "Acrobatie", 
-        description: "Sauts et équilibre",
+        description: "Sauts, flexibilité et équilibre",
             niveaux: []
     },
     "Athlétisme": { 
@@ -25,7 +25,7 @@ export const talents:TalentListe = {
                 "Vous avez votre permis",
                 "Vous êtes habitué à faire de la route",
                 "Vous êtes un conducteur adroit et chevronné",
-                "Vous pouvez prendre en main tout type d'engin",
+                "Vous savez prendre en main tout type d'engin",
                 "Vous êtes un pilote d'exception sur terre, mer et dans les airs"
             ]
     },
@@ -88,7 +88,13 @@ export const talents:TalentListe = {
     "Performance": {
         nom: "Performance",
         description: "Pratiques artistiques",
-            niveaux: []
+            niveaux: [
+                "Vous pratiquez une fois par semaine",
+                "Votre entourage vous trouve doué dans votre art",
+                "Vous pouvez (chichement) gagner votre vie en tant qu'artiste",
+                "Vos oeuvres sont reconnues par les experts du milieu",
+                "On vous décrit comme le nouveau Picasso ou le nouveau Mozart"
+            ]
     },
     "Physionomie": {
         nom: "Physionomie",
@@ -120,7 +126,13 @@ export const talents:TalentListe = {
     "Enquête": {
         nom: "Enquête",
         description: "Tirer des informations à partir d'une scène",
-            niveaux: []
+            niveaux: [
+                "Vous êtes assez bon en escape game",
+                "Vous avez déjà été confronté à une scène de crime",
+                "Relever des empreintes, effectuer un prélévement, catégoriser les indices... ça vous connaît",
+                "Vous avez un flair de chien policier",
+                "Colombo n'a qu'à bien se tenir"
+            ]
     },
     "Informatique": {
         nom: "Informatique",
@@ -183,7 +195,7 @@ export const talents:TalentListe = {
             niveaux: [
                 "Vous suivez la presse quotidienne",
                 "Vous êtes en général le mieux informé de votre cercle d'amis sur les actualités",
-                "Vous avez été actif dans le milieu de la politique",
+                "Le droit et les codes de loi sont vos alliés",
                 "",
                 ""
             ]

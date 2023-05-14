@@ -81,7 +81,7 @@ export const lignees: LigneeListe = {
     "Tremere": {
         nom: "Tremere",
         surnom: "les Sorciers",
-        description: "Maîtres de l'usage des disciplines vampiriques, les Tremere ont +1 Point de Sang maximum. Cependant, leur détachement du monde physique et matériel leur retire une Blessure maximum.",
+        description: "Maîtres de l'usage des disciplines vampiriques, les Tremere ont +1 Point de Sang maximum. Cependant, leur détachement du monde physique et matériel leur retire un Point de Santé maximum.",
         faction: "Camarilla",
         disciplines: [
             disciplines["Augure"],
