@@ -15,7 +15,7 @@ import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
 import { setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
 
-export default function CharacterSheet() {
+export default function FichePerso() {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character)
     const dispatch = useDispatch()
     

@@ -34,11 +34,13 @@ a {
 .flex {
     display: flex;
 }
-
 .columns {
     display: grid;
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
+}
+.hidden {
+    display:none;
 }
 
 .main-container {
