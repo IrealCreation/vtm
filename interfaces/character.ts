@@ -12,6 +12,12 @@ export interface Character {
     apparence?: string;
     personnalite?: string;
     lignee?: Lignee;
+    sante: number;
+    santeMax: number;
+    volonte: number;
+    volonteMax: number;
+    sang: number;
+    sangMax: number;
     attributs: CharacterAttributListe;
     talents: CharacterTalentsListe;
     disciplines: CharacterDisciplineListe;

@@ -6,22 +6,30 @@ import DisciplineField from "./fields/disciplinefield"
 import SelectField from "./fields/selectfield"
 import { Tooltip } from 'react-tooltip'
 import { useSelector, useDispatch } from 'react-redux'
+import { useEffect } from "react"
 
 import { attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
 import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import { lignees } from "@/data/lignees"
 import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
-import { setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail } from "@/redux/store"
+import { setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
 
 export default function CharacterSheet() {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character)
     const dispatch = useDispatch()
-
-    console.log(character);
+    
+    useEffect(() => {
+        dispatch(computeEtat());
+    }, [])
 
     const tooltips = {
-        experience: "Gain de niveau tous les 10 points d'expérience"
+        experience: "Gain de niveau tous les 10 points d'expérience",
+        sante: "La quantité de blessures physiques que vous pouvez subir",
+        santeQte: "Vigueur + 3",
+        volonte: "La volonté permet de relancer les dés d'une action, de résister à la Frénésie ou aux influences mentales / sociales",
+        volonteQte: "Sang-froid + Détermination + 1",
+        sang: "Utilisé pour lancer des disciplines vampiriques"
     };
 
     const updateNom = (value: string) => {
@@ -32,9 +40,11 @@ export default function CharacterSheet() {
     }
     const updateLignee = (value: string) => {
         dispatch(setLignee(value));
+        dispatch(computeEtat());
     }
     const updateNiveau = (value: number) => {
         dispatch(setNiveau(value));
+        dispatch(computeEtat());
     }
     const updateExperience = (value: number) => {
         dispatch(setExperience(value));
@@ -45,11 +55,12 @@ export default function CharacterSheet() {
     const updatePersonnalite = (value: string) => {
         dispatch(setPersonnalite(value));
     }
-    const updateTalent = (name: string, value: number) => {
-        dispatch(setTalent({name: name, value: value}));
-    }
     const updateAttribut = (name: string, value: number) => {
         dispatch(setAttribut({name: name, value: value}));
+        dispatch(computeEtat());
+    }
+    const updateTalent = (name: string, value: number) => {
+        dispatch(setTalent({name: name, value: value}));
     }
     const updateDiscipline = (name: string, value: number) => {
         dispatch(setDiscipline({name: name, value: value}));
@@ -184,6 +195,22 @@ export default function CharacterSheet() {
                 <div>
                     <h3>Mental</h3>
                     {jsxAttrMental}
+                </div>
+            </div>
+
+            <h2>Etat</h2>
+            <div className="columns etat">
+                <div>
+                    <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sante}>Santé</h3>
+                    <p data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</p>
+                </div>
+                <div>
+                    <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonte}>Volonté</h3>
+                    <p data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</p>
+                </div>
+                <div>
+                    <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sang}>Sang</h3>
+                    <p>{character.sangMax}</p>
                 </div>
             </div>
             

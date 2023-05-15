@@ -87,8 +87,8 @@ export const attributs: AttributListe = {
                 "Votre sixième sens s'approche du surnaturel",
             ]
     },
-    "Concentration": {
-        nom: "Concentration",
+    "Détermination": {
+        nom: "Détermination",
         description: "Persévérance et détermination",
             niveaux: [
                 "Vous êtes aisément distrait et vous découragez à la moindre embuche",
@@ -115,7 +115,7 @@ export const attributsSocial: AttributListe = {
 export const attributsMental: AttributListe = {
     "Intelligence": attributs["Intelligence"],
     "Acuité": attributs["Acuité"],
-    "Concentration": attributs["Concentration"]
+    "Détermination": attributs["Détermination"]
 }
 
 export interface AttributListe {

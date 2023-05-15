@@ -19,6 +19,12 @@ function generateCharacter(): Character {
       activite: "",
       apparence: "",
       personnalite: "",
+      sante: 1,
+      santeMax: 1,
+      volonte: 1,
+      volonteMax: 1,
+      sang: 1,
+      sangMax: 1,
       disciplines: {},
       attributs: {},
       talents: {}, 
@@ -38,12 +44,12 @@ function generateCharacter(): Character {
       }
   }
   for (const [name, ressource] of Object.entries(ressources)) {
-    character.ressources[name] = {
-        ressource: ressource,
-        niveau: 0,
-        detail: ""
-    }
-}
+      character.ressources[name] = {
+          ressource: ressource,
+          niveau: 0,
+          detail: ""
+      }
+  }
   return character;
 }
 
@@ -73,6 +79,16 @@ export const characterSlice = createSlice({
       console.log(state.character);
     },
 
+    computeEtat: (state, action:{}) => {
+      let sante: number = 3 + state.character.attributs["Vigueur"].niveau;
+      let volonte: number = 1 + state.character.attributs["Sang-froid"].niveau + state.character.attributs["Détermination"].niveau;
+      let sang = 6;
+      if(state.character.lignee?.nom == "Tremere") {
+        sang ++; sante --;
+      }
+
+      state.character = {...state.character, santeMax: sante, volonteMax: volonte, sangMax: sang};
+    },
     setNom: (state, action: {payload: string}) => {
       state.character = {...state.character, nom: action.payload};
     },
@@ -120,7 +136,7 @@ export const characterSlice = createSlice({
   },
 })
 
-export const { setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail } = characterSlice.actions;
+export const { setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } = characterSlice.actions;
 
 interface CharacterSliceState {
   character: Character

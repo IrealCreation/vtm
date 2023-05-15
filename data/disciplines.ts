@@ -91,7 +91,7 @@ export const disciplines: DisciplineListe = {
             },
             {
                 nom: "Fouille mentale",
-                description: "Le lanceur peut se projeter dans la psyché d’une autre personne spécifique, lui permettant de lire ses pensées ou ses souvenirs. La victime peut résister avec sa Concentration.",
+                description: "Le lanceur peut se projeter dans la psyché d’une autre personne spécifique, lui permettant de lire ses pensées ou ses souvenirs. La victime peut résister avec sa Détermination.",
                 cout: 3
             },
             {
@@ -135,7 +135,7 @@ export const disciplines: DisciplineListe = {
     },
     "Domination": {
         nom: "Domination",
-        description: "Domination permet au lanceur d’influencer, de commander et de contrôler les personnes de son choix. Il doit pour cela créer un contact visuel et parler un langage audible et compréhensible par sa cible. La Psychologie ou le Charisme permettent de l’utiliser, et la Concentration d’y résister.",
+        description: "Domination permet au lanceur d’influencer, de commander et de contrôler les personnes de son choix. Il doit pour cela créer un contact visuel et parler un langage audible et compréhensible par sa cible. La Psychologie ou le Charisme permettent de l’utiliser, et la Détermination d’y résister.",
         niveaux: [
             {
                 nom: "Mot de commande",
@@ -405,7 +405,7 @@ export const disciplines: DisciplineListe = {
     },
     "Obténébration": {
         nom: "Obténébration",
-        description: "Discipline signature des Lasombras, Obténébration offre à son disciple la maîtrise des ombres et même le pouvoir de les utiliser comme arme et comme protection. La Concentration du lanceur jauge son efficacité, et il doit avoir sa cible d’action dans son champ visuel.",
+        description: "Discipline signature des Lasombras, Obténébration offre à son disciple la maîtrise des ombres et même le pouvoir de les utiliser comme arme et comme protection. La Détermination du lanceur jauge son efficacité, et il doit avoir sa cible d’action dans son champ visuel.",
         niveaux: [
             {
                 nom: "Jeu d’ombres",

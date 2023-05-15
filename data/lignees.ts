@@ -92,7 +92,7 @@ export const lignees: LigneeListe = {
     "Tzimisce": {
         nom: "Tzimisce",
         surnom: "les Déformateurs",
-        description: "A force de dénaturer froidement la nature humaine, les Tzimisces commencent avec moins d'Humanité et éprouvent plus de difficulté à l'augmenter. Leur attribut Concentration s'ajoute néanmoins à leur Humanité pour résister à la Frénésie.",
+        description: "A force de dénaturer froidement la nature humaine, les Tzimisces commencent avec moins d'Humanité et éprouvent plus de difficulté à l'augmenter. Leur attribut Détermination s'ajoute néanmoins à leur Humanité pour résister à la Frénésie.",
         faction: "Sabbat",
         disciplines: [
             disciplines["Animalisme"],
