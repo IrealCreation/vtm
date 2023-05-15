@@ -73,7 +73,7 @@ export const disciplines: DisciplineListe = {
         niveaux: [
             {
                 nom: "Sens supérieur",
-                description: "Accroît de façon surnaturelle l’un des sens du lanceur (+1 aux jets correspondants)",
+                description: "Accroît de façon surnaturelle l’un des sens du lanceur (+1 aux jets d'Acuité)",
                 duree: "15 minutes",
                 cout: 1
             },
@@ -178,7 +178,7 @@ export const disciplines: DisciplineListe = {
             {
                 nom: "Volonté de fer",
                 description: "Le lanceur peut ajouter son niveau de Fortitude lorsqu’il résiste à une discipline visant à altérer son esprit (Domination, Aliénation...).",
-                cout: 2
+                cout: 1
             },
             {
                 nom: "Fortifier autrui",

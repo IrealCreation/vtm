@@ -56,7 +56,7 @@ export const attributs: AttributListe = {
     },
     "Sang-froid": {
         nom: "Sang-froid",
-        description: "Rester maître de ses émotions",
+        description: "Rester maître de ses émotions et résister à la Frénésie",
             niveaux: [
                 "Vous vous emportez pour un rien",
                 "Vous pouvez vous laisser submerger par de fortes émotions",
@@ -89,7 +89,7 @@ export const attributs: AttributListe = {
     },
     "Détermination": {
         nom: "Détermination",
-        description: "Persévérance et détermination",
+        description: "Persévérance, concentration, et résistance aux influences mentales",
             niveaux: [
                 "Vous êtes aisément distrait et vous découragez à la moindre embuche",
                 "Vous tenez pendant une journée de travail - mais les vendredi soir sont compliqués",

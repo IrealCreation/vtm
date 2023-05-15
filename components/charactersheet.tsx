@@ -72,6 +72,16 @@ export default function CharacterSheet() {
         dispatch(setRessourceDetail({name: name, value: value}));
     }
 
+    let jsxLignee: JSX.Element = <></>;
+    if(character.lignee != null) {
+        jsxLignee = (
+            <>
+                <p>Les "{character.lignee?.surnom}"</p>
+                <p>{character.lignee?.description}</p>
+            </>
+        )
+    }
+
     /* Preparing the JSX for Attributs */
     const jsxAttrPhysique: Array<JSX.Element> = [];
     const jsxAttrSocial: Array<JSX.Element> = [];
@@ -171,11 +181,16 @@ export default function CharacterSheet() {
             </div>
             
             <TextField label="Nom" value={character.nom} onUpdate={updateNom} />
-            <SelectField label="Lignée" value={character.lignee?.nom} onUpdate={updateLignee} options={Object.keys(lignees)} />
             <TextField label="Activité" value={character.activite} onUpdate={updateActivite} />
-            <br/>
             <NumberField label="Niveau" min={0} max={999} value={character.niveau} onUpdate={updateNiveau} />
             <NumberField label="Expérience" min={0} max={10} value={character.experience} tooltip={tooltips.experience} onUpdate={updateExperience} />
+            
+            <div className="lignee-container">
+                <SelectField label="Lignée" value={character.lignee?.nom} onUpdate={updateLignee} options={Object.keys(lignees)} />
+                <div className="lignee-description">
+                    {jsxLignee}
+                </div>
+            </div>
 
             <div className="flex">
                 <TextAreaField label="Apparence" value={character.apparence} onUpdate={updateApparence} />
