@@ -76,7 +76,7 @@ export default function FichePerso() {
     if(character.lignee != null) {
         jsxLignee = (
             <>
-                <p>Les "{character.lignee?.surnom}"</p>
+                <p>Les &quot;{character.lignee?.surnom}&quot;</p>
                 <p>{character.lignee?.description}</p>
                 <p>{character.lignee?.regle}</p>
             </>
