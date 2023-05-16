@@ -9,7 +9,6 @@ export default function DisciplineInfo(props: {discipline: Discipline}) {
     const jsxNiveaux: Array<JSX.Element> = [];
     for (let index = 0; index < props.discipline.niveaux.length; index++) {
 
-        let radio: JSX.Element;
         let cout: JSX.Element = <></>;
         let duree: JSX.Element = <></>;
         let niveau = props.discipline.niveaux[index];

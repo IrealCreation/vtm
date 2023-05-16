@@ -399,7 +399,7 @@ export const disciplines: DisciplineListe = {
             {
                 nom: "Levée des morts",
                 description: "Permet d’utiliser Mort marchant et Serviteur morbide sur plusieurs cadavres dans un rayon de 10 mètres.",
-                cout: "Jusqu’à 3 cadavres : +1 PS. Jusqu’à 10 cadavres : +2 PS."
+                cout: "Jusqu’à 3 cadavres : +1 PS. Jusqu’à 10 cadavres : +2 PS"
             }
         ]
     },
@@ -445,7 +445,7 @@ export const disciplines: DisciplineListe = {
         niveaux: [
             {
                 nom: "Traits malléable",
-                description: "le lanceur peut modeler un de ses propres aspects physiques mineurs.",
+                description: "Le lanceur peut modeler un de ses propres aspects physiques mineurs.",
                 duree: "15 minutes",
                 cout: 1
             },

@@ -1,6 +1,7 @@
 import '@/styles/globals.scss'
 import '@/styles/fichePerso.scss'
 import '@/styles/disciplines.scss'
+import '@/styles/lignees.scss'
 import 'react-tooltip/dist/react-tooltip.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'

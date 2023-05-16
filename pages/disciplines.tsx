@@ -2,7 +2,7 @@ import DisciplineInfo from "@/components/disciplineInfo";
 import Head from "next/head";
 import { disciplines } from "@/data/disciplines";
 
-export default function Example() {
+export default function PageDisciplines() {
     /* Preparing the JSX for Disciplines */
     const jsxDisciplines: Array<JSX.Element> = [];
     
