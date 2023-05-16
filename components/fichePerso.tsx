@@ -78,6 +78,7 @@ export default function FichePerso() {
             <>
                 <p>Les "{character.lignee?.surnom}"</p>
                 <p>{character.lignee?.description}</p>
+                <p>{character.lignee?.regle}</p>
             </>
         )
     }

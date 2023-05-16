@@ -168,7 +168,7 @@ export const disciplines: DisciplineListe = {
     },
     "Fortitude": {
         nom: "Fortitude",
-        description: "Fortitude, aussi parfois nommée “force d’âme”, permet à l’adepte de cette discipline d’accroître sa résistance physique comme mentale, ainsi que de se remettre plus rapidement de ses blessures.",
+        description: "Fortitude permet à l’adepte de cette discipline d’accroître sa résistance physique comme mentale, ainsi que de se remettre plus rapidement de ses blessures.",
         niveaux: [
             {
                 nom: "Guérir la chair",
