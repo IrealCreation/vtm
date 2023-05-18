@@ -13,13 +13,17 @@ import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import { lignees } from "@/data/lignees"
 import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
-import { setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
+import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
 
-export default function FichePerso() {
+export default function FichePerso(props: {id?: string}) {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character)
     const dispatch = useDispatch()
     
     useEffect(() => {
+        console.log("Fiche perso id : " + props.id);
+        if(props.id != null) {
+            getCharacter();
+        }
         dispatch(computeEtat());
     }, [])
 
@@ -70,6 +74,40 @@ export default function FichePerso() {
     }
     const updateRessourceDetail = (name: string, value: string) => {
         dispatch(setRessourceDetail({name: name, value: value}));
+    }
+    const save = () => {
+        sendCharacter();
+        // getCharacter();
+    }
+
+    const sendCharacter = async () => {
+        const response = await fetch("/api/perso", {
+            method: "POST",
+            body: JSON.stringify({
+                id: 1,
+                character: character,
+            }),
+            headers: {
+                "content-type": "application/json",
+            },
+        });
+        console.log("Test");
+        console.log(response);
+        const jsonData = await response.json();
+        console.log(jsonData);
+    }
+
+    const getCharacter = async () => {
+        const url = "/api/perso/" + props.id;
+        const response = await fetch(url, {
+            method: "GET"
+        });
+        console.log(response);
+        const jsonData = await response.json().then((value) => {
+            console.log(value);
+            // dispatch(setCharacter(jsonData));
+        });
+        
     }
 
     let jsxLignee: JSX.Element = <></>;
@@ -254,6 +292,9 @@ export default function FichePerso() {
             </div>
             
             <Tooltip id="tooltip" place="top" />
+            <button id="save" onClick={save}>
+                Sauvegarder
+            </button>
         </section>
     )
 }
