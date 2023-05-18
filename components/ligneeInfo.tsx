@@ -37,7 +37,7 @@ export default function LigneeInfo(props: {lignee: Lignee}) {
         <div id={props.lignee.nom}>
             <h2 onClick={handleClick}>{props.lignee.nom} <span className="arrow">{arrow}</span></h2>
             <div className={ isVisible ? "discipline-detail" : "discipline-detail hidden"}>
-                <p>Les &quot;{props.lignee.surnom}&quot;</p>
+                <p><em>Les &quot;{props.lignee.surnom}&quot;</em></p>
                 <p>{props.lignee.description}</p>
                 <p>{props.lignee.regle}</p>
                 <h3>Disciplines</h3>
