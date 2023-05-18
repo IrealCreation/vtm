@@ -11,7 +11,7 @@ export default function LigneeInfo(props: {lignee: Lignee}) {
     for (let index = 0; index < props.lignee.disciplines.length; index++) {
 
         let discipline = props.lignee.disciplines[index];
-        let href = "/disciplines#" + discipline.nom;
+        let href = "/disciplines?nom=" + discipline.nom + "#" + discipline.nom;
 
         jsxDisciplines.push(
             <div className="discipline" key={discipline.nom}>

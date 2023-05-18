@@ -2,9 +2,10 @@ import { Discipline } from "@/data/disciplines";
 import { useState } from 'react';
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
 
-export default function DisciplineInfo(props: {discipline: Discipline}) {
+export default function DisciplineInfo(props: {discipline: Discipline, isVisible?: boolean}) {
 
-    const [isVisible, setVisibility] = useState(false);
+    const defaultVisibility = (props.isVisible == true ? true : false);
+    const [isVisible, setVisibility] = useState(defaultVisibility);
 
     const jsxNiveaux: Array<JSX.Element> = [];
     for (let index = 0; index < props.discipline.niveaux.length; index++) {
