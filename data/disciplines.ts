@@ -346,13 +346,13 @@ export const disciplines: DisciplineListe = {
                 cout: 1
             },
             {
-                nom: "Goût du sang",
-                description: "En goûtant du sang, le lanceur peut identifier son propriétaire et en apprendre plus sur lui.",
+                nom: "Décoction de sang",
+                description: "Permet de préparer une décoction de sang pouvant être consommée dans les 3 prochains jours : la boire est l'équivalent de se nourrir partiellement sur un humain. Une matière première viable est nécessaire (humain ou animal).",
                 cout: 1
             },
             {
                 nom: "Exhémie",
-                description: "Affaiblit le sang d’une victime au travers d’un contact physique, lui infligeant - 1 à tous ses attributs.",
+                description: "Affaiblit le sang d’une victime au travers d’un contact physique, lui infligeant -1 à tous ses attributs.",
                 duree: "1 heure",
                 cout: 2
             },
