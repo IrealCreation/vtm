@@ -23,6 +23,15 @@ export default function PageRegles() {
                 <p>En cas de réussite partielle (vous avez quelques succès mais pas assez au regard de la difficulté annoncée), le maître du jeu vous proposera parfois une <em>réussite avec conséquence</em>. Par exemple : vous pénétrez dans le système informatique visé, mais vous laissez derrière vous des traces permettant de vous retrouver...</p>
                 <p>Si à l'inverse votre nombre de succès excède la difficulté de la tâche, vous aurez parfois une <em>réussite critique</em> : votre action dépassera les résultats escomptés.</p>
 
+                <h2>Expérience & Niveau</h2>
+                <p>Après chaque mission ou aventure, un personnage gagne de l'expérience. Avoir accompli des objectifs annexes au cours de celle-ci, ou être parvenu à ses fins avec brio, peut donner lieu à de l'expérience supplémentaire. Le gain d'expérience est généralement égal entre chaque membre du groupe, mais il peut arriver qu'un personnage s'étant particulièrement démarqué gagne des points bonus.</p>
+                <p>Tous les 10 points d'expérience, le personnage gagne un niveau. Le gain de niveau offre les avantages suivants :</p>
+                <ul>
+                    <li>A chaque niveau <em>pair</em> : un point de Talent supplémentaire.</li>
+                    <li>A chaque niveau <em>impair</em> : un point de Discipline supplémentaire.</li>
+                    <li>A chaque niveau <em>multiple de 3</em> : un point de Santé / Volonté / Sang supplémentaire (au choix).</li>
+                </ul>
+
                 <h2>Soif</h2>
                 <p>Tout vampire doit se nourrir de sang : cela est un invariable. C'est de ce fluide vital qu'ils tirent leurs pouvoirs, et même l'énergie leur permettant de maintenir leur état à la frontière de la vie et de la mort. La quantité de sang disponible en eux est indiquée par les <em>Points de Sang (PS)</em>.</p>
                 <p>Au début de chaque nouvelle nuit, un vampire puise dans cette quantité pour animer son corps : il perd un Point de Sang et régénère un Point de Santé. S'il ne dispose de Point de Sang à dépenser, il doit faire un jet de résistance à la Frénésie.</p>
