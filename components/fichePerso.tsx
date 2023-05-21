@@ -14,6 +14,7 @@ import { lignees } from "@/data/lignees"
 import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
 import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
+import { Character } from "@/interfaces/character"
 
 export default function FichePerso(props: {id?: string}) {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character)
@@ -21,6 +22,7 @@ export default function FichePerso(props: {id?: string}) {
     
     useEffect(() => {
         console.log("Fiche perso id : " + props.id);
+        // console.log("Fiche perso id : " + props.id);
         if(props.id != null) {
             getCharacter();
         }
@@ -77,7 +79,6 @@ export default function FichePerso(props: {id?: string}) {
     }
     const save = () => {
         sendCharacter();
-        // getCharacter();
     }
 
     const sendCharacter = async () => {
@@ -92,9 +93,13 @@ export default function FichePerso(props: {id?: string}) {
                 "content-type": "application/json",
             },
         });
-        console.log(response);
-        const jsonData = await response.json();
-        console.log(jsonData);
+        if(response.ok) {
+            const jsonData = await response.json();
+            console.log(jsonData);
+        }
+        else {
+            console.log(response);
+        }
     }
 
     const getCharacter = async () => {
@@ -102,12 +107,15 @@ export default function FichePerso(props: {id?: string}) {
         const response = await fetch(url, {
             method: "GET"
         });
-        console.log(response);
-        const jsonData = await response.json().then((value) => {
-            console.log(value);
-            // dispatch(setCharacter(jsonData));
-        });
-        
+        if(response.ok) {
+            const jsonData = await response.json();
+            const fiche = JSON.parse(jsonData.fiche) as Character;
+            console.log(fiche);
+            dispatch(setCharacter(fiche));
+        }
+        else {
+            console.log(response);
+        }
     }
 
     let jsxLignee: JSX.Element = <></>;
