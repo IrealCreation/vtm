@@ -2,9 +2,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   async function orm() {
+
     if(req.method === "GET") {
       const { id } = req.query;
 
@@ -30,16 +31,16 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
               res.status(200).json(perso);
         }
         catch(error) {
-            res.status(400);
+            res.status(400).json({error: error});
             await prisma.$disconnect();
         }
       }
       else {
-        res.status(400);
+        res.status(400).json({});
       }
     }
     else {
-        res.status(405);
+        res.status(405).json({});
     }
   
   }

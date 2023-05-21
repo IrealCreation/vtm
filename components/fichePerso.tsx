@@ -81,6 +81,7 @@ export default function FichePerso(props: {id?: string}) {
     }
 
     const sendCharacter = async () => {
+        console.log("sendCharacter");
         const response = await fetch("/api/perso", {
             method: "POST",
             body: JSON.stringify({
@@ -91,7 +92,6 @@ export default function FichePerso(props: {id?: string}) {
                 "content-type": "application/json",
             },
         });
-        console.log("Test");
         console.log(response);
         const jsonData = await response.json();
         console.log(jsonData);

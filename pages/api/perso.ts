@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   
   const prisma = new PrismaClient();
 
@@ -10,25 +10,34 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
 
     if (req.method === 'POST') {
 
-      const { id } = req.body.id;
+      const id = req.body.id;
+      let idNumber;
 
-      if(typeof id == "number") {
+      if(typeof id === "string") {
+        idNumber = parseInt(id);
+      }
+      else {
+        idNumber = id;
+      }
+
+      if(typeof idNumber === "number") {
 
         const perso = await prisma.perso.upsert({
           where: {
             id: id
           },
           update: {
-            fiche: req.body.character
+            fiche: JSON.stringify(req.body.character)
           },
           create: {
             id: id,
-            fiche: req.body.character
+            fiche: JSON.stringify(req.body.character)
           },
         }).then((value) => {
           res.status(200).json(value);
-        }).catch((reason) => {
-          res.status(405).json({reason: reason});
+        }).catch((error) => {
+          console.log(error);
+          res.status(400).json({error: error});
         });
         // res.status(200).json({reponse: "test"});
 
@@ -36,31 +45,22 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
         
       }
       else {
-        res.status(405);
+        res.status(400).json({error: "id type incorrect:" + typeof idNumber});
       }
     }
     else {
       // await prisma.$disconnect();
-      res.status(405);
+      res.status(405).json({});
     }
   
   }
 
-  upsertPerso()
-
-  .then(async () => {
-
+  upsertPerso().then(async () => {
     await prisma.$disconnect()
-
   })
-
   .catch(async (e) => {
-
     console.error(e)
-
     await prisma.$disconnect()
-
     process.exit(1)
-
   });
 }
