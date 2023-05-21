@@ -1,36 +1,40 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
+import bcrypt from 'bcrypt';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const prisma = new PrismaClient();
 
-  async function findPerso() {
+  async function signUp() {
 
-    if(req.method === "GET") {
-      const { id } = req.query;
+    if(req.method === "POST") {
 
-      if(typeof id == "string") {
-
-        const idNumber = parseInt(id);
-        console.log(idNumber);
+      if(typeof req.body.pseudo !== "string") {
+        res.status(400).json({error: "Pseudo requis"});
+      }
+      else if(typeof req.body.password !== "string") {
+        res.status(400).json({error: "Mot de passe requis"});
+      }
+      else {
+        const passwordHash = await bcrypt.hash(req.body.password, 10);
 
         try {
-          const perso = await prisma.perso.findUniqueOrThrow({
-            where: {
-              id: idNumber
+          const joueur = await prisma.joueur.create({
+            data: {
+              pseudo: req.body.pseudo,
+              password: passwordHash,
             },
           });
-          res.status(200).json(perso);
+  
+          res.status(200).json(joueur);
         }
         catch(error) {
           res.status(400).json({error: error});
         }
       }
-      else {
-        res.status(400).json({});
-      }
+      
     }
     else {
         res.status(405).json({});
@@ -38,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   }
 
-  findPerso().then(async () => {
+  signUp().then(async () => {
     await prisma.$disconnect()
   })
   .catch(async (e) => {

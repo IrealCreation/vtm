@@ -14,3 +14,10 @@ model Perso {
   id    Int     @id
   fiche String
 }
+
+model Joueur {
+  id        Int   @id
+  pseudo    String 
+  mail      String
+  password  String 
+}

@@ -36,7 +36,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }).then((value) => {
           res.status(200).json(value);
         }).catch((error) => {
-          console.log(error);
           res.status(400).json({error: error});
         });
         // res.status(200).json({reponse: "test"});
@@ -45,7 +44,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         
       }
       else {
-        res.status(400).json({error: "id type incorrect:" + typeof idNumber});
+        res.status(400).json({error: "ID incorrect:" + typeof idNumber});
       }
     }
     else {
