@@ -1,23 +1,24 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
-model Perso {
-  id    Int     @id
-  fiche String
+model joueur {
+  id       Int     @id @default(autoincrement())
+  pseudo   String  @db.VarChar(255)
+  password String  @db.VarChar(255)
+  perso    perso[]
 }
 
-model Joueur {
-  id        Int   @id
-  pseudo    String 
-  mail      String
-  password  String 
+model perso {
+  id        Int    @id @default(autoincrement())
+  fiche     String @db.MediumText
+  joueur_id Int
+  joueur    joueur @relation(fields: [joueur_id], references: [id], onDelete: Cascade, map: "perso_joueur")
+
+  @@index([joueur_id], map: "perso_joueur")
 }
