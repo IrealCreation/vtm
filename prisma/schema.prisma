@@ -9,7 +9,7 @@ datasource db {
 
 model joueur {
   id       Int     @id @default(autoincrement())
-  pseudo   String  @db.VarChar(255)
+  pseudo   String  @unique(map: "pseudo") @db.VarChar(50)
   password String  @db.VarChar(255)
   perso    perso[]
 }

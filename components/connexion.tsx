@@ -2,11 +2,10 @@ import { useState } from "react";
 import Link from "next/link";
 import TextField from "./fields/textfield"
 
-export default function Inscription(props: {id?: string}) {
+export default function Connexion(props: {id?: string}) {
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
-    const [valid, setValid] = useState(false);
 
     const updatePseudo = (value: string) => {
         setPseudo(value);
@@ -21,7 +20,7 @@ export default function Inscription(props: {id?: string}) {
 
     const send = async () => {
         console.log("sendCharacter");
-        const response = await fetch("/api/joueur/inscription", {
+        const response = await fetch("/api/joueur/connexion", {
             method: "POST",
             body: JSON.stringify({
                 pseudo: pseudo,
@@ -32,37 +31,22 @@ export default function Inscription(props: {id?: string}) {
             },
         });
         if(response.ok) {
-            setMessage("Inscription réussie !");
-            setValid(true);
+            setMessage("Connexion réussie !");
+            // TODO: redirect
         }
         else {
             console.log(response);
-            setValid(false);
-            
+            setMessage("Échec de l'inscription");
             let jsonData = await response.json();
-            if(jsonData?.error != null && typeof jsonData?.error === "string") {
-                setMessage(jsonData.error);
-            }
-            else {
-                console.log(jsonData)
-                setMessage("Échec de l'inscription");
-            }
-            
+            setMessage(jsonData.error);
         }
-    }
-
-    let jsxRedirect = <></>;
-    if(valid) {
-        jsxRedirect = (
-            <p><Link href="/connexion">Cliquez ici pour vous connectez</Link></p>
-        )
     }
 
     return (
         <section className="main-container">
             <div className="title-bloc">
                 <div className="title-line"></div>
-                <h1>Inscription</h1>
+                <h1>Connexion</h1>
                 <div className="title-line"></div>
             </div>
             
@@ -76,7 +60,6 @@ export default function Inscription(props: {id?: string}) {
                 Envoyer
             </button>
             <p>{message}</p>
-            {jsxRedirect}
         </section>
     )
 }

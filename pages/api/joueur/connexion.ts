@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { Prisma, PrismaClient } from '@prisma/client'
+import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -18,29 +18,34 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         res.status(400).json({error: "Mot de passe requis"});
       }
       else {
-        const passwordHash = await bcrypt.hash(req.body.password, 10);
-
         try {
-          // Reminder: the schema doesn't update in VSCode? Open the definition file with F12!
-          const joueur = await prisma.joueur.create({
-            data: {
+          const joueur = await prisma.joueur.findFirst({
+            where: {
               pseudo: req.body.pseudo,
-              password: passwordHash,
             },
           });
-  
-          res.status(200).json(joueur);
-        }
-        catch(error) {
-          if (error instanceof Prisma.PrismaClientKnownRequestError) {
-            // The .code property can be accessed in a type-safe manner
-            if (error.code === 'P2002') {
-              res.status(400).json({error: "Ce pseudo est déjà utilisé"});
-            }
+
+          if(joueur != null) {
+            // Compare the password sent with the hash in database
+            bcrypt.compare(req.body.password, joueur.password, function(err, result) {
+                if(result) {
+                    // Todo: generate and send a JWT
+                    res.status(200).json(joueur);
+                }
+                else {
+                    res.status(401).json({error: "Mot de passe incorrect"});
+                }
+            })
+            
           }
           else {
-            res.status(400).json({error: error});
+            res.status(401).json({error: "Aucun joueur avec ce pseudo trouvé"});
           }
+  
+          
+        }
+        catch(error) {
+          res.status(400).json({error: error});
         }
       }
       
