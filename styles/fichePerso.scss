@@ -1,61 +1,7 @@
 .character-sheet {
-    text-align: center;
     font-weight: bold;
     margin-top: 2vh;
     margin-bottom: 10vh;
-
-    .field {
-        margin: 0.75rem 0;
-    }
-
-    .text-field, .number-field, .select-field {
-        display: inline-block;
-        label {
-            display: inline-block;
-            padding: 0.2rem 0;
-        }
-        input, select {
-            display: inline-block;
-            margin: 0 2rem 0 0.5rem;
-            padding: 0.2rem;
-            min-width: 12em;
-            background-color: white;
-        }
-    }
-    .number-field input {
-        min-width: 5em;
-        width: 5em;
-    }
-
-    .textarea-field {
-        display: flex;
-        label {
-            padding-top: 1.5em;
-        }
-        textarea {
-            resize: none;
-            display: inline-block;
-            margin: 0 2rem 0 0.5rem;
-            padding: 0.2rem;
-            width: 100%;
-            height: 5em;
-        }
-    }
-
-    .flex .textarea-field {
-        width: 50%;
-    }
-
-    input, textarea, select {
-      transition: border-color 0.3s linear;
-      border-radius: 5px;
-      border-color: rgba($color: #000000, $alpha: 0);
-    }
-    input:focus, textarea:focus, select:focus {
-      outline: none !important;
-      border-color: var(--highlight-color);
-      transition: border-color 0.4s linear;
-    }
 
     .lignee-container {
         display: flex;
@@ -75,31 +21,6 @@
 
     .attributs {
         font-size: 1.15em;
-    }
-
-    .radio-group {
-        margin-bottom: 0.4rem;
-        .radio-label {
-            display: inline-block;
-            text-align: right;
-            width: 40%;
-            margin-right: 1rem;
-            padding-top: 0.05rem;
-        }
-        .radio-field {
-            display: inline-block;
-            width: 55%;
-            font-size: 1.3em;
-
-            > * {
-                cursor: pointer;
-            }
-            .reset {
-                display: inline-block;
-                margin-top: -0.15em;
-                margin-right: 0.4em;
-            }
-        }
     }
 
     .discipline {
@@ -153,19 +74,88 @@
         position: fixed;
         bottom: 2vh;
         right: 5vw;
-        background-color: var(--highlight-color);
-        border: 1px solid var(--main-color);
-        color: white;
-        font-size: 1rem;
-        padding: 0.6em 1em;
-        border-radius: 10px;
-        cursor: pointer;
-        transition: all 0.3s;
-
-        &:hover {
-            -webkit-filter: brightness(70%);
-            filter: brightness(70%);
-        }
     }
     
+}
+
+/* Fields */
+
+.field {
+    margin: 0.75rem 0;
+}
+
+.text-field, .number-field, .select-field {
+    display: inline-block;
+    label {
+        display: inline-block;
+        padding: 0.2rem 0;
+        font-weight: bold;
+    }
+    input, select {
+        display: inline-block;
+        margin: 0 2rem 0 0.5rem;
+        padding: 0.2rem;
+        min-width: 12em;
+        background-color: white;
+    }
+}
+.number-field input {
+    min-width: 5em;
+    width: 5em;
+}
+
+.textarea-field {
+    display: flex;
+    label {
+        padding-top: 1.5em;
+        font-weight: bold;
+    }
+    textarea {
+        resize: none;
+        display: inline-block;
+        margin: 0 2rem 0 0.5rem;
+        padding: 0.2rem;
+        width: 100%;
+        height: 5em;
+    }
+}
+
+.flex .textarea-field {
+    width: 50%;
+}
+
+input, textarea, select {
+  transition: border-color 0.3s linear;
+  border-radius: 5px;
+  border-color: rgba($color: #000000, $alpha: 0);
+}
+input:focus, textarea:focus, select:focus {
+  outline: none !important;
+  border-color: var(--highlight-color);
+  transition: border-color 0.4s linear;
+}
+
+.radio-group {
+    margin-bottom: 0.4rem;
+    .radio-label {
+        display: inline-block;
+        text-align: right;
+        width: 40%;
+        margin-right: 1rem;
+        padding-top: 0.05rem;
+    }
+    .radio-field {
+        display: inline-block;
+        width: 55%;
+        font-size: 1.3em;
+
+        > * {
+            cursor: pointer;
+        }
+        .reset {
+            display: inline-block;
+            margin-top: -0.15em;
+            margin-right: 0.4em;
+        }
+    }
 }

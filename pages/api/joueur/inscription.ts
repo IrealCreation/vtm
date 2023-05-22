@@ -21,6 +21,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const passwordHash = await bcrypt.hash(req.body.password, 10);
 
         try {
+          // Reminder: the schema doesn't update in VSCode? Open the definition file with F12!
           const joueur = await prisma.joueur.create({
             data: {
               pseudo: req.body.pseudo,
@@ -37,7 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       
     }
     else {
-        res.status(405).json({});
+        res.status(405).json({error: "Méthode invalide"});
     }
   
   }

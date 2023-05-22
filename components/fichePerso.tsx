@@ -300,7 +300,7 @@ export default function FichePerso(props: {id?: string}) {
             </div>
             
             <Tooltip id="tooltip" place="top" />
-            <button id="save" onClick={save}>
+            <button id="save" className="btn-md" onClick={save}>
                 Sauvegarder
             </button>
         </section>
