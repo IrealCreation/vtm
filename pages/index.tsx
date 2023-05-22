@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Link from "next/link";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
     return(
@@ -14,6 +15,7 @@ export default function Home() {
               <Link href="/lignees" className="btn-lg">Lignées</Link>
               <Link href="/disciplines" className="btn-lg">Disciplines</Link>
             </section>
+            <Navbar/>
         </>
         
     )
