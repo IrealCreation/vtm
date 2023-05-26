@@ -1,7 +1,7 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt';
+import { createAccessToken } from '@/auth/jwtManager';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -29,8 +29,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             // Compare the password sent with the hash in database
             bcrypt.compare(req.body.password, joueur.password, function(err, result) {
                 if(result) {
-                    // Todo: generate and send a JWT
-                    res.status(200).json(joueur);
+                    // Create and send the JWT
+                    const accessToken = createAccessToken(joueur.id);
+                    res.status(200).json({joueur: {id: joueur.id, pseudo: joueur.pseudo}, token: accessToken});
                 }
                 else {
                     res.status(401).json({error: "Mot de passe incorrect"});
@@ -65,3 +66,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     process.exit(1)
   });
 }
+
+
