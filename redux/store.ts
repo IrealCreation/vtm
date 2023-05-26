@@ -1,4 +1,3 @@
-
 import { configureStore, createSlice } from '@reduxjs/toolkit';
 import { Character, CharacterDisciplineListe } from '@/interfaces/character';
 import { DisciplineListe, disciplines } from "@/data/disciplines";

@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { serialize } from "cookie";
 import jwt from "jsonwebtoken";
 
+// BUG : les options semblent ignorer lors de la création du cookie (voir sans doute ligne 17)
 const cookieOptions = {
     httpOnly: true,
     maxAge: 2592000,
