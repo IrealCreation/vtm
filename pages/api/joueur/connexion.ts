@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt';
-import { createAccessToken } from '@/auth/jwtManager';
+import { createAccessToken } from '@/auth/authManager';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -30,7 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             bcrypt.compare(req.body.password, joueur.password, function(err, result) {
                 if(result) {
                     // Create and send the JWT
-                    const accessToken = createAccessToken(joueur.id);
+                    const accessToken = createAccessToken(joueur.id, res);
                     res.status(200).json({joueur: {id: joueur.id, pseudo: joueur.pseudo}, token: accessToken});
                 }
                 else {

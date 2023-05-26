@@ -1,8 +1,10 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { PrismaClient } from '@prisma/client'
-
+import { verifyAccessToken } from '@/auth/authManager';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  const joueurId = verifyAccessToken(req, res);
   
   const prisma = new PrismaClient();
 
@@ -38,9 +40,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }).catch((error) => {
           res.status(400).json({error: error});
         });
-        // res.status(200).json({reponse: "test"});
-
-        // await prisma.$disconnect();
         
       }
       else {

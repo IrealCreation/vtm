@@ -30,12 +30,14 @@ export default function Connexion(props: {id?: string}) {
                 "content-type": "application/json",
             },
         });
+        console.log(response);
         if(response.ok) {
             setMessage("Connexion réussie !");
+            let jsonData = await response.json();
+            console.log(jsonData);
             // TODO: redirect
         }
         else {
-            console.log(response);
             setMessage("Échec de l'inscription");
             let jsonData = await response.json();
             setMessage(jsonData.error);
