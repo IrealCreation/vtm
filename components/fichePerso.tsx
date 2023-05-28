@@ -21,8 +21,6 @@ export default function FichePerso(props: {id?: string}) {
     const dispatch = useDispatch()
     
     useEffect(() => {
-        console.log("Fiche perso id : " + props.id);
-        // console.log("Fiche perso id : " + props.id);
         if(props.id != null) {
             getCharacter();
         }
@@ -219,6 +217,11 @@ export default function FichePerso(props: {id?: string}) {
         )
     }
 
+    const jsxSave: JSX.Element = (props.id != null ? 
+        (<button id="save" className="btn-md" onClick={save}>Sauvegarder</button>) :
+        <></>
+    );
+
     return (
         <section className="character-sheet main-container">
             <div className="title-bloc">
@@ -299,10 +302,8 @@ export default function FichePerso(props: {id?: string}) {
                 {jsxRessources}
             </div>
             
+            {jsxSave}
             <Tooltip id="tooltip" place="top" />
-            <button id="save" className="btn-md" onClick={save}>
-                Sauvegarder
-            </button>
         </section>
     )
 }

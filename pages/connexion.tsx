@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Connexion from "@/components/connexion";
+import Navbar from "@/components/navbar";
 
 export default function Example() {
     return(

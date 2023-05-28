@@ -4,7 +4,7 @@ import { verifyAccessToken } from '@/auth/authManager';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-  const joueurId = verifyAccessToken(req, res);
+  const joueurId = parseInt(verifyAccessToken(req, res));
   
   const prisma = new PrismaClient();
 
@@ -15,12 +15,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       const id = req.body.id;
       let idNumber;
 
-      if(typeof id === "string") {
+      if(typeof id === "string")
         idNumber = parseInt(id);
-      }
-      else {
+      else
         idNumber = id;
-      }
 
       if(typeof idNumber === "number") {
 
@@ -33,7 +31,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           },
           create: {
             id: id,
-            fiche: JSON.stringify(req.body.character)
+            fiche: JSON.stringify(req.body.character),
+            joueur_id: joueurId
           },
         }).then((value) => {
           res.status(200).json(value);

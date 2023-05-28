@@ -369,6 +369,41 @@ export const disciplines: DisciplineListe = {
             }
         ]
     },
+    "Gravitas": {
+        nom: "Gravitas",
+        description: "Gravitas est une discipline annexe de la thaumaturgie des Tremere. Plutôt que de se concentrer sur la manipulation du sang, elle se base sur les forces astrophysiques pour interagir avec le monde matériel qui l'entoure.",
+        niveaux: [
+            {
+                nom: "Libération",
+                description: "Réduit ou augmente l'impact de la pesanteur terrestre sur un objet que touche le lanceur, le rendant ainsi plus lourd ou plus léger",
+                duree: "5 minutes",
+                cout: 1
+            },
+            {
+                nom: "Onde gravitationnelle",
+                description: "Propulse une onde en forme de cône devant le lanceur, perturbant l'énergie gravitationnelle à une portée de 50 mètres. Les objets et individus touchés sont déséquilibrés et désorientés.",
+                cout: 2
+            },
+            {
+                nom: "Prison de Newton",
+                description: "Dans une sphère fixe d'un rayon de 10 mètres autour du lanceur, la gravité terrestre se retrouve démultipliée. Les individus (autres que le lanceur) doivent faire un jet de Force + Vigueur pour ne pas s'écraser au sol, et tout déplacement est extrêmement laborieux.",
+                duree: "5 minutes",
+                cout: 2
+            },
+            {
+                nom: "Mise en orbite",
+                description: "Crée un bouclier de forces gravitationnelles autour du lanceur, qui va détourner les projectiles le prenant pour cible afin de leur faire décrire une trajectoire orbitale autour de lui.",
+                duree: "15 minutes",
+                cout: 3
+            },
+            {
+                nom: "Trou noir",
+                description: "Le lanceur concentre une intense force gravitationnelle en un point devant lui, attirant tout ce qui se trouve dans un rayon de 100 mètres (sauf le lanceur lui-même)",
+                duree: "5 minutes",
+                cout: 4
+            }
+        ]
+    },
     "Nécromancie": {
         nom: "Nécromancie",
         description: "La Nécromancie, discipline dont les secrets sont gardés par les Giovanni, permet le contact avec le monde des morts, ainsi que le contrôle des corps défunts qui peuvent être soumis à la volonté du lanceur. Cela nécessite un contact physique avec l’objet de la discipline.",

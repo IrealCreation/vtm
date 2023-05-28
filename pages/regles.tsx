@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -27,9 +28,8 @@ export default function PageRegles() {
                 <p>Après chaque mission ou aventure, un personnage gagne de l'expérience. Avoir accompli des objectifs annexes au cours de celle-ci, ou être parvenu à ses fins avec brio, peut donner lieu à de l'expérience supplémentaire. Le gain d'expérience est généralement égal entre chaque membre du groupe, mais il peut arriver qu'un personnage s'étant particulièrement démarqué gagne des points bonus.</p>
                 <p>Tous les 10 points d'expérience, le personnage gagne un niveau. Le gain de niveau offre les avantages suivants :</p>
                 <ul>
-                    <li>A chaque niveau <em>pair</em> : un point de Talent supplémentaire.</li>
+                    <li>A chaque niveau <em>pair</em> : un point de Talent supplémentaire, et un point de Santé / Volonté / Sang supplémentaire (au choix).</li>
                     <li>A chaque niveau <em>impair</em> : un point de Discipline supplémentaire.</li>
-                    <li>A chaque niveau <em>multiple de 3</em> : un point de Santé / Volonté / Sang supplémentaire (au choix).</li>
                 </ul>
 
                 <h2>Soif</h2>
@@ -38,7 +38,7 @@ export default function PageRegles() {
                 <p>Plus la réserve de sang d'un vampire sera faible, plus il sera sujet à la Soif. Celle-ci se matérialise, à chaque lancer de dés, par un ou plusieurs dés de Soif qui viennent se substituer aux dés normaux. Leur fonctionnement est inchangé, sauf si les dés en question tombent sur 1 : cela signifie que la Soif s'éveille.</p>
                 <p>Sur un éveil de la Soif, des conséquences fâcheuses liées à vos pulsions viennent s'ajouter à votre action : vous ouvrez le crâne de l'homme que vous vouliez assomer discrètement, vous mordez avec un peu trop d'entrain la personne que vous tentiez de séduire, vous décidez que le livre que vous déchiffrez ne doit tomber en aucune autre mains que les votres et le réduisez en miettes...</p>
                 <p>Sur deux éveils de la Soif dans un même jet de dés, votre personnage devra en plus faire un jet de résistance à la Frénésie pour ne pas succomber à sa Bête intérieure.</p>
-                <p>Un dé d'éveil de la Soif peut être ignoré en dépensant un Point de Volonté.</p>
+                <p>Le résultat d'un dé d'éveil de la Soif peut être ignoré en dépensant un Point de Volonté.</p>
 
                 <h2>Chasse</h2>
                 <p>S'abreuver de sang humain ou animal est la seule manière d'assouvir sa Soif et de régénérer sa réserve de sang. Néanmoins, cela doit être fait avec une certaine prudence afin de ne pas éveiller la méfiance des humains et de préserver la Mascarade...</p>

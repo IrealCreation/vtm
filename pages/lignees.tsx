@@ -2,6 +2,7 @@ import Head from "next/head";
 import Link from "next/link";
 import LigneeInfo from "@/components/ligneeInfo";
 import { lignees } from "@/data/lignees";
+import Navbar from "@/components/navbar";
 
 export default function PageLignees() {
     /* Preparing the JSX for Disciplines */

@@ -35,7 +35,7 @@ export default function Connexion(props: {id?: string}) {
             setMessage("Connexion réussie !");
             let jsonData = await response.json();
             console.log(jsonData);
-            // TODO: redirect
+            // TODO: persist id & redirect
         }
         else {
             setMessage("Échec de l'inscription");

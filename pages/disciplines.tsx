@@ -3,6 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from 'next/router';
 import { disciplines } from "@/data/disciplines";
+import Navbar from "@/components/navbar";
 
 export default function PageDisciplines() {
 

@@ -14,8 +14,8 @@ export default function Home() {
               <Link href="/fiche" className="btn-lg">Fiche personnage (exemple)</Link>
               <Link href="/lignees" className="btn-lg">Lignées</Link>
               <Link href="/disciplines" className="btn-lg">Disciplines</Link>
+              <Link href="/regles" className="btn-lg">Règles</Link>
             </section>
-            <Navbar/>
         </>
         
     )
