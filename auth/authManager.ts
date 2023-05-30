@@ -1,28 +1,23 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { serialize } from "cookie";
+import cookie, { CookieSerializeOptions } from "cookie";
 import jwt from "jsonwebtoken";
 
 // BUG : les options semblent ignorer lors de la création du cookie (voir sans doute ligne 17)
-const cookieOptions = {
+const cookieOptions: CookieSerializeOptions = {
     httpOnly: true,
     maxAge: 2592000,
     path: "/",
-    sameSite: "Strict",
+    sameSite: "strict",
     secure: process.env.NODE_ENV === "production",
 };
-
-// Source : https://blog.finiam.com/blog/authenticating-things-with-cookies-on-next-js
-function setCookie(res: any, name: string, value: string, options: Record<string, unknown> = {}): void {
-    const stringValue = (typeof value === "object" ? `j:${JSON.stringify(value)}` : String(value));
-    res.setHeader("Set-Cookie", serialize(name, stringValue + String(options)));
-}
 
 export function createAccessToken(id: number, res: NextApiResponse) {
     if (typeof process.env.ACCESS_TOKEN_SECRET === "string") {
         // On crée un token en fonction de l'id de l'utilisateur
         const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1 hours" });
         // Stockons ce token dans un cookie
-        setCookie(res, "auth", token, cookieOptions);
+        res.setHeader('Set-Cookie', cookie.serialize("auth", "token", cookieOptions));
+        // La méthode cookies() native de next est encore expérimentale https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
     }
     else {
         throw new Error("Undefined ACCESS_TOKEN_SECRET environment variable");
