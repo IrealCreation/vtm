@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
-import TextField from "./fields/textfield"
+import TextField from "./fields/textfield";
+import { useJoueurId } from "@/hooks/useJoueurId";
 
 export default function Connexion(props: {id?: string}) {
+    const [id, setId] = useJoueurId();
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -36,7 +38,8 @@ export default function Connexion(props: {id?: string}) {
             let jsonData = await response.json();
 
             // Store the user informations in the localStorage
-            localStorage.setItem("id", jsonData.joueur.id)
+            // localStorage.setItem("id", jsonData.joueur.id);
+            setId(jsonData.joueur.id);
         }
         else {
             setMessage("Échec de la connexion");

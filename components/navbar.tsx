@@ -1,15 +1,20 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+import { useJoueurId } from "@/hooks/useJoueurId";
 
 export default function Navbar() {
+    const [id, setId] = useJoueurId();
+    const isLogged = id != "";
+    // console.log("id : " + id);
+    // console.log("isLogged : " + isLogged);
 
-    useEffect(() => {
-        const [id, setId] = useLocalStorage<string>("id", "")
-        const isLogged = localStorage.getItem("id") != "";
-        console.log("isLogged : " + isLogged);
-    }, [])
-      
+    let jsxConnexion:JSX.Element;
+    if(isLogged) {
+        jsxConnexion = <li><Link href="#">Profil</Link></li>
+    }
+    else {
+        jsxConnexion = <li><Link href="/connexion">Connexion</Link></li>
+    }
 
     return(
         <nav className="main-navbar">
@@ -19,7 +24,7 @@ export default function Navbar() {
                 <li><Link href="/lignees">Lignées</Link></li>
                 <li><Link href="/disciplines">Disciplines</Link></li>
                 <li><Link href="/regles">Règles</Link></li>
-                <li><Link href="/connexion">Connexion</Link></li>
+                {jsxConnexion}
             </ul>
         </nav>
     );
