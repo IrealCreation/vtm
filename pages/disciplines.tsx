@@ -9,10 +9,7 @@ export default function PageDisciplines() {
 
     const router = useRouter();
    
-    console.log(router.query);
     const queryNom = router.query.nom;
-    // const url = new URL(router.basePath);
-    // console.log(url.hash);
 
     /* Preparing the JSX for Disciplines */
     const jsxDisciplines: Array<JSX.Element> = [];

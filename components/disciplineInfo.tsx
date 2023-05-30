@@ -39,7 +39,6 @@ export default function DisciplineInfo(props: {discipline: Discipline, isVisible
 
     const handleClick = () => {
         setVisibility(!isVisible);
-        console.log(isVisible);
     }
 
     const arrow:JSX.Element = (

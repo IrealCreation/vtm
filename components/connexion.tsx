@@ -34,14 +34,19 @@ export default function Connexion(props: {id?: string}) {
         if(response.ok) {
             setMessage("Connexion réussie !");
             let jsonData = await response.json();
-            console.log(jsonData);
-            // TODO: persist id & redirect
+
+            // Store the user informations in the localStorage
+            localStorage.setItem("id", jsonData.joueur.id)
         }
         else {
             setMessage("Échec de la connexion");
             let jsonData = await response.json();
-            console.log(jsonData);
-            // setMessage(jsonData.error);
+            try {
+                setMessage(jsonData.error);
+            }
+            catch {
+                console.log(jsonData);
+            }
         }
     }
 

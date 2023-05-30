@@ -1,6 +1,16 @@
 import Link from "next/link";
+import { useState, useEffect } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 export default function Navbar() {
+
+    useEffect(() => {
+        const [id, setId] = useLocalStorage<string>("id", "")
+        const isLogged = localStorage.getItem("id") != "";
+        console.log("isLogged : " + isLogged);
+    }, [])
+      
+
     return(
         <nav className="main-navbar">
             <ul>
