@@ -14,10 +14,10 @@ const cookieOptions: CookieSerializeOptions = {
 export function createAccessToken(id: number, res: NextApiResponse) {
     if (typeof process.env.ACCESS_TOKEN_SECRET === "string") {
         // On crée un token en fonction de l'id de l'utilisateur
-        const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1 hours" });
+        const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "12 hours" });
         // Stockons ce token dans un cookie
         res.setHeader('Set-Cookie', cookie.serialize("auth", "token", cookieOptions));
-        // La méthode cookies() native de next est encore expérimentale https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
+        // La méthode cookies() native de next est encore expérimentale : https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
     }
     else {
         throw new Error("Undefined ACCESS_TOKEN_SECRET environment variable");
