@@ -11,55 +11,67 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   async function upsertPerso() {
 
-    if (req.method === 'POST' || req.method === 'PUT') {
-
-      const id = req.body.id;
-      let idNumber;
-
-      if(typeof id === "string")
-        idNumber = parseInt(id);
-      else
-        idNumber = id;
-
-      if(typeof idNumber === "number") {
-
-        const perso = await prisma.perso.upsert({
-          where: {
-            id: id,
-          },
-          update: {
-            fiche: JSON.stringify(req.body.character)
-          },
-          create: {
-            id: id,
-            fiche: JSON.stringify(req.body.character),
-            joueur_id: joueurId
-          },
-        }).then((value) => {
-          res.status(200).json(value);
-        }).catch((error) => {
-          console.log(error);
-          res.status(400).json({error: error});
-        });
-        
-      }
-      else {
-        res.status(400).json({error: "ID incorrect:" + typeof idNumber});
-      }
-    }
-    else {
-      // await prisma.$disconnect();
-      res.status(405).json({});
-    }
-  
+    const perso = await prisma.perso.upsert({
+      where: {
+        id: joueurId,
+      },
+      update: {
+        fiche: JSON.stringify(req.body.character)
+      },
+      create: {
+        id: joueurId,
+        fiche: JSON.stringify(req.body.character),
+        joueur_id: joueurId
+      },
+    }).then((value) => {
+      res.status(200).json(value);
+    }).catch((error) => {
+      console.log(error);
+      res.status(400).json({error: error});
+    });
+    
   }
 
-  upsertPerso().then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  });
+  async function findPerso() {
+      try {
+        const perso = await prisma.perso.findUniqueOrThrow({
+          where: {
+            id: joueurId
+          },
+        });
+
+        if(perso.joueur_id != joueurId) {
+          res.status(403).json({error: "Vous n'avez pas le droit d'accéder à ce personnage"});
+        }
+        res.status(200).json(perso);
+      }
+      catch(error) {
+        console.log(error);
+        res.status(400).json({error: error});
+      }
+  }
+
+  if(req.method === "GET") {
+    findPerso().then(async () => {
+      await prisma.$disconnect()
+    })
+    .catch(async (e) => {
+      console.error(e)
+      await prisma.$disconnect()
+      process.exit(1)
+    });
+  }
+  else if (req.method === 'POST' || req.method === 'PUT') {
+    upsertPerso().then(async () => {
+      await prisma.$disconnect()
+    })
+    .catch(async (e) => {
+      console.error(e)
+      await prisma.$disconnect()
+      process.exit(1)
+    });
+  }
+  else {
+    res.status(405).json({});
+  }
 }

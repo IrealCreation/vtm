@@ -16,15 +16,14 @@ import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
 import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
 import { Character } from "@/interfaces/character"
 
-export default function FichePerso(props: {id?: string}) {
+export default function FichePerso(props: {isLogged?: boolean}) {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character)
     const dispatch = useDispatch()
     
     useEffect(() => {
-        if(props.id != null) {
+        if(props.isLogged) {
             getCharacter();
         }
-        console.log(props.id);
         dispatch(computeEtat());
     }, [])
 
@@ -85,7 +84,6 @@ export default function FichePerso(props: {id?: string}) {
         const response = await fetch("/api/perso", {
             method: "POST",
             body: JSON.stringify({
-                id: 1,
                 character: character,
             }),
             headers: {
@@ -102,7 +100,7 @@ export default function FichePerso(props: {id?: string}) {
     }
 
     const getCharacter = async () => {
-        const url = "/api/perso/" + props.id;
+        const url = "/api/perso";
         const response = await fetch(url, {
             method: "GET"
         });
@@ -218,7 +216,7 @@ export default function FichePerso(props: {id?: string}) {
         )
     }
 
-    const jsxSave: JSX.Element = (props.id != null ? 
+    const jsxSave: JSX.Element = (props.isLogged ? 
         (<button id="save" className="btn-md" onClick={save}>Sauvegarder</button>) :
         <></>
     );

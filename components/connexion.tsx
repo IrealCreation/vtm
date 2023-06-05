@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Link from "next/link";
 import TextField from "./fields/textfield";
-import { useJoueurId } from "@/hooks/useJoueurId";
+import { useIsLogged } from "@/hooks/useIsLogged";
 
 export default function Connexion(props: {id?: string}) {
-    const [id, setId] = useJoueurId();
+    const [isLogged, setIsLogged] = useIsLogged();
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -21,7 +21,6 @@ export default function Connexion(props: {id?: string}) {
     }
 
     const send = async () => {
-        console.log("sendCharacter");
         const response = await fetch("/api/joueur/connexion", {
             method: "POST",
             body: JSON.stringify({
@@ -32,14 +31,12 @@ export default function Connexion(props: {id?: string}) {
                 "content-type": "application/json",
             },
         });
-        console.log(response);
         if(response.ok) {
             setMessage("Connexion réussie !");
             let jsonData = await response.json();
 
             // Store the user informations in the localStorage
-            // localStorage.setItem("id", jsonData.joueur.id);
-            setId(jsonData.joueur.id);
+            setIsLogged(true);
         }
         else {
             setMessage("Échec de la connexion");

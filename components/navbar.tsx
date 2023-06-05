@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { useJoueurId } from "@/hooks/useJoueurId";
+import { useIsLogged } from "@/hooks/useIsLogged";
 
 export default function Navbar() {
     // const isLogged = id != "";
     // console.log("id : " + id);
     // console.log("isLogged : " + isLogged);
 
-    const [joueurId, setJoueurId] = useJoueurId();
+    const [isLogged, setIsLogged] = useIsLogged();
 
     let jsxConnexion:JSX.Element;
-    if(joueurId != "") {
+    if(isLogged) {
         jsxConnexion = <li><Link href="#">Profil</Link></li>
         // jsxConnexion = <li><Link href="/connexion">Connexion</Link></li>
     }

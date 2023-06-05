@@ -1,27 +1,27 @@
 import FichePerso from "@/components/fichePerso";
 import Navbar from "@/components/navbar";
 import Head from "next/head";
-import { useJoueurId } from "@/hooks/useJoueurId";
+import { useIsLogged } from "@/hooks/useIsLogged";
 
 export default function Fiche() {
 
-    const [joueurId, setJoueurId] = useJoueurId();
-    console.log(joueurId);
+    const [isLogged, setIsLogged] = useIsLogged();
+    console.log(isLogged);
 
-    let jsxFiche: JSX.Element = <></>;
-    if(joueurId != null && joueurId != "") {
-        jsxFiche = <FichePerso id={joueurId} />
-    }
-    else {
-        jsxFiche = <FichePerso />
-    }
+    // let jsxFiche: JSX.Element = <></>;
+    // if(isLogged) {
+    //     jsxFiche = 
+    // }
+    // else {
+    //     jsxFiche = <FichePerso />
+    // }
 
     return(
         <>
             <Head>
                 <title key="title">VTM - Fiche de personnage</title>
             </Head>
-            {jsxFiche}
+            <FichePerso isLogged={isLogged} />
             <Navbar/>
         </> 
     )

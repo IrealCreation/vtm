@@ -4,6 +4,8 @@ import { verifyAccessToken } from '@/auth/authManager';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
+  // TODO : reserve this api for admin
+
   const joueurId = parseInt(verifyAccessToken(req, res));
 
   const prisma = new PrismaClient();
@@ -20,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         try {
           const perso = await prisma.perso.findUniqueOrThrow({
             where: {
-              joueur_id: joueurId
+              joueur_id: idPerso
             },
           });
 
