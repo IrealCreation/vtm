@@ -5,12 +5,15 @@ import { useRouter } from 'next/navigation';
 import { useIsLogged } from "@/hooks/useIsLogged";
 
 export default function Profil(props: {id?: string}) {
-    const [id, setId] = useIsLogged();
-    
+    const [isLogged, setIsLogged] = useIsLogged();
     const { push } = useRouter();
 
+    if(!isLogged) {
+        push('/connexion');
+    }
+
     useEffect(() => {
-        
+        // TODO : récupérer les infos du profil depuis l'API
     }, [])
 
     async function logout() {
@@ -19,7 +22,7 @@ export default function Profil(props: {id?: string}) {
         });
         console.log(response);
         if(response.ok) {
-            push('/');
+            setIsLogged(false);
         }
     }
 
@@ -27,7 +30,7 @@ export default function Profil(props: {id?: string}) {
         <section className="main-container">
             <div className="title-bloc">
                 <div className="title-line"></div>
-                <h1>Profil</h1>
+                <h1>Profil de joueur</h1>
                 <div className="title-line"></div>
             </div>
 

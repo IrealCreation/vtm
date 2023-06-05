@@ -11,7 +11,7 @@ export default function Navbar() {
 
     let jsxConnexion:JSX.Element;
     if(isLogged) {
-        jsxConnexion = <li><Link href="#">Profil</Link></li>
+        jsxConnexion = <li><Link href="/profil">Profil</Link></li>
         // jsxConnexion = <li><Link href="/connexion">Connexion</Link></li>
     }
     else {

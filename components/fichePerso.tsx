@@ -16,13 +16,18 @@ import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
 import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
 import { Character } from "@/interfaces/character"
 
-export default function FichePerso(props: {isLogged?: boolean}) {
+export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character)
     const dispatch = useDispatch()
     
     useEffect(() => {
         if(props.isLogged) {
-            getCharacter();
+            if(props.id != null) {
+                getCharacter(props.id);
+            }
+            else {
+                getCharacter();
+            }
         }
         dispatch(computeEtat());
     }, [])
@@ -99,8 +104,15 @@ export default function FichePerso(props: {isLogged?: boolean}) {
         }
     }
 
-    const getCharacter = async () => {
-        const url = "/api/perso";
+    const getCharacter = async (id?: number) => {
+        let url: string;
+        if(id != null) {
+            url = "/api/perso/" + id;
+        }
+        else {
+            url = "/api/perso";
+        }
+        
         const response = await fetch(url, {
             method: "GET"
         });

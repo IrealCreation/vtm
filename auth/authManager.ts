@@ -24,6 +24,10 @@ export function createAccessToken(id: number, res: NextApiResponse) {
     }
 };
 
+export function deleteAccessToken(res: NextApiResponse) {
+    res.setHeader('Set-Cookie', cookie.serialize("auth", "", cookieOptions));
+}
+
 export function verifyAccessToken(req: NextApiRequest, res: NextApiResponse): string {
 
     // Récupération du token dans les cookies
