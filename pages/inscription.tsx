@@ -9,6 +9,7 @@ export default function Example() {
                 <title key="title">VTM - Inscription</title>
             </Head>
             <Inscription />
+            <Navbar/>
         </>
     )
 }

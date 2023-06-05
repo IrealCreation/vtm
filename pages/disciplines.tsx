@@ -37,6 +37,7 @@ export default function PageDisciplines() {
                 <p>L&apos;utilisation d&apos;une discipline n&apos;est pas gratuite : elle va puiser dans la réserve de <em>sang</em> (Points de Sang, ou &quot;PS&quot;) de son lanceur. Cette réserve se reconstitue en se nourissant sur des humains ou des animaux, mais attention : une réserve de sang faible fera encourir le risque de succomber à la <em>Frénésie</em>, cet état où la Bête intérieure du vampire prend le pas sur son esprit rationnel.</p>
                 {jsxDisciplines}
             </section>
+            <Navbar/>
         </>
         
     )

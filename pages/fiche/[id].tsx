@@ -1,11 +1,15 @@
 import FichePerso from "@/components/fichePerso";
 import Head from "next/head";
 import { useRouter } from 'next/router';
+import { useJoueurId } from "@/hooks/useJoueurId";
 
-export default function Example() {
+export default function Fiche() {
     const router = useRouter();
 
     const id = router.query.id;
+
+    const [joueurId, setJoueurId] = useJoueurId();
+    console.log(joueurId);
     
     let jsxFiche: JSX.Element = <></>;
     if(typeof(id) == "string") {

@@ -30,6 +30,7 @@ export default function PageLignees() {
                 <p>Chaque lignée dispose de ses propres spécificités et de ses propres <Link href="/disciplines">disciplines</Link> (capacités surnaturelles à sa disposition). Elles ont également leurs propres traditions internes et leurs propres habitudes transmises de sire à infant. Cependant, le caractère d&apos;un caïnite ne se définit pas uniquement par sa lignée, et il faut se garder de tout stéréotype hâtif.</p>
                 {jsxLignees}
             </section>
+            <Navbar/>
         </>
         
     )

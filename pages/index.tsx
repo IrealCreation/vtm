@@ -16,6 +16,7 @@ export default function Home() {
               <Link href="/disciplines" className="btn-lg">Disciplines</Link>
               <Link href="/regles" className="btn-lg">Règles de jeu</Link>
             </section>
+            <Navbar/>
         </>
         
     )

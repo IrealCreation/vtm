@@ -9,6 +9,7 @@ export default function Example() {
                 <title key="title">VTM - Fiche de personnage</title>
             </Head>
             <FichePerso />
+            <Navbar/>
         </>
         
     )

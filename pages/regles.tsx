@@ -53,6 +53,7 @@ export default function PageRegles() {
                 <p>En état de Frénésie, le joueur perd partiellement le contrôle de son personnage qui se retrouve guider par ses pulsions bestiales : il risque d&apos;attaquer (y compris ses alliés) s&apos;il est assoiffé, s&apos;enfuir s&apos;il est en danger... Cet état dure un temps variable, mais jamais plus d&apos;une nuit.</p>
                 <p>L&apos;Humanité évolue en fonction des actions du joueur. Boire jusqu&apos;à la mort ou commettre des actions contraires à ses valeurs humaines risque de la faire diminuer. Au contraire, se mettre au service de ses principes moraux peut la faire augmenter. Il est cependant bien plus aisé de perdre de l&apos;Humanité que d&apos;en gagner...</p>
             </section>
+            <Navbar/>
         </>
         
     )
