@@ -10,7 +10,7 @@ const initialState: CharacterSliceState = {
   character: generateCharacter()
 }
 
-function generateCharacter(): Character {
+export function generateCharacter(): Character {
   const character: Character = {
       nom: "",
       niveau: 1,

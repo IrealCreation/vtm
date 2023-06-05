@@ -233,6 +233,11 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         <></>
     );
 
+    const jsxDisclaimer: JSX.Element = (!props.isLogged ? 
+        (<p className="disclaimer">Vous n&apos;êtes pas connecté : cette fiche personnage sert uniquement d&apos;exemple et ne sera pas sauvegardée</p>) :
+        <></>
+    );
+
     return (
         <section className="character-sheet main-container">
             <div className="title-bloc">
@@ -240,6 +245,8 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
                 <h1>Fiche de personnage</h1>
                 <div className="title-line"></div>
             </div>
+
+            {jsxDisclaimer}
             
             <TextField label="Nom" value={character.nom} onUpdate={updateNom} />
             <TextField label="Activité" value={character.activite} onUpdate={updateActivite} />

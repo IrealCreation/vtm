@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Prisma, PrismaClient } from '@prisma/client'
 import bcrypt from 'bcrypt';
+import { generateCharacter } from '@/redux/store';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -28,6 +29,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
               password: passwordHash,
             },
           });
+
+          // Create an empty character sheet
+          let fiche = JSON.stringify(generateCharacter());
+
+          const perso = await prisma.perso.create({
+            data: {
+              id: joueur.id,
+              fiche: fiche,
+              joueur_id: joueur.id
+            }
+          })
   
           res.status(200).json(joueur);
         }
