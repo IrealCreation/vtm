@@ -7,10 +7,11 @@ import Navbar from "@/components/navbar";
 export default function Fiche() {
     const router = useRouter();
 
-    const id = router.query.id;
+    const queryId = router.query.id;
     
     let jsxFiche: JSX.Element = <></>;
-    if(typeof(id) == "string") {
+    if(typeof(queryId) == "string") {
+        const id = parseInt(queryId);
         console.log("Router query : " + id);
         jsxFiche = <FichePerso id={id} />
     }

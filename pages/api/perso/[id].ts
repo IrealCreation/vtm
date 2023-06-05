@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         try {
           const perso = await prisma.perso.findUniqueOrThrow({
             where: {
-              joueur_id: idPerso
+              id: idPerso
             },
           });
 
