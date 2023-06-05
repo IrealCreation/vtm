@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { Prisma, PrismaClient } from '@prisma/client'
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt'; // Un problème avec bcrypt ? npm rebuild !
 import { generateCharacter } from '@/redux/store';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
