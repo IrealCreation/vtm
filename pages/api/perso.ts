@@ -5,7 +5,6 @@ import { verifyAccessToken } from '@/auth/authManager';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const joueurId = parseInt(verifyAccessToken(req, res));
-  console.log(joueurId);
   
   const prisma = new PrismaClient();
 
