@@ -1,8 +1,10 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { PrismaClient } from '@prisma/client';
+import { verifyAccessToken } from '@/auth/authManager';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
+  const joueurId = parseInt(verifyAccessToken(req, res));
 
   const prisma = new PrismaClient();
 
@@ -13,15 +15,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
       if(typeof id == "string") {
 
-        const idNumber = parseInt(id);
-        console.log(idNumber);
+        const idPerso = parseInt(id);
 
         try {
           const perso = await prisma.perso.findUniqueOrThrow({
             where: {
-              id: idNumber
+              joueur_id: joueurId
             },
           });
+
+          if(perso.joueur_id != joueurId) {
+            res.status(403).json({error: "Vous n'avez pas le droit d'accéder à ce personnage"});
+          }
           res.status(200).json(perso);
         }
         catch(error) {

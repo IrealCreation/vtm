@@ -1,15 +1,13 @@
 import FichePerso from "@/components/fichePerso";
 import Head from "next/head";
 import { useRouter } from 'next/router';
-import { useJoueurId } from "@/hooks/useJoueurId";
+import { redirect } from 'next/navigation';
+import Navbar from "@/components/navbar";
 
 export default function Fiche() {
     const router = useRouter();
 
     const id = router.query.id;
-
-    const [joueurId, setJoueurId] = useJoueurId();
-    console.log(joueurId);
     
     let jsxFiche: JSX.Element = <></>;
     if(typeof(id) == "string") {
@@ -17,7 +15,7 @@ export default function Fiche() {
         jsxFiche = <FichePerso id={id} />
     }
     else {
-        jsxFiche = <FichePerso />
+        redirect("/fiche");
     }
 
     return(
@@ -26,7 +24,7 @@ export default function Fiche() {
                 <title key="title">VTM - Fiche de personnage</title>
             </Head>
             {jsxFiche}
-        </>
-        
+            <Navbar/>
+        </> 
     )
 }

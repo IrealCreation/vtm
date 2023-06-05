@@ -5,6 +5,7 @@ import { verifyAccessToken } from '@/auth/authManager';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
   const joueurId = parseInt(verifyAccessToken(req, res));
+  console.log(joueurId);
   
   const prisma = new PrismaClient();
 
@@ -24,7 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         const perso = await prisma.perso.upsert({
           where: {
-            id: id
+            id: id,
           },
           update: {
             fiche: JSON.stringify(req.body.character)
@@ -37,6 +38,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }).then((value) => {
           res.status(200).json(value);
         }).catch((error) => {
+          console.log(error);
           res.status(400).json({error: error});
         });
         

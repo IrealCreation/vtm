@@ -16,7 +16,7 @@ export function createAccessToken(id: number, res: NextApiResponse) {
         // On crée un token en fonction de l'id de l'utilisateur
         const token = jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "12 hours" });
         // Stockons ce token dans un cookie
-        res.setHeader('Set-Cookie', cookie.serialize("auth", "token", cookieOptions));
+        res.setHeader('Set-Cookie', cookie.serialize("auth", token, cookieOptions));
         // La méthode cookies() native de next est encore expérimentale : https://nextjs.org/docs/app/api-reference/functions/cookies#cookiessetname-value-options
     }
     else {
@@ -52,7 +52,7 @@ export function verifyAccessToken(req: NextApiRequest, res: NextApiResponse): st
     //     process.exit(1);
     // }
     
-    console.log(token);
+    // console.log(token);
 
     // Si l'utilisateur n'a pas de token...
     if (!token) {
@@ -61,17 +61,21 @@ export function verifyAccessToken(req: NextApiRequest, res: NextApiResponse): st
     
     // Sinon, on le vérifie grâce au secret
     if (typeof process.env.ACCESS_TOKEN_SECRET === "string") {
+        let informations:any = 0;
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
             if (err) {
                 res.status(403).send("Token invalide");
                 process.exit(1);
             }
-            return decoded;
+            informations = decoded;
         });
+        
+        if(informations.id != null) {
+            return informations.id;
+        }
+        return informations;
     }
     else {
         throw new Error("Undefined ACCESS_TOKEN_SECRET environment variable");
     }
-
-    throw new Error("Unprocessed verifyAccessToken call");
 }

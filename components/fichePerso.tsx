@@ -24,6 +24,7 @@ export default function FichePerso(props: {id?: string}) {
         if(props.id != null) {
             getCharacter();
         }
+        console.log(props.id);
         dispatch(computeEtat());
     }, [])
 

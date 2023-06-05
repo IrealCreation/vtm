@@ -8,11 +8,11 @@ export default function Navbar() {
     // console.log("isLogged : " + isLogged);
 
     const [joueurId, setJoueurId] = useJoueurId();
-    console.log(joueurId);
 
     let jsxConnexion:JSX.Element;
-    if(joueurId) {
+    if(joueurId != "") {
         jsxConnexion = <li><Link href="#">Profil</Link></li>
+        // jsxConnexion = <li><Link href="/connexion">Connexion</Link></li>
     }
     else {
         jsxConnexion = <li><Link href="/connexion">Connexion</Link></li>
