@@ -30,7 +30,7 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
             }
         }
         dispatch(computeEtat());
-    }, [])
+    }, [props.isLogged, props.id])
 
     const tooltips = {
         experience: "Gain de niveau tous les 10 points d'expérience",
