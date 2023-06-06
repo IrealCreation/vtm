@@ -4,9 +4,10 @@ import TextAreaField from "./fields/textareafield"
 import RadioField from "./fields/radiofield"
 import DisciplineField from "./fields/disciplinefield"
 import SelectField from "./fields/selectfield"
+import Checkmark from "./checkmark"
 import { Tooltip } from 'react-tooltip'
 import { useSelector, useDispatch } from 'react-redux'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 import { attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
 import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
@@ -19,6 +20,7 @@ import { Character } from "@/interfaces/character"
 export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character);
     const dispatch = useDispatch();
+    const [checkmarkVisible, setCheckmarkVisible] = useState<boolean>(false);
     
     useEffect(() => {
         if(props.isLogged) {
@@ -85,7 +87,6 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
     }
 
     const sendCharacter = async () => {
-        console.log("sendCharacter");
         const response = await fetch("/api/perso", {
             method: "POST",
             body: JSON.stringify({
@@ -97,6 +98,8 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         });
         if(response.ok) {
             const jsonData = await response.json();
+            setCheckmarkVisible(true);
+            setTimeout(() => { setCheckmarkVisible(false) }, 2000)
             // console.log(jsonData);
         }
         else {
@@ -321,6 +324,7 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
             </div>
             
             {jsxSave}
+            <Checkmark visible={checkmarkVisible} />
             <Tooltip id="tooltip" place="top" />
         </section>
     )

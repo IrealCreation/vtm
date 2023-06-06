@@ -20,7 +20,6 @@ export default function Inscription(props: {id?: string}) {
     }
 
     const send = async () => {
-        console.log("sendCharacter");
         const response = await fetch("/api/joueur/inscription", {
             method: "POST",
             body: JSON.stringify({

@@ -78,8 +78,23 @@
     
     #save {
         position: fixed;
-        bottom: calc(3vh + 3em);
-        right: 5vw;
+        bottom: calc(3vh + 3rem);
+        right: 4rem;
+    }
+    .checkmark {
+        position: fixed;
+        bottom: calc(3vh + 3.75rem);
+        right: 1.75rem;
+        opacity: 0;
+        font-size: 1.5em;
+
+        &.visible {
+            opacity: 1;
+            transition: opacity linear 0.3s;
+        }
+        &:not(.visible) {
+            transition: opacity linear 3s;
+        }
     }
     
 }

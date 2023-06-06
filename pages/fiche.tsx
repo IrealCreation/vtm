@@ -6,15 +6,6 @@ import { useIsLogged } from "@/hooks/useIsLogged";
 export default function Fiche() {
 
     const [isLogged, setIsLogged] = useIsLogged();
-    console.log(isLogged);
-
-    // let jsxFiche: JSX.Element = <></>;
-    // if(isLogged) {
-    //     jsxFiche = 
-    // }
-    // else {
-    //     jsxFiche = <FichePerso />
-    // }
 
     return(
         <>

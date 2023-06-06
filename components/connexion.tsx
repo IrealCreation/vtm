@@ -2,12 +2,14 @@ import { useState } from "react";
 import Link from "next/link";
 import TextField from "./fields/textfield";
 import { useIsLogged } from "@/hooks/useIsLogged";
+import { useRouter } from 'next/navigation';
 
 export default function Connexion(props: {id?: string}) {
     const [isLogged, setIsLogged] = useIsLogged();
     const [pseudo, setPseudo] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    const { push } = useRouter();
 
     const updatePseudo = (value: string) => {
         setPseudo(value);
@@ -33,10 +35,10 @@ export default function Connexion(props: {id?: string}) {
         });
         if(response.ok) {
             setMessage("Connexion réussie !");
-            let jsonData = await response.json();
 
             // Store the user informations in the localStorage
             setIsLogged(true);
+            push("/fiche");
         }
         else {
             setMessage("Échec de la connexion");

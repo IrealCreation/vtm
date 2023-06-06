@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-import Link from "next/link";
 import TextField from "./fields/textfield"
 import { useRouter } from 'next/navigation';
 import { useIsLogged } from "@/hooks/useIsLogged";
@@ -16,11 +14,13 @@ export default function Profil(props: {pseudo?: string}) {
         const response = await fetch("/api/joueur/deconnexion", {
             method: "POST",
         });
-        console.log(response);
         if(response.ok) {
             dispatch(resetCharacter());
             setIsLogged(false);
             push('/');
+        }
+        else {
+            console.log(response);
         }
     }
 
