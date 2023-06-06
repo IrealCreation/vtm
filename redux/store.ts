@@ -59,7 +59,11 @@ export const characterSlice = createSlice({
 
     setCharacter: (state, action: {payload: Character}) => {
       state.character = action.payload;
-      console.log(state.character);
+      // console.log(state.character);
+    },
+
+    resetCharacter: (state, action: {}) => {
+      state.character = generateCharacter();
     },
 
     setLignee: (state, action: {payload: string}) => {
@@ -140,7 +144,7 @@ export const characterSlice = createSlice({
   },
 })
 
-export const { setCharacter, setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } = characterSlice.actions;
+export const { setCharacter, resetCharacter, setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } = characterSlice.actions;
 
 interface CharacterSliceState {
   character: Character

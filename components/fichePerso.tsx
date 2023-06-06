@@ -17,8 +17,8 @@ import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparen
 import { Character } from "@/interfaces/character"
 
 export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
-    const character = useSelector((state: StoreRootState) => state.characterSlice.character)
-    const dispatch = useDispatch()
+    const character = useSelector((state: StoreRootState) => state.characterSlice.character);
+    const dispatch = useDispatch();
     
     useEffect(() => {
         if(props.isLogged) {
@@ -97,7 +97,7 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         });
         if(response.ok) {
             const jsonData = await response.json();
-            console.log(jsonData);
+            // console.log(jsonData);
         }
         else {
             console.log(response);
@@ -119,7 +119,7 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         if(response.ok) {
             const jsonData = await response.json();
             const fiche = JSON.parse(jsonData.fiche) as Character;
-            console.log(fiche);
+            // console.log(fiche);
             dispatch(setCharacter(fiche));
         }
         else {

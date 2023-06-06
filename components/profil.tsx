@@ -4,9 +4,13 @@ import TextField from "./fields/textfield"
 import { useRouter } from 'next/navigation';
 import { useIsLogged } from "@/hooks/useIsLogged";
 import { Joueur } from "@/interfaces/joueur";
+import { resetCharacter } from "@/redux/store";
+import { useDispatch } from 'react-redux'
 
 export default function Profil(props: {pseudo?: string}) {
     const [isLogged, setIsLogged] = useIsLogged();
+    const { push } = useRouter();
+    const dispatch = useDispatch();
 
     async function logout() {
         const response = await fetch("/api/joueur/deconnexion", {
@@ -14,7 +18,9 @@ export default function Profil(props: {pseudo?: string}) {
         });
         console.log(response);
         if(response.ok) {
+            dispatch(resetCharacter());
             setIsLogged(false);
+            push('/');
         }
     }
 
