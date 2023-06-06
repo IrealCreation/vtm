@@ -45,12 +45,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   }
 
-  findPerso().then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  });
+  findPerso();
+  // .then(async () => {
+  //   await prisma.$disconnect()
+  // })
+  // .catch(async (e) => {
+  //   console.error(e)
+  //   await prisma.$disconnect()
+  //   process.exit(1)
+  // });
 }

@@ -26,14 +26,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   }
 
-  profil().then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  });
+  profil();
+  // .then(async () => {
+  //   await prisma.$disconnect()
+  // })
+  // .catch(async (e) => {
+  //   console.error(e)
+  //   await prisma.$disconnect()
+  //   process.exit(1)
+  // });
 }
 
 

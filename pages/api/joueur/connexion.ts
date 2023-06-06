@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   const prisma = new PrismaClient();
 
-  async function signUp() {
+  async function signIn() {
 
     if(req.method === "POST") {
 
@@ -57,14 +57,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   }
 
-  signUp().then(async () => {
-    await prisma.$disconnect()
-  })
-  .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
-  });
+  signIn();
+  // .then(async () => {
+  //   await prisma.$disconnect()
+  // })
+  // .catch(async (e) => {
+  //   console.error(e)
+  //   await prisma.$disconnect()
+  //   process.exit(1)
+  // });
 }
 
 

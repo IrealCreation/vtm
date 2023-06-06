@@ -51,24 +51,26 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   if(req.method === "GET") {
-    findPerso().then(async () => {
-      await prisma.$disconnect()
-    })
-    .catch(async (e) => {
-      console.error(e)
-      await prisma.$disconnect()
-      process.exit(1)
-    });
+    findPerso();
+    // .then(async () => {
+    //   await prisma.$disconnect()
+    // })
+    // .catch(async (e) => {
+    //   console.error(e)
+    //   await prisma.$disconnect()
+    //   process.exit(1)
+    // });
   }
   else if (req.method === 'POST' || req.method === 'PUT') {
-    upsertPerso().then(async () => {
-      await prisma.$disconnect()
-    })
-    .catch(async (e) => {
-      console.error(e)
-      await prisma.$disconnect()
-      process.exit(1)
-    });
+    upsertPerso();
+    // .then(async () => {
+    //   await prisma.$disconnect()
+    // })
+    // .catch(async (e) => {
+    //   console.error(e)
+    //   await prisma.$disconnect()
+    //   process.exit(1)
+    // });
   }
   else {
     res.status(405).json({});
