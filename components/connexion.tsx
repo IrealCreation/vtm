@@ -35,7 +35,6 @@ export default function Connexion(props: {id?: string}) {
         });
         if(response.ok) {
             setMessage("Connexion réussie !");
-
             // Store the user informations in the localStorage
             setIsLogged(true);
             push("/fiche");
@@ -70,6 +69,7 @@ export default function Connexion(props: {id?: string}) {
                 Envoyer
             </button>
             <p>{message}</p>
+            <p><Link href="/inscription">Cliquez ici pour vous inscrire</Link></p>
         </section>
     )
 }

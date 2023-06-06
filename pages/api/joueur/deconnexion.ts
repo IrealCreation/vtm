@@ -1,14 +1,9 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
-import { deleteAccessToken } from '@/auth/authManager';
+import type { NextApiRequest, NextApiResponse } from 'next';
+import { signOut } from '@/prisma/models/joueur';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
-  async function signOut() {
-    deleteAccessToken(res);
-    res.status(200).json({message: "Déconnexion réussie"});
-  }
-
-  signOut();
+  signOut(req, res);
   
 }
 
