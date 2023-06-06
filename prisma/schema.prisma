@@ -19,6 +19,24 @@ model perso {
   fiche     String @db.MediumText
   joueur_id Int
   joueur    joueur @relation(fields: [joueur_id], references: [id], onDelete: Cascade, map: "perso_joueur")
+  jet       jet[]
 
   @@index([joueur_id], map: "perso_joueur")
+}
+
+model jet {
+  id        Int    @id @default(autoincrement())
+  stat1     String @db.VarChar(50)
+  value1    Int    @db.TinyInt
+  stat2     String @db.VarChar(50)
+  value2    Int    @db.TinyInt
+  bonus     Int    @db.TinyInt
+  success   Int    @db.TinyInt
+  soif      Int    @db.TinyInt
+  eveil     Int    @db.TinyInt
+  json      String @db.Text
+  perso_id  Int
+  perso     perso  @relation(fields: [perso_id], references: [id], onDelete: Cascade, map: "jet_perso")
+
+  @@index([perso_id], map: "jet_perso")
 }
