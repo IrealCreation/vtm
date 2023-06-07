@@ -102,7 +102,7 @@ export const lignees: LigneeListe = {
         disciplines: [
             disciplines["Augure"],
             disciplines["Domination"],
-            disciplines["Thaumaturgie"]
+            disciplines["Gravitas"]
         ]
     },
     "Tzimisce": {
