@@ -71,7 +71,7 @@ export const lignees: LigneeListe = {
         surnom: "Déformés",
         malediction: "La Laideur",
         description: "La malédiction des Nosferatus est celle dont la démonstration est la plus spectaculaire : leur apparence horriblement déformée au moment de l'Étreinte, ils sont contraints de se cacher des humains plus encore que les autres caïnites. Cela fait cependant d'eux d'excellents cambrioleurs, assassins, espions, et (plus récemment) hackers.",
-        regle: "Adeptes de la dissimulation ne pouvant se montrer sans conséquence, les Nosferatu ont un talent bonus au choix parmi : Furtivité, Larcin, Technologie.",
+        regle: "Adeptes de la dissimulation ne pouvant se montrer sans conséquence, les Nosferatu ont un talent bonus au choix parmi : Furtivité, Larcin, Informatique.",
         faction: "Camarilla",
         disciplines: [
             disciplines["Animalisme"],

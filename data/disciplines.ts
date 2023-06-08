@@ -108,7 +108,7 @@ export const disciplines: DisciplineListe = {
         niveaux: [
             {
                 nom: "Sprint des ombres",
-                description: "le lanceur se déplace en une fraction de seconde sur une distance assez longue (égale à 10 mètres * Célérité), lui permettant d’agir dans la foulée en combat.",
+                description: "Le lanceur se déplace en une fraction de seconde sur une distance assez longue (égale à 10 mètres * Célérité), lui permettant d’agir dans la foulée en combat.",
                 cout: 1
             },
             {
@@ -251,7 +251,7 @@ export const disciplines: DisciplineListe = {
             },
             {
                 nom: "Porte-étendard",
-                description: "le lanceur interpelle un autre personnage. Si la cible est alliée, celle-ci se voit remplie d'ardeur (+1 à ses jets). Si la cible est neutre, un élan de sympathie l’encourage à venir défendre le lanceur.",
+                description: "Le lanceur interpelle un autre personnage. Si la cible est alliée, celle-ci se voit remplie d'ardeur (+1 à ses jets). Si la cible est neutre, un élan de sympathie l’encourage à venir défendre le lanceur.",
                 duree: "15 minutes",
                 cout: 2
             },
