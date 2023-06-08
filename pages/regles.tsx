@@ -30,6 +30,7 @@ export default function PageRegles() {
                 <ul>
                     <li>A chaque niveau <em>pair</em> : un point de Talent supplémentaire, et un point de Santé / Volonté / Sang supplémentaire (au choix).</li>
                     <li>A chaque niveau <em>impair</em> : un point de Discipline supplémentaire.</li>
+                    <li>Aux niveaux <em>6, 12, 18</em> : un point d&apos;Attribut supplémentaire (mais pas de Santé / Volonté / Sang).</li>
                 </ul>
 
                 <h2>Soif</h2>
