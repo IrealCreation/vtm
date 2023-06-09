@@ -48,18 +48,18 @@ function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: 
 
     let nbDes = value1 + value2 + bonus;
     let des: Array<number> = [];
-    let success = 0;
+    let reussites = 0;
     let soif = calculSoif(character);
-    let eveil = 0;
+    let compulsions = 0;
 
     for (let index = 0; index < nbDes; index++) {
         let random = Math.floor(Math.random() * 10 + 1);
         if(random > 5) {
-            success ++;
+            reussites ++;
         }
 
         if(index < soif && random == 1) {
-            eveil ++;
+            compulsions ++;
         }
 
         des.push(random);
@@ -72,9 +72,10 @@ function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: 
         value2: value2,
         bonus: bonus,
         des: des,
-        success: success,
+        reussites: reussites,
         soif: soif,
-        eveil: eveil, 
+        compulsions: compulsions, 
+        timestamp: Date.now()
     }
 
     return jet;

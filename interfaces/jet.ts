@@ -5,10 +5,11 @@ export interface Jet {
     stat2: string,
     value2: number,
     bonus?: number,
-    success?: number,
+    reussites?: number,
     soif?: number,
-    eveil?: number,
+    compulsions?: number,
     des?: Array<number>,
     des_json?: string,
+    timestamp?: number,
     perso_id?: number
 }

@@ -31,6 +31,60 @@
         }
     }
 
+    .historique-jets {
+        border: 2px solid rgb(49, 49, 49);
+        border-radius: 10px;
+        width: 100%;
+
+        .jet-detail {
+            text-align: left;
+            border-bottom: 2px solid rgb(49, 49, 49);
+            padding: 0.25em 1em;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .date {
+                opacity: 0.8;
+                display: inline-block;
+                padding-top: 0.1em;
+                font-size: 0.9em;
+                width: 10em;
+            }
+
+            .stats {
+                display: inline-block;
+                margin-right: 2em;
+                min-width: 16em;
+            }
+
+            .de {
+                display: inline-block;
+                margin: 0 0.25em;
+                padding: 0.1em 0.2em;
+                font-weight: bold;
+                vertical-align: bottom;
+                background-color: rgba(49, 49, 49, 0.4);
+                border-radius: 33%;
+
+                &.reussite {
+                    color: green;
+                }
+                &.soif {
+                    background-color: #4d0707;
+                    &.compulsion {
+                        color: rgb(204, 10, 10);
+                    }
+                }
+            }
+
+            .effet-soif {
+                color: rgb(204, 10, 10);
+            }
+        }
+    }
+
     .recapitulatif {
         position: fixed;
         bottom: 2.66em;

@@ -4,6 +4,7 @@ import { Jet } from "@/interfaces/jet";
 import { Character } from "@/interfaces/character";
 import DesButton from "./desButton";
 import NumberField from "./fields/numberfield";
+import JetDetail from "./jetDetail";
 import { generateCharacter } from "@/redux/store";
 
 export default function DesJet(props: {isLogged: boolean, id?:number}) {
@@ -15,6 +16,7 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
     const [value1, setValue1] = useState<number>(0);
     const [value2, setValue2] = useState<number>(0);
     const [bonus, setBonus] = useState<number>(0);
+    const [jets, setJets] = useState<Array<Jet>>([]);
 
     useEffect(() => {
         if(props.isLogged) {
@@ -66,9 +68,12 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
         });
         if(response.ok) {
             const jsonData = await response.json();
-            console.log(jsonData);
             const jet = jsonData.jet as Jet;
             console.log(jet);
+            setJets([
+                jet,
+                ...jets
+            ]);
         }
         else {
             console.log(response);
@@ -147,6 +152,12 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
     return (
         <div>
             {jsxStats}
+            <h2>Historique des jets</h2>
+            <div className="historique-jets">
+                {jets.map((jet:Jet) => (
+                    <JetDetail jet={jet} />
+                ))}
+            </div>
             <div className="recapitulatif columns">
                 <div>
                     <p>{stat1} {stat1 != "" ? ":" : ""} {stat1 != "" ? value1 : ""}</p>
@@ -157,7 +168,7 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
                     <p>Soif : X</p>
                 </div>
                 <div>
-                    <NumberField min={-5} max={5} label="Bonus :" value={bonus} onUpdate={(value) => { setBonus(value) }} />
+                    <NumberField min={-10} max={10} label="Bonus :" value={bonus} onUpdate={(value) => { setBonus(value) }} />
                 </div>
                 <div>
                     <button id="envoyer" className="btn-md" onClick={faireJet}>
