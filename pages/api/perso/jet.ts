@@ -25,36 +25,12 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         let stat1 = req.body.stat1;
         let stat2 = req.body.stat2;
-
-        let value1 = statNiveau(character, stat1);
-        let value2 = statNiveau(character, stat2);
-
-        let nbDes = value1 + value2;
-        let des: Array<number> = [];
-        let success = 0;
-        let soif = calculSoif(character);
-        let eveil = 0;
-
-        for (let index = 0; index < nbDes; index++) {
-            let random = Math.floor(Math.random() * 10 + 1);
-            if(random > 5) {
-                success ++;
-            }
-
-            if(index < soif && random == 1) {
-                eveil ++;
-            }
-
-            des.push(random);
+        let bonus = 0;
+        if(typeof(req.body.bonus) == "number") {
+            bonus = req.body.bonus;
         }
 
-        const jet: Jet = {
-            stat1: stat1,
-            stat2: stat2,
-            value1: value1, 
-            value2: value2,
-            des: des
-        }
+        const jet = lanceLesDes(character, stat1, stat2, bonus);
 
         res.status(200).json({jet: jet});
     }
@@ -63,6 +39,44 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
     
   });
+}
+
+function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: number): Jet {
+    let value1 = statNiveau(character, stat1);
+    let value2 = statNiveau(character, stat2);
+
+    let nbDes = value1 + value2 + bonus;
+    let des: Array<number> = [];
+    let success = 0;
+    let soif = calculSoif(character);
+    let eveil = 0;
+
+    for (let index = 0; index < nbDes; index++) {
+        let random = Math.floor(Math.random() * 10 + 1);
+        if(random > 5) {
+            success ++;
+        }
+
+        if(index < soif && random == 1) {
+            eveil ++;
+        }
+
+        des.push(random);
+    }
+
+    const jet: Jet = {
+        stat1: stat1,
+        stat2: stat2,
+        value1: value1, 
+        value2: value2,
+        bonus: bonus,
+        des: des,
+        success: success,
+        soif: soif,
+        eveil: eveil, 
+    }
+
+    return jet;
 }
 
 function statNiveau(character:Character, statName: string): number {
@@ -90,7 +104,7 @@ function calculSoif(character: Character): number {
     let sang = character.sang;
     let sangMax = character.sangMax;
 
-    while(sangMax > sang) {
+    while(sangMax >= sang) {
         // Un point de soif tous les 3 PS manquants
         soif ++;
         sangMax -= 3;
