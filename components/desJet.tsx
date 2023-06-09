@@ -155,7 +155,7 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
             <h2>Historique des jets</h2>
             <div className="historique-jets">
                 {jets.map((jet:Jet) => (
-                    <JetDetail jet={jet} />
+                    <JetDetail key={jet.id != null ? jet.id : JSON.stringify(jet)} jet={jet} />
                 ))}
             </div>
             <div className="recapitulatif columns">
