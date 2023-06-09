@@ -2,20 +2,19 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Jet } from "@/interfaces/jet";
 import { Character } from "@/interfaces/character";
-import { attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
-import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import DesButton from "./desButton";
+import NumberField from "./fields/numberfield";
 import { generateCharacter } from "@/redux/store";
 
 export default function DesJet(props: {isLogged: boolean, id?:number}) {
 
     const [character, setCharacter] = useState<Character>(generateCharacter());
     const [loaded, setLoaded] = useState<boolean>(false);
-
     const [stat1, setStat1] = useState<string>("");
     const [stat2, setStat2] = useState<string>("");
     const [value1, setValue1] = useState<number>(0);
     const [value2, setValue2] = useState<number>(0);
+    const [bonus, setBonus] = useState<number>(0);
 
     useEffect(() => {
         if(props.isLogged) {
@@ -57,8 +56,9 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
         const response = await fetch(url, {
             method: "POST",
             body: JSON.stringify({
-                stat1: "Domination",
-                stat2: "Psychologie"
+                stat1: stat1,
+                stat2: stat2,
+                bonus: bonus
             }),
             headers: {
                 "content-type": "application/json",
@@ -103,11 +103,26 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
     }
     else {
         const jsxStatsAttributs: Array<JSX.Element> = [];
-
         for (const [name, characterAttribut] of Object.entries(character.attributs)) {
             let active = (stat1 == characterAttribut.attribut.nom || stat2 == characterAttribut.attribut.nom ? true : false)
             jsxStatsAttributs.push(
                 <DesButton stat={characterAttribut.attribut.nom} value={characterAttribut.niveau} onClick={choixStat} active={active} />
+            );
+        }
+
+        const jsxStatsTalents: Array<JSX.Element> = [];
+        for (const [name, characterTalent] of Object.entries(character.talents)) {
+            let active = (stat1 == characterTalent.talent.nom || stat2 == characterTalent.talent.nom ? true : false)
+            jsxStatsTalents.push(
+                <DesButton stat={characterTalent.talent.nom} value={characterTalent.niveau} onClick={choixStat} active={active} />
+            );
+        }
+
+        const jsxStatsDisciplines: Array<JSX.Element> = [];
+        for (const [name, characterDiscipline] of Object.entries(character.disciplines)) {
+            let active = (stat1 == characterDiscipline.discipline.nom || stat2 == characterDiscipline.discipline.nom ? true : false)
+            jsxStatsDisciplines.push(
+                <DesButton stat={characterDiscipline.discipline.nom} value={characterDiscipline.niveau} onClick={choixStat} active={active} />
             );
         }
 
@@ -117,7 +132,14 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
                 <div className="des-columns">
                     {jsxStatsAttributs}
                 </div>
-                
+                <h2>Talents</h2>
+                <div className="des-columns">
+                    {jsxStatsTalents}
+                </div>
+                <h2>Disciplines</h2>
+                <div className="des-columns">
+                    {jsxStatsDisciplines}
+                </div>
             </>
         )
     }
@@ -125,10 +147,18 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
     return (
         <div>
             {jsxStats}
-            <div className="recapitulatif">
-                <p>{stat1} : {value1}</p>
-                <p>{stat2} : {value2}</p>
-                <p>Dés à lancer : {value1 + value2} (X Soif)</p>
+            <div className="recapitulatif columns">
+                <div>
+                    <p>{stat1} {stat1 != "" ? ":" : ""} {stat1 != "" ? value1 : ""}</p>
+                    <p>{stat2} {stat2 != "" ? ":" : ""} {stat2 != "" ? value2 : ""}</p>
+                </div>
+                <div>
+                    <p>Dés à lancer : {value1 + value2 + bonus}</p>
+                    <p>Soif : X</p>
+                </div>
+                <div>
+                    <NumberField min={-5} max={5} label="Bonus :" value={bonus} onUpdate={(value) => { setBonus(value) }} />
+                </div>
                 <div>
                     <button id="envoyer" className="btn-md" onClick={faireJet}>
                         Lancer les dés

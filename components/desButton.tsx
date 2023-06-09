@@ -7,7 +7,7 @@ export default function DesButton(props: {stat: string, value: number, active: b
 
     return (
         <button className={className} onClick={() => { props.onClick(props.stat, props.value) }}>
-            {props.stat}
+            {props.stat} : {props.value}
         </button>
     )
 }
