@@ -60,3 +60,7 @@ interface CharacterRessource {
     niveau: number;
     detail: string;
 }
+
+export function calculSoif(character: Character): number {
+    return Math.floor((character.sangMax - character.sang) / 3);
+}

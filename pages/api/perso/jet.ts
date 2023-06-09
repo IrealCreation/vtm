@@ -3,6 +3,7 @@ import { verifyAccessToken } from '@/auth/authManager';
 import { findPerso } from '@/prisma/models/perso';
 import { Character } from '@/interfaces/character';
 import { Jet } from '@/interfaces/jet';
+import { calculSoif } from '@/interfaces/character';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -97,18 +98,4 @@ function statNiveau(character:Character, statName: string): number {
     console.log("Stat " + statName + " inconnue dans statNiveau()")
 
     return 0;
-}
-
-function calculSoif(character: Character): number {
-    let soif = -1;
-    let sang = character.sang;
-    let sangMax = character.sangMax;
-
-    while(sangMax >= sang) {
-        // Un point de soif tous les 3 PS manquants
-        soif ++;
-        sangMax -= 3;
-    }
-
-    return soif;
 }
