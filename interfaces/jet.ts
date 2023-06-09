@@ -8,6 +8,7 @@ export interface Jet {
     success?: number,
     soif?: number,
     eveil?: number,
-    json?: string,
+    des?: Array<number>,
+    des_json?: string,
     perso_id?: number
 }
