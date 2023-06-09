@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { verifyAccessToken } from '@/auth/authManager';
 import { findPerso } from '@/prisma/models/perso';
 import { Character } from '@/interfaces/character';
+import { Jet } from '@/interfaces/jet';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
@@ -28,7 +29,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         let value1 = statNiveau(character, stat1);
         let value2 = statNiveau(character, stat2);
 
-        
+        const jet: Jet = {
+            stat1: stat1,
+            stat2: stat2,
+            value1: value1, 
+            value2: value2
+        }
+
+        res.status(200).json({jet: jet});
     }
     catch(error) {
         res.status(406).json({error: "Fiche personnage mal mise en forme"});
