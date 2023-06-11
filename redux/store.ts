@@ -115,6 +115,15 @@ export const characterSlice = createSlice({
     setPersonnalite: (state, action: {payload: string}) => {
       state.character = {...state.character, personnalite: action.payload};
     },
+    setSante: (state, action: {payload: number}) => {
+      state.character = {...state.character, sante: action.payload};
+    },
+    setVolonte: (state, action: {payload: number}) => {
+      state.character = {...state.character, volonte: action.payload};
+    },
+    setSang: (state, action: {payload: number}) => {
+      state.character = {...state.character, sang: action.payload};
+    },
     setTalent: (state, action: {payload: {name: string, value: number}}) => {
       let newTalents = {...state.character.talents};
       newTalents[action.payload.name].niveau = action.payload.value;
@@ -144,7 +153,7 @@ export const characterSlice = createSlice({
   },
 })
 
-export const { setCharacter, resetCharacter, setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } = characterSlice.actions;
+export const { setCharacter, resetCharacter, setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } = characterSlice.actions;
 
 interface CharacterSliceState {
   character: Character

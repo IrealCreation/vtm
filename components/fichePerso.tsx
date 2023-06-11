@@ -14,7 +14,7 @@ import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import { lignees } from "@/data/lignees"
 import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
-import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
+import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
 import { Character } from "@/interfaces/character"
 
 export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
@@ -65,6 +65,15 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
     }
     const updatePersonnalite = (value: string) => {
         dispatch(setPersonnalite(value));
+    }
+    const updateSante = (value: number) => {
+        dispatch(setSante(value));
+    }
+    const updateVolonte = (value: number) => {
+        dispatch(setVolonte(value));
+    }
+    const updateSang = (value: number) => {
+        dispatch(setSang(value));
     }
     const updateAttribut = (name: string, value: number) => {
         dispatch(setAttribut({name: name, value: value}));
@@ -288,15 +297,31 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
             <div className="columns etat">
                 <div>
                     <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sante}>Santé</h3>
-                    <p data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</p>
+                    <p>
+                        {character.sante}&nbsp;/&nbsp;<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</span>
+                    </p>
+                    <p>
+                        <NumberField label="" min={0} max={character.santeMax} value={character.sante} onUpdate={updateSante}/>
+                    </p>
                 </div>
                 <div>
                     <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonte}>Volonté</h3>
-                    <p data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</p>
+                    <p>
+                        {character.volonte}&nbsp;/&nbsp;<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</span>
+                    </p>
+                    <p>
+                        <NumberField label="" min={0} max={character.volonteMax} value={character.volonte} onUpdate={updateVolonte}/>
+                    </p>
                 </div>
                 <div>
                     <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sang}>Sang</h3>
-                    <p>{character.sangMax}</p>
+                    <p>
+                        {character.sang}&nbsp;/&nbsp;<span>{character.sangMax}</span>
+                        
+                    </p>
+                    <p>
+                        <NumberField label="" min={0} max={character.sangMax} value={character.sang} onUpdate={updateSang}/>
+                    </p>
                 </div>
             </div>
             
