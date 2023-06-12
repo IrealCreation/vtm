@@ -14,7 +14,7 @@ export default function TextAreaField(props: {label: string, value?: string, onU
     return (
         <div className='textarea-field field'>
             <label htmlFor={uuid}> {props.label} </label>
-            <textarea id={uuid} defaultValue={props.value} onChange={handleChange}></textarea>
+            <textarea id={uuid} value={props.value} onChange={handleChange}></textarea>
         </div>
     )
 }

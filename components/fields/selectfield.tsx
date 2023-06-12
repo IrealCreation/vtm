@@ -13,7 +13,7 @@ export default function SelectField(props: {label: string, options: Array<string
     return (
         <span className='select-field field' key={props.label}>
             <label htmlFor={uuid}> {props.label} </label>
-            <select id={uuid} defaultValue={(props.value != null ? props.value : "")} onChange={handleChange} >
+            <select id={uuid} value={(props.value != null ? props.value : "")} onChange={handleChange} >
                 <option value="" disabled hidden>Choisir...</option>
                 {props.options.map((value:string, index:number) => {
                     return(<option key={value} value={value}>{value}</option>);

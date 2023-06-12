@@ -22,7 +22,7 @@ export default function TextField(props: {label?: string, value?: string, passwo
     return (
         <span className='text-field field'>
             <label htmlFor={uuid}> {props.label} </label>
-            <input type={type} id={uuid} defaultValue={props.value} onChange={handleChange} />
+            <input type={type} id={uuid} value={props.value} onChange={handleChange} />
         </span>
     )
 }
