@@ -3,30 +3,27 @@ import { useState, useEffect } from "react";
 import { useIsLogged } from "@/hooks/useIsLogged";
 
 export default function Navbar() {
-    // const isLogged = id != "";
-    // console.log("id : " + id);
-    // console.log("isLogged : " + isLogged);
 
     const [isLogged, setIsLogged] = useIsLogged();
 
-    let jsxConnexion:JSX.Element;
-    if(isLogged) {
-        jsxConnexion = <li><Link href="/profil">Profil</Link></li>
-        // jsxConnexion = <li><Link href="/connexion">Connexion</Link></li>
-    }
-    else {
-        jsxConnexion = <li><Link href="/connexion">Connexion</Link></li>
-    }
+    let jsxLiens: Array<JSX.Element> = [];
+    jsxLiens.push(<li key="index"><Link href="/">Accueil</Link></li>);
+    jsxLiens.push(<li key="fiche"><Link href="/fiche">Fiche personnage</Link></li>);
+
+    if(isLogged)
+        jsxLiens.push(<li key="des"><Link href="/des">Plateau de dés</Link></li>);
+
+    jsxLiens.push(<li key="documentation"><Link href="/documentation">Documentation</Link></li>);
+
+    if(isLogged)
+        jsxLiens.push(<li key="profil"><Link href="/profil">Profil</Link></li>);
+    else
+        jsxLiens.push(<li key="connexion"><Link href="/connexion">Connexion</Link></li>);
 
     return(
         <nav className="main-navbar">
             <ul>
-                <li><Link href="/">Accueil</Link></li>
-                <li><Link href="/fiche">Fiche personnage</Link></li>
-                <li><Link href="/lignees">Lignées</Link></li>
-                <li><Link href="/disciplines">Disciplines</Link></li>
-                <li><Link href="/regles">Règles</Link></li>
-                {jsxConnexion}
+                {jsxLiens}
             </ul>
         </nav>
     );

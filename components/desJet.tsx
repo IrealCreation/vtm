@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Jet } from "@/interfaces/jet";
-import { Character } from "@/interfaces/character";
+import { Character, calculSoif } from "@/interfaces/character";
 import DesButton from "./desButton";
 import NumberField from "./fields/numberfield";
 import JetDetail from "./jetDetail";
@@ -165,7 +165,7 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
                 </div>
                 <div>
                     <p>Dés à lancer : {value1 + value2 + bonus}</p>
-                    <p>Soif : X</p>
+                    <p>Soif : {calculSoif(character)}</p>
                 </div>
                 <div>
                     <NumberField min={-10} max={10} label="Bonus :" value={bonus} onUpdate={(value) => { setBonus(value) }} />
