@@ -23,6 +23,16 @@
         font-size: 1.15em;
     }
 
+    .etat {
+        .number-field {
+            margin-top: 0;
+
+            input {
+                margin-right: 0.5em;
+            }
+        }
+    }
+
     .discipline {
         padding: 0 1em;
         p {
@@ -121,8 +131,8 @@
     }
 }
 .number-field input {
-    min-width: 5em;
-    width: 5em;
+    min-width: 4em;
+    width: 4em;
 }
 
 .textarea-field {

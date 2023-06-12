@@ -250,6 +250,25 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         <></>
     );
 
+    const jsxSante: JSX.Element = (props.isLogged ? 
+        <>
+            <NumberField label="" min={0} max={character.santeMax} value={character.sante} onUpdate={updateSante}/>&nbsp;/&nbsp;
+        </>
+        : <></>
+    );
+    const jsxVolonte: JSX.Element = (props.isLogged ?
+        <>
+            <NumberField label="" min={0} max={character.volonteMax} value={character.volonte} onUpdate={updateVolonte}/>&nbsp;/&nbsp;
+        </>
+        : <></>
+    );
+    const jsxSang: JSX.Element = (props.isLogged ? 
+        <>
+            <NumberField label="" min={0} max={character.sangMax} value={character.sang} onUpdate={updateSang}/>&nbsp;/&nbsp;
+        </>
+        : <></>
+    );
+
     return (
         <section className="character-sheet main-container">
             <div className="title-bloc">
@@ -298,29 +317,19 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
                 <div>
                     <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sante}>Santé</h3>
                     <p>
-                        {character.sante}&nbsp;/&nbsp;<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</span>
-                    </p>
-                    <p>
-                        <NumberField label="" min={0} max={character.santeMax} value={character.sante} onUpdate={updateSante}/>
+                        {jsxSante}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</span>
                     </p>
                 </div>
                 <div>
                     <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonte}>Volonté</h3>
                     <p>
-                        {character.volonte}&nbsp;/&nbsp;<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</span>
-                    </p>
-                    <p>
-                        <NumberField label="" min={0} max={character.volonteMax} value={character.volonte} onUpdate={updateVolonte}/>
+                        {jsxVolonte}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</span>
                     </p>
                 </div>
                 <div>
                     <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sang}>Sang</h3>
                     <p>
-                        {character.sang}&nbsp;/&nbsp;<span>{character.sangMax}</span>
-                        
-                    </p>
-                    <p>
-                        <NumberField label="" min={0} max={character.sangMax} value={character.sang} onUpdate={updateSang}/>
+                        {jsxSang}<span>{character.sangMax}</span> 
                     </p>
                 </div>
             </div>
