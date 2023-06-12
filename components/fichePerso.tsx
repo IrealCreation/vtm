@@ -15,7 +15,7 @@ import { lignees } from "@/data/lignees"
 import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
 import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
-import { Character } from "@/interfaces/character"
+import { Character, calculSoif } from "@/interfaces/character"
 
 export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
     const character = useSelector((state: StoreRootState) => state.characterSlice.character);
@@ -32,7 +32,7 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
             }
         }
         dispatch(computeEtat());
-    }, [props.isLogged, props.id])
+    }, [props.isLogged, props.id]);
 
     const tooltips = {
         experience: "Gain de niveau tous les 10 points d'expérience",
@@ -40,7 +40,8 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         santeQte: "Vigueur + 3",
         volonte: "La volonté permet de relancer les dés d'une action, de résister à la Frénésie ou aux influences mentales / sociales",
         volonteQte: "Sang-froid + Détermination + 1",
-        sang: "Utilisé pour lancer des disciplines vampiriques"
+        sang: "Utilisé pour lancer des disciplines vampiriques",
+        soif: "S'accroît tous les 3 points de sang manquants"
     };
 
     const updateNom = (value: string) => {
@@ -250,6 +251,11 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         <></>
     );
 
+    let soif: number = 0;
+    if(props.isLogged) {
+        soif = calculSoif(character);
+    }
+
     const jsxSante: JSX.Element = (props.isLogged ? 
         <>
             <NumberField label="" min={0} max={character.santeMax} value={character.sante} onUpdate={updateSante}/>&nbsp;/&nbsp;
@@ -331,6 +337,13 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
                     <p>
                         {jsxSang}<span>{character.sangMax}</span> 
                     </p>
+                </div>
+            </div>
+            <div className="columns">
+                <div></div>
+                <div></div>
+                <div>
+                    <p data-tooltip-id="tooltip" data-tooltip-content={tooltips.soif}>Soif : {soif}</p>
                 </div>
             </div>
             

@@ -68,7 +68,13 @@ export const talents:TalentListe = {
     "Dressage": {
         nom: "Dressage",
         description: "Interagir avec les animaux",
-            niveaux: []
+            niveaux: [
+                "Vous avez l'habitude des animaux de compagnie",
+                "Vous savez inculquer les bonnes manières à un chien",
+                "Vous pouvez approcher un animal sauvage",
+                "Vous êtes à l'aise entourés d'animaux exotiques",
+                "Vous domptez les fauves en un claquement de doigts"
+            ]
     },
     "Etiquette": {
         nom: "Etiquette",
