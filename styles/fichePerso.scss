@@ -1,3 +1,5 @@
+@import "./variables";
+
 .character-sheet {
     font-weight: bold;
     margin-top: 2vh;
@@ -5,13 +7,22 @@
 
     .lignee-container {
         display: flex;
+        @media (max-width: $breakpoint-md) {
+            display: block;
+        }
         .select-field {
             width: 30%;
+            @media (max-width: $breakpoint-md) {
+                width: auto;
+            }
         }
         .lignee-description {
             width: 70%;
             font-weight: normal;
             margin: 0.5em 0 1em;
+            @media (max-width: $breakpoint-md) {
+                width: auto;
+            }
 
             p {
                 margin-bottom: 0.4em;
@@ -20,7 +31,33 @@
     }
 
     .attributs {
-        font-size: 1.15em;
+        font-size: 1.1em;
+
+        @media (max-width: $breakpoint-lg) {
+            .radio-label {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .radio-field {
+                width: 100%;
+            }
+        }
+    }
+
+    .talents {
+        @media (max-width: $breakpoint-lg) {
+            .radio-label {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .radio-field {
+                width: 100%;
+            }
+        }
     }
 
     .etat {
@@ -41,6 +78,7 @@
         padding: 0 1em;
         p {
             font-weight: normal;
+            font-size: 0.95em;
         }
 
         > p, .discipline-niveau {
@@ -141,6 +179,13 @@
 
 .textarea-field {
     display: flex;
+    
+    @media (max-width: $breakpoint-md) {
+        display: block;
+        margin-left: 0.75em;
+        margin-right: 0.75em;
+    }
+
     label {
         padding-top: 1.5em;
         font-weight: bold;

@@ -1,12 +1,15 @@
+@import "./variables";
+
 :root {
+    /* CSS variables */
     --main-color: #4d0707;
     --highlight-color: rgb(204, 10, 10);
     --text-color: rgb(255, 255, 255);
     --bg-color: #040308;
 
     --breakpoint-lg: 1220px;
-    --breakpoing-sm: 740px;
-
+    --breakpoint-md: 900px;
+    --breakpoint-sm: 740px;
 }
 
 * {
@@ -27,10 +30,10 @@ body {
     font-size: 1.2em;
     padding-bottom: 6em;
 
-    @media screen and (max-width:var(--breakpoint-lg)) {
+    @media screen and (max-width: $breakpoint-lg) {
         font-size: 1.1em;
     }
-    @media screen and (max-width:var(--breakpoint-sm)) {
+    @media screen and (max-width: $breakpoint-sm) {
         font-size: 1em;
     }
 }
