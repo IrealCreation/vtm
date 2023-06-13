@@ -97,6 +97,9 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
     const updateRessourceDetail = (name: string, value: string) => {
         dispatch(setRessourceDetail({name: name, value: value}));
     }
+    const updateInventaire = (value: string) => {
+        // dispatch(setInventaire(value));
+    }
     const save = () => {
         sendCharacter();
     }
@@ -383,6 +386,11 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
             <h2>Ressources</h2>
             <div className="ressources">
                 {jsxRessources}
+            </div>
+
+            <h2>Inventaire</h2>
+            <div className="inventaire">
+                <TextAreaField label="" value={character.inventaire} onUpdate={updateInventaire} />
             </div>
             
             {jsxSave}

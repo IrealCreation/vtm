@@ -122,6 +122,12 @@
         }
     }
 
+    .inventaire {
+        .textarea-field textarea {
+         height: 15em;
+      }
+    }
+
     .disclaimer {
         font-weight: normal;
         opacity: 0.7;

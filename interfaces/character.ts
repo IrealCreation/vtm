@@ -23,6 +23,7 @@ export interface Character {
     talents: CharacterTalentsListe;
     disciplines: CharacterDisciplineListe;
     ressources: CharacterRessourceListe;
+    inventaire?: string;
 }
 
 export interface CharacterDisciplineListe {
