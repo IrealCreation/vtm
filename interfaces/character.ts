@@ -18,6 +18,7 @@ export interface Character {
     volonteMax: number;
     sang: number;
     sangMax: number;
+    humanite?: number;
     attributs: CharacterAttributListe;
     talents: CharacterTalentsListe;
     disciplines: CharacterDisciplineListe;

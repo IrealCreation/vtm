@@ -31,6 +31,10 @@
                 margin-right: 0.5em;
             }
         }
+
+        .columns + .columns {
+            margin-top: 1em;
+        }
     }
 
     .discipline {

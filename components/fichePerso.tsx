@@ -14,7 +14,7 @@ import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import { lignees } from "@/data/lignees"
 import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
-import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
+import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setHumanite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
 import { Character, calculSoif } from "@/interfaces/character"
 
 export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
@@ -41,7 +41,9 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         volonte: "La volonté permet de relancer les dés d'une action, de résister à la Frénésie ou aux influences mentales / sociales",
         volonteQte: "Sang-froid + Détermination + 1",
         sang: "Utilisé pour lancer des disciplines vampiriques",
-        soif: "S'accroît tous les 3 points de sang manquants"
+        soif: "Nombre des dés de Soif pouvant venir perturber chaque jet",
+        soifQte: "+1 tous les 3 points de sang manquants",
+        humanite: "Le contrôle que vous maintenez sur votre Bête intérieure"
     };
 
     const updateNom = (value: string) => {
@@ -75,6 +77,9 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
     }
     const updateSang = (value: number) => {
         dispatch(setSang(value));
+    }
+    const updateHumanite = (value: number) => {
+        dispatch(setHumanite(value));
     }
     const updateAttribut = (name: string, value: number) => {
         dispatch(setAttribut({name: name, value: value}));
@@ -251,28 +256,31 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         <></>
     );
 
-    let soif: number = 0;
+    let soif = 0;
     if(props.isLogged) {
         soif = calculSoif(character);
     }
 
+    // Updating potential undefined values
+    if(character.humanite == null) {
+        dispatch(setHumanite(7));
+    }
+
     const jsxSante: JSX.Element = (props.isLogged ? 
-        <>
-            <NumberField label="" min={0} max={character.santeMax} value={character.sante} onUpdate={updateSante}/>&nbsp;/&nbsp;
-        </>
+        <><NumberField label="" min={0} max={character.santeMax} value={character.sante} onUpdate={updateSante}/>&nbsp;/&nbsp;</>
         : <></>
     );
     const jsxVolonte: JSX.Element = (props.isLogged ?
-        <>
-            <NumberField label="" min={0} max={character.volonteMax} value={character.volonte} onUpdate={updateVolonte}/>&nbsp;/&nbsp;
-        </>
+        <><NumberField label="" min={0} max={character.volonteMax} value={character.volonte} onUpdate={updateVolonte}/>&nbsp;/&nbsp;</>
         : <></>
     );
     const jsxSang: JSX.Element = (props.isLogged ? 
-        <>
-            <NumberField label="" min={0} max={character.sangMax} value={character.sang} onUpdate={updateSang}/>&nbsp;/&nbsp;
-        </>
+        <><NumberField label="" min={0} max={character.sangMax} value={character.sang} onUpdate={updateSang}/>&nbsp;/&nbsp;</>
         : <></>
+    );
+    const jsxHumanite: JSX.Element = (props.isLogged ? 
+        <><NumberField label="" min={0} max={10} value={character.humanite ? character.humanite : 7} onUpdate={updateHumanite}/>&nbsp;/&nbsp;10</>
+        : <p>{character.humanite ? character.humanite : 7}&nbsp;/&nbsp;10</p>
     );
 
     return (
@@ -319,33 +327,40 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
             </div>
 
             <h2>Etat</h2>
-            <div className="columns etat">
-                <div>
-                    <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sante}>Santé</h3>
-                    <p>
-                        {jsxSante}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</span>
-                    </p>
+            <div className="etat">
+                <div className="columns">
+                    <div>
+                        <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sante}>Santé</h3>
+                        <p>
+                            {jsxSante}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonte}>Volonté</h3>
+                        <p>
+                            {jsxVolonte}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</span>
+                        </p>
+                    </div>
+                    <div>
+                        <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sang}>Sang</h3>
+                        <p>
+                            {jsxSang}<span>{character.sangMax}</span> 
+                        </p>
+                    </div>
                 </div>
-                <div>
-                    <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonte}>Volonté</h3>
-                    <p>
-                        {jsxVolonte}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</span>
-                    </p>
-                </div>
-                <div>
-                    <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sang}>Sang</h3>
-                    <p>
-                        {jsxSang}<span>{character.sangMax}</span> 
-                    </p>
+                <div className="columns">
+                    <div>
+                        <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.humanite}>Humanité</h3>
+                        {jsxHumanite}
+                    </div>
+                    <div></div>
+                    <div>
+                        <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.soif}>Soif</h3>
+                        <p>{soif}</p>
+                    </div>
                 </div>
             </div>
-            <div className="columns">
-                <div></div>
-                <div></div>
-                <div>
-                    <p data-tooltip-id="tooltip" data-tooltip-content={tooltips.soif}>Soif : {soif}</p>
-                </div>
-            </div>
+            
             
             <h2>Talents</h2>
             <div className="columns talents">

@@ -24,6 +24,7 @@ export function generateCharacter(): Character {
       volonteMax: 1,
       sang: 1,
       sangMax: 1,
+      humanite: 7,
       disciplines: {},
       attributs: {},
       talents: {}, 
@@ -81,7 +82,15 @@ export const characterSlice = createSlice({
           niveau: 0,
           discipline: discipline
         }
-      })
+      });
+
+      // Assignation de l'Humanité
+      if(lignee.nom == "Tzimisce") {
+        state.character = {...state.character, humanite: 6};
+      }
+      else {
+        state.character = {...state.character, humanite: 7};
+      }
 
       state.character = {...state.character, disciplines: disciplineListe};
       console.log(state.character);
@@ -124,6 +133,9 @@ export const characterSlice = createSlice({
     setSang: (state, action: {payload: number}) => {
       state.character = {...state.character, sang: action.payload};
     },
+    setHumanite: (state, action: {payload: number}) => {
+      state.character = {...state.character, humanite: action.payload};
+    },
     setTalent: (state, action: {payload: {name: string, value: number}}) => {
       let newTalents = {...state.character.talents};
       newTalents[action.payload.name].niveau = action.payload.value;
@@ -153,7 +165,7 @@ export const characterSlice = createSlice({
   },
 })
 
-export const { setCharacter, resetCharacter, setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } = characterSlice.actions;
+export const { setCharacter, resetCharacter, setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setHumanite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } = characterSlice.actions;
 
 interface CharacterSliceState {
   character: Character
