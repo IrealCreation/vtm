@@ -338,7 +338,7 @@ export const disciplines: DisciplineListe = {
     },
     "Thaumaturgie": {
         nom: "Thaumaturgie",
-        description: "La Thaumaturgie est une discipline jalousement gardée par les Tremere, qui consiste en l’application de la force de l’esprit sur le monde physique, ce que les humains appellent le plus communément « magie ». Dans la branche qui nous intéresse, elle s’applique plus particulièrement à la magie liée au sang. Elle fait appel à l’Intelligence de son lanceur et nécessite un contact visuel voire physique.",
+        description: "La Thaumaturgie est une discipline jalousement gardée par les Tremere, qui consiste en l’application de la force de l’esprit sur le monde physique. Dans la branche qui nous intéresse, elle s’applique plus particulièrement à la magie liée au sang. Elle fait appel à l’Intelligence de son lanceur et nécessite un contact visuel voire physique.",
         niveaux: [
             {
                 nom: "Siphon",
@@ -476,7 +476,7 @@ export const disciplines: DisciplineListe = {
     },
     "Vicissitude": {
         nom: "Vicissitude",
-        description: "Discipline maîtrisée par les Tzimisces, Vicissitude permet à celui qui s’adonne à cet art de modeler et modifier son propre corps comme celui des personnes qu’il touche, lui permettant de créer le beau comme l’immonde et le monstrueux. Elle nécessite de l’Intelligence et de la Vigueur.",
+        description: "Discipline maîtrisée par les Tzimisces, Vicissitude permet à celui qui s’adonne à cet art de modeler et modifier son propre corps comme celui des êtres qu’il touche. Ses créations sont temporaires, mais peuvent devenir permanentes avec du talent et de l'obstination... Elle interragit avec l’Intelligence et la Vigueur et nécessite un contact physique.",
         niveaux: [
             {
                 nom: "Traits malléable",
@@ -487,26 +487,26 @@ export const disciplines: DisciplineListe = {
             {
                 nom: "Modelage de la chair",
                 description: "Le lanceur peut modeler, sur lui-même ou sur une cible, le muscle, la graisse et le cartilage.",
-                duree: "1 heure",
+                duree: "1 nuit",
                 cout: 2
             },
             {
                 nom: "Modelage de l’os",
                 description: "Les talents de modelage du lanceur se perfectionnent et s’étendent aux os.",
-                duree: "1 heure",
-                cout: 2
+                duree: "1 nuit",
+                cout: 3
             },
             {
-                nom: "Modelage rallongé",
-                description: "Les modifications corporelles apportées par le lanceur peuvent durer jusqu’à 24 heures.",
-                duree: "24 heures",
-                cout: "+1 PS"
+                nom: "Modelage des organes",
+                description: "Le lanceur peut désormais interagir avec les organes et le métabolisme interne de sa cible.",
+                duree: "1 nuit",
+                cout: 3
             },
             {
-                nom: "Modelage définitif",
-                description: "Les modifications corporelles apportées par le lanceur peuvent devenir permanentes sur les humains, et les vampires consentants.",
+                nom: "Chimères",
+                description: "Le lanceur peut instantanément réaliser des modelages définitifs, et utiliser comme matière première plusieurs corps qu'il combine à sa guise",
                 duree: "Infini",
-                cout: "+2 PS"
+                cout: 4
             }
         ]
     }
