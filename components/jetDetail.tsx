@@ -1,4 +1,5 @@
 import { Jet } from "@/interfaces/jet";
+import moment from "moment";
 
 export default function JetDetail(props: {jet: Jet}) {
 
@@ -43,8 +44,9 @@ export default function JetDetail(props: {jet: Jet}) {
     
     let date:string = "";
     if(props.jet.timestamp != undefined) {
-        const dateFormat = new Date(props.jet.timestamp);
-        date = dateFormat.getHours() + ":" + dateFormat.getMinutes() + " " + dateFormat.getDay() + "/" + (dateFormat.getMonth() + 1) + "/" + dateFormat.getFullYear();
+        // const dateFormat = new Date(props.jet.timestamp);
+        date = moment(props.jet.timestamp).format("HH:mm DD/MM/YYYY");
+        // const dateString = dateFormat.getHours() + ":" + dateFormat.getMinutes() + " " + dateFormat.getDay() + "/" + (dateFormat.getMonth() + 1) + "/" + dateFormat.getFullYear();
     }
 
     return(
