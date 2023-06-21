@@ -67,7 +67,7 @@ a {
         width: 90%;
     }
     @media screen and (max-width: $breakpoint-sm) {
-        width: 96%;
+        width: 94%;
     }
 }
 
@@ -179,6 +179,7 @@ ul {
         li a {
             display: inline-block;
             text-decoration: none;
+            text-align: center;
             padding: 0.75em 2em;
             transition: all 0.6s;
 
