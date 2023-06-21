@@ -14,6 +14,7 @@ export default function Home() {
                   <h1>Documentation</h1>
                   <div className="title-line"></div>
               </div>
+              <Link href="/univers" className="btn-lg">Univers</Link>
               <Link href="/lignees" className="btn-lg">Lignées</Link>
               <Link href="/disciplines" className="btn-lg">Disciplines</Link>
               <Link href="/regles" className="btn-lg">Règles de jeu</Link>
