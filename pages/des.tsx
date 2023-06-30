@@ -3,7 +3,7 @@ import Navbar from "@/components/navbar";
 import Head from "next/head";
 import { useIsLogged } from "@/hooks/useIsLogged";
 import { useEffect } from "react";
-import DesJet from "@/components/desJet";
+import DesJet from "@/components/des/desJet";
 
 export default function PageJet() {
 

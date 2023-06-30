@@ -5,6 +5,13 @@
     margin-top: 2vh;
     margin-bottom: 10vh;
 
+    @media screen and (max-width: $breakpoint-lg) {
+        font-size: 1.1rem;
+    }
+    @media screen and (max-width: $breakpoint-sm) {
+        font-size: 1rem;
+    }
+
     .lignee-container {
         display: flex;
         @media (max-width: $breakpoint-md) {

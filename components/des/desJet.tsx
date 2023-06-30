@@ -2,8 +2,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Jet } from "@/interfaces/jet";
 import { Character, calculSoif } from "@/interfaces/character";
+import NumberField from "../fields/numberfield";
 import DesButton from "./desButton";
-import NumberField from "./fields/numberfield";
 import JetDetail from "./jetDetail";
 import { generateCharacter } from "@/redux/store";
 
