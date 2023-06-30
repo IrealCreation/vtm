@@ -8,13 +8,14 @@ import Checkmark from "./checkmark"
 import { Tooltip } from 'react-tooltip'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useState } from "react"
+import { BsArrowUpCircle as ArrowUp } from 'react-icons/bs';
 
 import { attributsPhysique, attributsSocial, attributsMental } from "@/data/attributs"
 import { talentsPhysique, talentsSocial, talentsMental } from "@/data/talents"
 import { lignees } from "@/data/lignees"
 import { ressources } from "@/data/ressources"
 import { StoreRootState, StoreAppDispatch, setNiveau } from "@/redux/store"
-import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setHumanite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } from "@/redux/store"
+import { setCharacter, setLignee, setNom, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setHumanite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat, setInventaire, incrementSanteNiveau, incrementVolonteNiveau, incrementSangNiveau } from "@/redux/store"
 import { Character, calculSoif } from "@/interfaces/character"
 
 export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
@@ -98,7 +99,16 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         dispatch(setRessourceDetail({name: name, value: value}));
     }
     const updateInventaire = (value: string) => {
-        // dispatch(setInventaire(value));
+        dispatch(setInventaire(value));
+    }
+    const incrementSante = () => {
+        dispatch(incrementSanteNiveau());
+    }
+    const incrementVolonte = () => {
+        dispatch(incrementVolonteNiveau());
+    }
+    const incrementSang = () => {
+        dispatch(incrementSangNiveau());
     }
     const save = () => {
         sendCharacter();
@@ -273,12 +283,24 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         <><NumberField label="" min={0} max={character.santeMax} value={character.sante} onUpdate={updateSante}/>&nbsp;/&nbsp;</>
         : <></>
     );
+    const jsxSanteUp: JSX.Element = (props.isLogged ? 
+        <ArrowUp data-tooltip-id="tooltip" data-tooltip-content="Augmentation de Santé maximum" onClick={incrementSante}/>
+        : <></>
+    );
     const jsxVolonte: JSX.Element = (props.isLogged ?
         <><NumberField label="" min={0} max={character.volonteMax} value={character.volonte} onUpdate={updateVolonte}/>&nbsp;/&nbsp;</>
         : <></>
     );
+    const jsxVolonteUp: JSX.Element = (props.isLogged ? 
+        <ArrowUp data-tooltip-id="tooltip" data-tooltip-content="Augmentation de Volonté maximum" onClick={incrementVolonte}/>
+        : <></>
+    );
     const jsxSang: JSX.Element = (props.isLogged ? 
         <><NumberField label="" min={0} max={character.sangMax} value={character.sang} onUpdate={updateSang}/>&nbsp;/&nbsp;</>
+        : <></>
+    );
+    const jsxSangUp: JSX.Element = (props.isLogged ? 
+        <ArrowUp data-tooltip-id="tooltip" data-tooltip-content="Augmentation de Sang maximum" onClick={incrementSang}/>
         : <></>
     );
     const jsxHumanite: JSX.Element = (props.isLogged ? 
@@ -337,18 +359,21 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
                         <p>
                             {jsxSante}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</span>
                         </p>
+                        {/* {jsxSanteUp} */}
                     </div>
                     <div>
                         <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonte}>Volonté</h3>
                         <p>
                             {jsxVolonte}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</span>
                         </p>
+                        {/* {jsxVolonteUp} */}
                     </div>
                     <div>
                         <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sang}>Sang</h3>
                         <p>
                             {jsxSang}<span>{character.sangMax}</span> 
                         </p>
+                        {/* {jsxSangUp} */}
                     </div>
                 </div>
                 <div className="columns">

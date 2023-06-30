@@ -20,10 +20,13 @@ export function generateCharacter(): Character {
       personnalite: "",
       sante: 1,
       santeMax: 1,
+      santeNiveau: 0,
       volonte: 1,
       volonteMax: 1,
+      volonteNiveau: 0,
       sang: 1,
       sangMax: 1,
+      sangNiveau: 0,
       humanite: 7,
       disciplines: {},
       attributs: {},
@@ -97,14 +100,18 @@ export const characterSlice = createSlice({
     },
 
     computeEtat: (state, action:{}) => {
-      let sante: number = 3 + state.character.attributs["Vigueur"].niveau;
-      let volonte: number = 1 + state.character.attributs["Sang-froid"].niveau + state.character.attributs["Détermination"].niveau;
-      let sang = 6;
+      let santeNiveau = (state.character.santeNiveau ?? 0);
+      let volonteNiveau = (state.character.volonteNiveau ?? 0);
+      let sangNiveau = (state.character.sangNiveau ?? 0);
+
+      let sante: number = 3 + state.character.attributs["Vigueur"].niveau + santeNiveau;
+      let volonte: number = 1 + state.character.attributs["Sang-froid"].niveau + state.character.attributs["Détermination"].niveau + volonteNiveau;
+      let sang = 6 + sangNiveau;
       if(state.character.lignee?.nom == "Tremere") {
         sang ++; sante --;
       }
 
-      state.character = {...state.character, santeMax: sante, volonteMax: volonte, sangMax: sang};
+      state.character = {...state.character, santeMax: sante, volonteMax: volonte, sangMax: sang, santeNiveau: santeNiveau, volonteNiveau: volonteNiveau, sangNiveau: sangNiveau};
     },
     setNom: (state, action: {payload: string}) => {
       state.character = {...state.character, nom: action.payload};
@@ -161,11 +168,30 @@ export const characterSlice = createSlice({
       newRessources[action.payload.name].detail = action.payload.value;
       state.character = {...state.character, ressources: newRessources};
     },
+    setInventaire: (state, action: {payload: string}) => {
+      state.character = {...state.character, inventaire: action.payload};
+    },
+
+    incrementSanteNiveau: (state, action: {}) => {
+      let increment = state.character.santeNiveau ?? 0;
+      increment ++;
+      state.character = {...state.character, santeNiveau: increment};
+    },
+    incrementVolonteNiveau: (state, action: {}) => {
+      let increment = state.character.volonteNiveau ?? 0;
+      increment ++;
+      state.character = {...state.character, volonteNiveau: increment};
+    },
+    incrementSangNiveau: (state, action: {}) => {
+      let increment = state.character.sangNiveau ?? 0;
+      increment ++;
+      state.character = {...state.character, sangNiveau: increment};
+    }
 
   },
 })
 
-export const { setCharacter, resetCharacter, setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setHumanite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, computeEtat } = characterSlice.actions;
+export const { setCharacter, resetCharacter, setLignee, setNom, setNiveau, setExperience, setActivite, setApparence, setPersonnalite, setSante, setVolonte, setSang, setHumanite, setTalent, setAttribut, setDiscipline, setRessourceNiveau, setRessourceDetail, setInventaire, computeEtat, incrementSanteNiveau, incrementVolonteNiveau, incrementSangNiveau } = characterSlice.actions;
 
 interface CharacterSliceState {
   character: Character

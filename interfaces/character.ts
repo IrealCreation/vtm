@@ -14,10 +14,13 @@ export interface Character {
     lignee?: Lignee;
     sante: number;
     santeMax: number;
+    santeNiveau?: number;
     volonte: number;
     volonteMax: number;
+    volonteNiveau?: number;
     sang: number;
     sangMax: number;
+    sangNiveau?: number;
     humanite?: number;
     attributs: CharacterAttributListe;
     talents: CharacterTalentsListe;
