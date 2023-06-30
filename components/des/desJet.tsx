@@ -131,6 +131,14 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
             );
         }
 
+        const jsxStatsRessources: Array<JSX.Element> = [];
+        for (const [name, characterRessource] of Object.entries(character.ressources)) {
+            let active = (stat1 == characterRessource.ressource.nom || stat2 == characterRessource.ressource.nom ? true : false)
+            jsxStatsRessources.push(
+                <DesButton stat={characterRessource.ressource.nom} value={characterRessource.niveau} onClick={choixStat} active={active} />
+            );
+        }
+
         jsxStats = (
             <>
                 <h2>Attributs</h2>
@@ -144,6 +152,10 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
                 <h2>Disciplines</h2>
                 <div className="des-columns">
                     {jsxStatsDisciplines}
+                </div>
+                <h2>Ressources</h2>
+                <div className="des-columns">
+                    {jsxStatsRessources}
                 </div>
             </>
         )

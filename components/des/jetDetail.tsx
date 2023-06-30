@@ -22,6 +22,11 @@ export default function JetDetail(props: {jet: Jet}) {
         }
     }
 
+    let plus: string = "";
+    if(props.jet.stat2 != null && props.jet.stat2 != "") {
+        plus = " + ";
+    }
+
     let bonus: string = "";
     if(props.jet.bonus != null) {
         if(props.jet.bonus > 0) {
@@ -52,7 +57,7 @@ export default function JetDetail(props: {jet: Jet}) {
     return(
         <div className="jet-detail">
             <span className="date">{date}</span>
-            <span className="stats">[{props.jet.stat1} + {props.jet.stat2}{bonus}]</span>
+            <span className="stats">[{props.jet.stat1}{plus}{props.jet.stat2}{bonus}]</span>
             <span className="reussites-nb">{props.jet.reussites} succès : </span>
             <span className="des-liste">
                 {jsxDes}
