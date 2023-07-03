@@ -103,12 +103,15 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
     }
     const incrementSante = () => {
         dispatch(incrementSanteNiveau());
+        dispatch(computeEtat());
     }
     const incrementVolonte = () => {
         dispatch(incrementVolonteNiveau());
+        dispatch(computeEtat());
     }
     const incrementSang = () => {
         dispatch(incrementSangNiveau());
+        dispatch(computeEtat());
     }
     const save = () => {
         sendCharacter();
@@ -269,16 +272,6 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         <></>
     );
 
-    let soif = 0;
-    if(props.isLogged) {
-        soif = calculSoif(character);
-    }
-
-    // Updating potential undefined values
-    if(character.humanite == null) {
-        dispatch(setHumanite(7));
-    }
-
     const jsxSante: JSX.Element = (props.isLogged ? 
         <><NumberField label="" min={0} max={character.santeMax} value={character.sante} onUpdate={updateSante}/>&nbsp;/&nbsp;</>
         : <></>
@@ -307,6 +300,16 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
         <><NumberField label="" min={0} max={10} value={character.humanite ? character.humanite : 7} onUpdate={updateHumanite}/>&nbsp;/&nbsp;10</>
         : <p>{character.humanite ? character.humanite : 7}&nbsp;/&nbsp;10</p>
     );
+
+    let soif = 0;
+    if(props.isLogged) {
+        soif = calculSoif(character);
+    }
+
+    // Updating potential undefined values
+    if(character.humanite == null) {
+        dispatch(setHumanite(7));
+    }
 
     return (
         <section className="character-sheet main-container">
@@ -356,24 +359,22 @@ export default function FichePerso(props: {isLogged?: boolean, id?:number}) {
                 <div className="columns">
                     <div>
                         <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sante}>Santé</h3>
-                        <p>
-                            {jsxSante}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</span>
+                        <p className="stat-upable">
+                            {jsxSante}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.santeQte}>{character.santeMax}</span><span className="stat-up">{jsxSanteUp}</span>
                         </p>
-                        {/* {jsxSanteUp} */}
+                        
                     </div>
                     <div>
                         <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonte}>Volonté</h3>
-                        <p>
-                            {jsxVolonte}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</span>
+                        <p className="stat-upable">
+                            {jsxVolonte}<span data-tooltip-id="tooltip" data-tooltip-content={tooltips.volonteQte}>{character.volonteMax}</span><span className="stat-up">{jsxVolonteUp}</span>
                         </p>
-                        {/* {jsxVolonteUp} */}
                     </div>
                     <div>
                         <h3 data-tooltip-id="tooltip" data-tooltip-content={tooltips.sang}>Sang</h3>
-                        <p>
-                            {jsxSang}<span>{character.sangMax}</span> 
+                        <p className="stat-upable">
+                            {jsxSang}<span>{character.sangMax}</span><span className="stat-up">{jsxSangUp}</span>
                         </p>
-                        {/* {jsxSangUp} */}
                     </div>
                 </div>
                 <div className="columns">

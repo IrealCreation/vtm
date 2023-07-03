@@ -79,6 +79,28 @@
         .columns + .columns {
             margin-top: 1em;
         }
+
+        .stat-upable {
+            padding-left: 2.4em;
+
+            .stat-up {
+                cursor: pointer;
+                font-size: 1.4em;
+                margin-left: 1em;
+            }
+
+            
+            @media (max-width: $breakpoint-sm) {
+                padding-left: 0;
+
+                .stat-up {
+                    margin-left: 0;
+                    display: block;
+                    text-align: center;
+                }
+            }
+        }
+        
     }
 
     .discipline {
