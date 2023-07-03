@@ -42,12 +42,24 @@ export const talents:TalentListe = {
     "Mains nues": { 
         nom: "Mains nues", 
         description: "Se battre avec vos poings et vos crocs",
-            niveaux: []
+            niveaux: [
+                "Vous savez mettre une bonne baffe",
+                "Vous avez un entraînement de base en art martial",
+                "Vous montez sur un tatami ou un ring en compétition",
+                "Vous collectionnez les dan sur votre ceinture noire",
+                "Vous avez le calibre d'un champion de MMA"
+            ]
     },
     "Mêlée": { 
         nom: "Mêlée", 
         description: "Se battre avec une arme de corps à corps",
-            niveaux: []
+            niveaux: [
+                "Ça, c'est le bout pointu",
+                "Vous êtes à l'aise avec une arme au poing",
+                "Vous êtes un escrimeur talentueux",
+                "Vous pouvez vous bâtir une réputation de maître d'armes",
+                "Never bring a gun to your swordfight"
+            ]
     },
     "Nature": {
         nom: "Nature", 
@@ -57,7 +69,13 @@ export const talents:TalentListe = {
     "Tir": { 
         nom: "Tir", 
         description: "Se battre avec une arme à distance",
-            niveaux: []
+            niveaux: [
+                "Vous avez déjà tenu une arme à feu ou un arc dans vos mains",
+                "Vous êtes assez précis avec toutes formes de projectiles",
+                "Vous fréquentez régulièrement les stands de tir",
+                "Vous avez un entraînement militaire avec les armes à feu",
+                "Vous pouvez abattre votre cible à plusieurs centaines de mètres"
+            ]
     },
     // Social
     "Bagou": {
@@ -124,7 +142,7 @@ export const talents:TalentListe = {
             niveaux: [
                 "Vous aimez bien regarder Arte",
                 "Vous passerez sans problème en fac de sciences humaines",
-                "Vous pouriez écrire des articles de vulgarisation",
+                "Vous pourriez écrire des articles de vulgarisation",
                 "Vous avez de quoi être un conférencier reconnu",
                 "Vos écrits seront enseignés aux étudiants des générations futures"
             ]
@@ -135,7 +153,7 @@ export const talents:TalentListe = {
             niveaux: [
                 "Vous êtes assez bon en escape game",
                 "Vous avez déjà été confronté à une scène de crime",
-                "Relever des empreintes, effectuer un prélévement, catégoriser les indices... ça vous connaît",
+                "Relever des empreintes, effectuer un prélévement... ça vous connaît",
                 "Vous avez un flair de chien policier",
                 "Colombo n'a qu'à bien se tenir"
             ]
@@ -190,7 +208,7 @@ export const talents:TalentListe = {
             niveaux: [
                 "Vous avez de solides souvenirs des cours de lycée",
                 "Vous sortez d'une école d'ingénieur",
-                "Vous pourriez soutenir une thése de doctorat",
+                "Vous pourriez soutenir une thèse de doctorat",
                 "Niveau d'un scientifique de renom",
                 "Le prochain prix Nobel est pour vous"
             ]
