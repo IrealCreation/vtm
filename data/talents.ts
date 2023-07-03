@@ -37,7 +37,13 @@ export const talents:TalentListe = {
     "Larcin": { 
         nom: "Larcin", 
         description: "Crochetage et vol à la tir",
-            niveaux: []
+            niveaux: [
+                "Vous avez déjà commis de petits délits",
+                "Vous savez comment démarrer une voiture volée",
+                "Vous ne sortez jamais sans votre kit de crochetage",
+                "Un coffre-fort n'est pas une protection suffisante contre vous",
+                "Aucune possession ne peut rester éloignée de vos doigts"
+            ]
     },
     "Mains nues": { 
         nom: "Mains nues", 
@@ -97,7 +103,13 @@ export const talents:TalentListe = {
     "Etiquette": {
         nom: "Etiquette",
         description: "Interagir avec la haute société",
-            niveaux: []
+            niveaux: [
+                "Vous connaissez les bonnes formules de politesse",
+                "Vous savez vous comporter gracieusement en dîner mondain",
+                "On applaudit votre éloquence et vos bonnes manières",
+                "Votre comportement sert d'exemple aux manuels de savoir-vivre",
+                "Vous sauriez tirer votre épingle du jeu de n'importe quelle cour du monde"
+            ]
     },
     "Intimidation": {
         nom: "Intimidation",
@@ -107,7 +119,13 @@ export const talents:TalentListe = {
     "Négociation": {
         nom: "Négociation",
         description: "Obtenir plus en donnant moins",
-            niveaux: []
+            niveaux: [
+                "Vous êtes plutôt habile pour chiner et négocier",
+                "Vous feriez un très bon vendeur de souk",
+                "Vos amis prennent conseil en matière de placements financiers",
+                "Vous maniez aussi bien la micro et la macro-économie",
+                "Vous avez une main dans chaque investissement à succès et chaque krash boursier"
+            ]
     },
     "Performance": {
         nom: "Performance",
