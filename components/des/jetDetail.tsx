@@ -14,7 +14,13 @@ export default function JetDetail(props: {jet: Jet}) {
             if(typeof(props.jet.soif) != "undefined" && index < props.jet.soif) {
                 className += " soif";
                 if(de == 1) {
-                    className += " compulsion";
+                    className += " eveil";
+                }
+            }
+            if(typeof(props.jet.compulsion) != "undefined" && index < props.jet.compulsion) {
+                className += " compulsion";
+                if(index < props.jet.eveil_compulsion) {
+                    className += " eveil";
                 }
             }
             
@@ -37,14 +43,17 @@ export default function JetDetail(props: {jet: Jet}) {
         }
     }
 
+    let jsxEffetCompulsion: JSX.Element = <></>;
+    if(props.jet.eveil_compulsion > 0) {
+        jsxEffetCompulsion = (<span className="effet-compulsion">(Compulsion)</span>)
+    }
+
     let jsxEffetSoif: JSX.Element = <></>;
-    if(typeof(props.jet.compulsions) != "undefined") {
-        if(props.jet.compulsions == 1) {
-            jsxEffetSoif = (<span className="effet-soif">(Compulsion)</span>)
-        }
-        else if(props.jet.compulsions == 2) {
-            jsxEffetSoif = (<span className="effet-soif">(Frénésie !)</span>)
-        }
+    if(props.jet.eveil_soif == 1) {
+        jsxEffetSoif = (<span className="effet-soif">(Soif)</span>)
+    }
+    else if(props.jet.eveil_soif == 2) {
+        jsxEffetSoif = (<span className="effet-soif">(Frénésie !)</span>)
     }
     
     let date:string = "";
@@ -62,7 +71,7 @@ export default function JetDetail(props: {jet: Jet}) {
             <span className="des-liste">
                 {jsxDes}
             </span>
-            {jsxEffetSoif}
+            {jsxEffetSoif}{jsxEffetCompulsion}
         </div>
     )
 }

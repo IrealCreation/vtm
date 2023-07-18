@@ -73,14 +73,23 @@
                 }
                 &.soif {
                     background-color: #4d0707;
-                    &.compulsion {
+                    &.eveil {
                         color: rgb(204, 10, 10);
+                    }
+                }
+                &.compulsion {
+                    background-color: #3f074d;
+                    &.eveil {
+                        color: rgb(181, 10, 204);
                     }
                 }
             }
 
             .effet-soif {
                 color: rgb(204, 10, 10);
+            }
+            .effet-compulsion {
+                color: rgb(181, 10, 204);
             }
         }
     }

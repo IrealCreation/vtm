@@ -21,7 +21,7 @@ export interface Character {
     sang: number;
     sangMax: number;
     sangNiveau?: number;
-    humanite?: number;
+    humanite: number;
     attributs: CharacterAttributListe;
     talents: CharacterTalentsListe;
     disciplines: CharacterDisciplineListe;

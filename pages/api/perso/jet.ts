@@ -27,11 +27,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         let stat1 = req.body.stat1;
         let stat2 = req.body.stat2;
         let bonus = 0;
+        let compulsion = 0;
         if(typeof(req.body.bonus) == "number") {
             bonus = req.body.bonus;
         }
+        if(typeof(req.body.compulsion) == "number") {
+            compulsion = req.body.compulsion;
+        }
 
-        const jet = lanceLesDes(character, stat1, stat2, bonus);
+        const jet = lanceLesDes(character, stat1, stat2, bonus, compulsion);
 
         res.status(200).json({jet: jet});
     }
@@ -42,7 +46,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   });
 }
 
-function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: number): Jet {
+function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: number, compulsion: number): Jet {
     let value1 = statNiveau(character, stat1);
     let value2 = statNiveau(character, stat2);
 
@@ -50,7 +54,10 @@ function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: 
     let des: Array<number> = [];
     let reussites = 0;
     let soif = calculSoif(character);
-    let compulsions = 0;
+    let eveil_soif = 0;
+    let soif_compte = soif;
+    let eveil_compulsion = 0;
+    let compulsion_compte = eveil_compulsion;
 
     for (let index = 0; index < nbDes; index++) {
         let random = Math.floor(Math.random() * 10 + 1);
@@ -58,8 +65,17 @@ function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: 
             reussites ++;
         }
 
-        if(index < soif && random == 1) {
-            compulsions ++;
+        if(index < compulsion_compte) {
+            if(random <= (10 - character.humanite)) {
+                eveil_compulsion ++;
+            }
+            compulsion_compte --;
+        }
+        else if(index < soif_compte) {
+            if(random == 1) {
+                eveil_soif ++;
+            }
+            soif_compte --;
         }
 
         des.push(random);
@@ -74,7 +90,9 @@ function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: 
         des: des,
         reussites: reussites,
         soif: soif,
-        compulsions: compulsions, 
+        eveil_soif: eveil_soif, 
+        compulsion: compulsion,
+        eveil_compulsion: eveil_compulsion,
         timestamp: Date.now()
     }
 
