@@ -11,13 +11,12 @@ export default function JetDetail(props: {jet: Jet}) {
         for (let index = 0; index < props.jet.des.length; index++) {
             const de = props.jet.des[index];
             let className = "de";
-            if(de >= 6) {
-                className += " reussite";
-            }
+            let compulsion = false;
 
             if(compulsion_compte > 0) {
                 className += " compulsion";
                 if(index < props.jet.eveil_compulsion) {
+                    compulsion = true;
                     className += " eveil";
                 }
                 compulsion_compte --;
@@ -28,6 +27,10 @@ export default function JetDetail(props: {jet: Jet}) {
                     className += " eveil";
                 }
                 soif_compte --;
+            }
+
+            if(de >= 6 && !compulsion) {
+                className += " reussite";
             }
             
             jsxDes.push(<span className={className}>{de}</span>)
