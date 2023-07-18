@@ -100,5 +100,11 @@
         left: 0;
         background-color: rgb(49, 49, 49);
         width: 100vw;
+
+        .field {
+            display: block;
+            margin-top: 0.2em;
+            margin-bottom: 0.4em;
+        }
     }
 }

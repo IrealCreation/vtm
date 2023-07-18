@@ -34,6 +34,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         if(typeof(req.body.compulsion) == "number") {
             compulsion = req.body.compulsion;
         }
+        else if(typeof(req.body.compulsion) == "boolean" && req.body.compulsion == true) {
+            compulsion = 1;
+        }
 
         const jet = lanceLesDes(character, stat1, stat2, bonus, compulsion);
 
@@ -57,7 +60,7 @@ function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: 
     let eveil_soif = 0;
     let soif_compte = soif;
     let eveil_compulsion = 0;
-    let compulsion_compte = eveil_compulsion;
+    let compulsion_compte = compulsion;
 
     for (let index = 0; index < nbDes; index++) {
         let random = Math.floor(Math.random() * 10 + 1);

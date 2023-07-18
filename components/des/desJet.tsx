@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Jet } from "@/interfaces/jet";
 import { Character, calculSoif } from "@/interfaces/character";
 import NumberField from "../fields/numberfield";
+import CheckField from "../fields/checkfield";
 import DesButton from "./desButton";
 import JetDetail from "./jetDetail";
 import { generateCharacter } from "@/redux/store";
@@ -16,6 +17,7 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
     const [value1, setValue1] = useState<number>(0);
     const [value2, setValue2] = useState<number>(0);
     const [bonus, setBonus] = useState<number>(0);
+    const [compulsion, setCompulsion] = useState<boolean>(false);
     const [jets, setJets] = useState<Array<Jet>>([]);
 
     useEffect(() => {
@@ -60,7 +62,8 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
             body: JSON.stringify({
                 stat1: stat1,
                 stat2: stat2,
-                bonus: bonus
+                bonus: bonus,
+                compulsion: (compulsion ? true : false)
             }),
             headers: {
                 "content-type": "application/json",
@@ -81,7 +84,6 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
     }
 
     const choixStat = (stat: string, value: number) => {
-        // Désactivation d'une stat ?
         if(stat1 == stat) {
             setStat1("");
             setValue1(0);
@@ -181,6 +183,7 @@ export default function DesJet(props: {isLogged: boolean, id?:number}) {
                 </div>
                 <div>
                     <NumberField min={-10} max={10} label="Bonus :" value={bonus} onUpdate={(value) => { setBonus(value) }} />
+                    <CheckField label="Compulsion" onUpdate={(value) => { setCompulsion(value) }} />
                 </div>
                 <div>
                     <button id="envoyer" className="btn-md" onClick={faireJet}>
