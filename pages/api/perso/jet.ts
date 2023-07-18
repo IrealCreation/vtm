@@ -68,13 +68,13 @@ function lanceLesDes(character: Character, stat1: string, stat2: string, bonus: 
             reussites ++;
         }
 
-        if(index < compulsion_compte) {
+        if(compulsion_compte > 0) {
             if(random <= (10 - character.humanite)) {
                 eveil_compulsion ++;
             }
             compulsion_compte --;
         }
-        else if(index < soif_compte) {
+        else if(soif_compte > 0) {
             if(random == 1) {
                 eveil_soif ++;
             }
